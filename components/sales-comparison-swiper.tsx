@@ -8,11 +8,11 @@ import type { Swiper as SwiperType } from 'swiper'
 import SalesBefore from "../public/sales-before.jpeg"
 
 // Import Swiper styles
-// import 'swiper/css'
-// import 'swiper/css/navigation'
-// import 'swiper/css/thumbs'
-// import 'swiper/css/free-mode'
-// import 'swiper/css/autoplay'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
+import 'swiper/css/free-mode'
+import 'swiper/css/autoplay'
 
 interface SalesAnalytics {
   id: number

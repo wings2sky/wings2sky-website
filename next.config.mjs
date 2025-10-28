@@ -6,9 +6,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    optimizeCss: false, // Disable lightningcss
-  },
 }
 
 export default nextConfig
