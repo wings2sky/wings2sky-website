@@ -1,11 +1,5 @@
 import "../globals.css"
-// Centralize Swiper CSS to avoid importing CSS from client components during SSR
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/thumbs'
-import 'swiper/css/free-mode'
-import 'swiper/css/autoplay'
+import SwiperStyles from "@/components/swiper-styles"
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
@@ -38,6 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans antialiased`}>
         {children}
+        <SwiperStyles />
         <FloatingContact />
         <Analytics />
       </body>
