@@ -1,5 +1,4 @@
 import "../globals.css"
-import SwiperStyles from "@/components/swiper-styles"
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
@@ -30,9 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://unpkg.com/swiper@12/swiper-bundle.min.css" />
+      </head>
       <body className={`font-sans antialiased`}>
         {children}
-        <SwiperStyles />
         <FloatingContact />
         <Analytics />
       </body>
