@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: wings2sky-website
-    env: node
-    buildCommand: npm ci
-    startCommand: npm start
