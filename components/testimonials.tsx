@@ -7,10 +7,10 @@ import { Navigation, Autoplay, Pagination } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 
 // Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/autoplay'
+// import 'swiper/css'
+// import 'swiper/css/navigation'
+// import 'swiper/css/pagination'
+// import 'swiper/css/autoplay'
 
 const testimonials = [
   {
