@@ -6,7 +6,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay, Pagination } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 
-// Swiper CSS is imported globally in app/layout.tsx
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/autoplay'
 
 const testimonials = [
   {

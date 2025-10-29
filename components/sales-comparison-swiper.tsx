@@ -5,8 +5,14 @@ import { ChevronLeft, ChevronRight, TrendingUp, Users, DollarSign, ShoppingCart 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs, FreeMode, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
+import SalesBefore from "../public/sales-before.jpeg"
 
-// Swiper CSS is imported globally in app/layout.tsx
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
+import 'swiper/css/free-mode'
+import 'swiper/css/autoplay'
 
 interface SalesAnalytics {
   id: number
@@ -40,9 +46,9 @@ const SALES_ANALYTICS_DATA: SalesAnalytics[] = [
     description: "Increased Sales To Double in 4 months from 20lakhs to 40lakhs",
     thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=150&fit=crop",
     metrics: {
-      current: 4083302,
-      previous: 1993287,
-      growth: 100.1,
+      current: "40,83,302",
+      previous: "19,93,287",
+      growth: "100.1%",
       type: 'revenue',
       currency: '₹'
     },
@@ -62,9 +68,9 @@ const SALES_ANALYTICS_DATA: SalesAnalytics[] = [
     description: "Increased Sales To Double in 4 months from 20lakhs to 40lakhs",
     thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=150&fit=crop",
     metrics: {
-      current: 4083302,
-      previous: 1993287,
-      growth: 100.1,
+      current: "40,83,302",
+      previous: "19,93,287",
+      growth: "100.1",
       type: 'revenue',
       currency: '₹'
     },
@@ -109,7 +115,7 @@ const SALES_ANALYTICS_DATA: SalesAnalytics[] = [
       current: 3240,
       previous: 2150,
       growth: 50.7,
-      type: 'customers'
+      type: 'Clients'
     },
     timeframe: {
       current: "Last 90 Days",
@@ -127,9 +133,9 @@ const SALES_ANALYTICS_DATA: SalesAnalytics[] = [
     description: "Total orders processed with new fulfillment system",
     thumbnail: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&h=150&fit=crop",
     metrics: {
-      current: 20220,
-      previous: 10369,
-      growth: 100,
+      current: "20220",
+      previous: "10369",
+      growth: "100",
       type: 'orders'
     },
     timeframe: {
