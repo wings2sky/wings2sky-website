@@ -92,10 +92,10 @@ export default function ServicesInteractive() {
                   {service.title}
                 </h3>
                 <p className="text-muted-foreground mb-4">{service.description}</p>
-                <div className="flex items-center gap-2 text-primary font-semibold">
+                {/* <div className="flex items-center gap-2 text-primary font-semibold">
                   <TrendingUp size={18} />
                   View Order Proof
-                </div>
+                </div> */}
               </button>
             ))}
           </div>

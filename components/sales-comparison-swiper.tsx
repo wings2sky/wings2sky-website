@@ -5,7 +5,6 @@ import { ChevronLeft, ChevronRight, TrendingUp, Users, DollarSign, ShoppingCart 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs, FreeMode, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
-import SalesBefore from "../public/sales-before.jpeg"
 
 // Import Swiper styles
 import 'swiper/css'
@@ -21,9 +20,9 @@ interface SalesAnalytics {
   description: string
   thumbnail?: string
   metrics: {
-    current: number
-    previous: number
-    growth: number
+    current: number | string
+    previous: number | string
+    growth: number | string
     type: 'revenue' | 'customers' | 'orders' | 'conversion'
     currency?: string
   }
@@ -83,28 +82,6 @@ const SALES_ANALYTICS_DATA: SalesAnalytics[] = [
       labels: ['', '', '', '']
     }
   },
-  // {
-  //   id: 5,
-  //   title: "E-Commerce Revenue Growth",
-  //   image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
-  //   description: "Quarter-over-quarter revenue comparison showing significant growth",
-  //   thumbnail: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=150&fit=crop",
-  //   metrics: {
-  //     current: 125000,
-  //     previous: 89000,
-  //     growth: 40.4,
-  //     type: 'revenue',
-  //     currency: '₹'
-  //   },
-  //   timeframe: {
-  //     current: "Last 3 Months",
-  //     previous: "Previous 3 Months"
-  //   },
-  //   charts: {
-  //     monthlyData: [65000, 72000, 88000, 125000],
-  //     labels: ['', '', '', '']
-  //   }
-  // },
   {
     id: 11,
     title: "Client Acquisition Growth",
@@ -115,7 +92,7 @@ const SALES_ANALYTICS_DATA: SalesAnalytics[] = [
       current: 3240,
       previous: 2150,
       growth: 50.7,
-      type: 'Clients'
+      type: 'customers'
     },
     timeframe: {
       current: "Last 90 Days",
@@ -168,28 +145,6 @@ const SALES_ANALYTICS_DATA: SalesAnalytics[] = [
       labels: ['', '', '', '']
     }
   },
-  // {
-  //   id: 5,
-  //   title: "Average Order Value Growth",
-  //   image: "",
-  //   description: "Increased average order value through upselling strategies",
-  //   thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=150&fit=crop",
-  //   metrics: {
-  //     current: 156,
-  //     previous: 112,
-  //     growth: 39.3,
-  //     type: 'revenue',
-  //     currency: '₹'
-  //   },
-  //   timeframe: {
-  //     current: "Last 3 Months",
-  //     previous: "Previous 3 Months"
-  //   },
-  //   charts: {
-  //     monthlyData: [105, 112, 128, 156],
-  //     labels: ['', '', '', '']
-  //   }
-  // },
   {
     id: 6,
     title: "Mobile Sales Performance",
@@ -243,7 +198,11 @@ const formatMetric = (metric: SalesAnalytics['metrics']) => {
   }
   
   if (type === 'revenue') {
-    const formatRevenue = (value: number) => {
+    const formatRevenue = (value: number | string) => {
+      if (typeof value === 'string') {
+        return `${currency}${value}`
+      }
+      
       if (value >= 10000000) {
         return `${currency}${(value / 10000000).toFixed(1)}Cr`
       } else if (value >= 100000) {
@@ -262,7 +221,11 @@ const formatMetric = (metric: SalesAnalytics['metrics']) => {
   }
   
   // For customers and orders
-  const formatCount = (value: number) => {
+  const formatCount = (value: number | string) => {
+    if (typeof value === 'string') {
+      return value
+    }
+    
     if (value >= 10000000) {
       return `${(value / 10000000).toFixed(1)}Cr`
     } else if (value >= 100000) {
@@ -302,11 +265,6 @@ export default function SalesAnalyticsSwiper() {
               nextEl: '.custom-next',
               prevEl: '.custom-prev',
             }}
-            // autoplay={{
-            //   delay: 5000,
-            //   disableOnInteraction: false,
-            //   pauseOnMouseEnter: true,
-            // }}
             spaceBetween={10}
             className="mb-6 rounded-xl overflow-hidden border border-border bg-background h-96 md:h-[500px]"
           >
@@ -343,7 +301,7 @@ export default function SalesAnalyticsSwiper() {
                             <div className="w-full bg-white/30 rounded-full h-3">
                               <div 
                                 className="bg-green-500 h-3 rounded-full transition-all duration-1000 ease-out shadow-lg"
-                                style={{ width: `${Math.min(100, (item.metrics.current / item.metrics.previous) * 50)}%` }}
+                                style={{ width: `${Math.min(100, (Number(item.metrics.current) / Number(item.metrics.previous)) * 50)}%` }}
                               ></div>
                             </div>
                           </div>
@@ -352,7 +310,6 @@ export default function SalesAnalyticsSwiper() {
                         <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 border border-white/20 shadow-xl">
                           <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-2">
-                              {/* <MetricIcon type={item.metrics.type} /> */}
                               <span className="text-white font-semibold drop-shadow-md">
                                 {item.metrics.type.charAt(0).toUpperCase() + item.metrics.type.slice(1)}
                               </span>
@@ -426,14 +383,14 @@ export default function SalesAnalyticsSwiper() {
                 <div className="cursor-pointer rounded-lg overflow-hidden border-2 border-transparent transition-all duration-300 hover:border-primary opacity-60 hover:opacity-100 group">
                   <div className="relative">
                     <img
-                      src={item.thumbnail || item.image || "/placeholder.svg"}
+                      src={item?.id == 1 ? "./sales-before.jpeg" : item?.id === 2 ? "./sales-after.jpeg"  :item.image || "/placeholder.svg"}
                       alt={item.title}
                       className="w-full h-20 object-cover"
                     />
                     <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300"></div>
                     <div className="absolute bottom-1 left-1 right-1">
                       <div className="flex items-center justify-between">
-                        <MetricIcon type={item.metrics.type} />
+                        {/* <MetricIcon type={item.metrics.type} /> */}
                         <span className="text-white text-xs font-bold bg-green-600 px-2 py-0.5 rounded shadow-md">
                           +{item.metrics.growth}%
                         </span>
@@ -445,15 +402,15 @@ export default function SalesAnalyticsSwiper() {
             ))}
           </Swiper>
 
-          {/* Custom Navigation Buttons */}
+          {/* Custom Navigation Buttons - Hidden on mobile */}
           <button
-            className="custom-prev absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-primary/90 hover:bg-primary text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
+            className="custom-prev absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-primary/90 hover:bg-primary text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg hidden md:flex"
             aria-label="Previous slide"
           >
             <ChevronLeft size={24} />
           </button>
           <button
-            className="custom-next absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-primary/90 hover:bg-primary text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg"
+            className="custom-next absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-primary/90 hover:bg-primary text-white p-3 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg hidden md:flex"
             aria-label="Next slide"
           >
             <ChevronRight size={24} />
@@ -464,9 +421,7 @@ export default function SalesAnalyticsSwiper() {
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           {SALES_ANALYTICS_DATA.slice(0, 4).map((item) => (
             <div key={item.id} className="bg-background border border-border rounded-lg p-4 text-center shadow-sm">
-              <div className="flex justify-center mb-2">
-                <MetricIcon type={item.metrics.type} />
-              </div>
+         
               <div className="text-2xl font-bold text-foreground">
                 {formatMetric(item.metrics).display}
               </div>

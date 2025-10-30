@@ -13,10 +13,10 @@ export default function ServiceCard({ icon, title, description }: ServiceCardPro
       <div className="text-4xl mb-4">{icon}</div>
       <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <div className="flex items-center gap-2 text-primary font-semibold">
+      {/* <div className="flex items-center gap-2 text-primary font-semibold">
         <TrendingUp size={18} />
         Learn More
-      </div>
+      </div> */}
     </button>
   )
 }

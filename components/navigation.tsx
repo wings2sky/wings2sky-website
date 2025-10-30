@@ -20,22 +20,32 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 bg-secondary/95 backdrop-blur border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20"> {/* Increased height */}
-          <Link href="/" className="flex items-center">
-            <div className="h-16 w-48 relative"> {/* Larger container */}
-              <Image 
-                src={SkyLogo} 
-                alt="Wings2Sky Logo"
-                fill
-                className="object-contain"
-                priority
-                sizes="(max-width: 768px) 192px, 256px"
-              />
-            </div>
-          </Link>
+        <div className="flex justify-between items-center h-20">
+          {/* Mobile Menu Button - positioned to the left */}
+          <div className="flex md:hidden flex-1">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-foreground">
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Logo - centered on mobile, left on desktop */}
+          <div className="flex-1 flex justify-center md:justify-start">
+            <Link href="/" className="flex items-center">
+              <div className="h-16 w-48 relative">
+                <Image 
+                  src={SkyLogo} 
+                  alt="Wings2Sky Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="(max-width: 768px) 192px, 256px"
+                />
+              </div>
+            </Link>
+          </div>
+
+          {/* Desktop Menu - pushed more to the right */}
+          <div className="hidden md:flex items-center gap-8 flex-1 justify-end">
             <Link
               href="/"
               className={`transition ${isActive("/") ? "text-primary font-semibold" : "text-foreground hover:text-primary"}`}
@@ -74,11 +84,9 @@ export default function Navigation() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-4">
-            {/* Mobile Menu Button */}
-            <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground">
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          {/* Spacer for mobile to balance the hamburger menu */}
+          <div className="flex md:hidden flex-1 justify-end">
+            {/* Empty div for spacing balance */}
           </div>
         </div>
 

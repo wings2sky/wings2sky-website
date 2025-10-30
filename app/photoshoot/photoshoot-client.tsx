@@ -3,7 +3,15 @@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation as SwiperNavigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const photoshootServices = [
   {
@@ -58,15 +66,7 @@ const portfolioCategories = [
 ]
 
 export default function PhotoshootClient() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % portfolioCategories.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + portfolioCategories.length) % portfolioCategories.length)
-  }
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
   return (
     <main className="min-h-screen bg-background">
@@ -133,47 +133,62 @@ export default function PhotoshootClient() {
         </div>
       </section>
 
-      {/* Portfolio Carousel */}
+      {/* Portfolio Carousel with Swiper */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-foreground mb-12">Our Portfolio</h2>
 
           <div className="relative">
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <img
-                src={portfolioCategories[currentSlide].image || "/placeholder.svg"}
-                alt={portfolioCategories[currentSlide].title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <h3 className="text-4xl font-bold text-white text-center">{portfolioCategories[currentSlide].title}</h3>
-              </div>
-            </div>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 hover:bg-white rounded-full transition"
+            <Swiper
+              modules={[SwiperNavigation, Pagination, Autoplay]}
+              navigation={{
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              }}
+              pagination={{
+                clickable: true,
+                el: '.swiper-pagination',
+              }}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+              spaceBetween={0}
+              slidesPerView={1}
+              onSwiper={setSwiperInstance}
+              className="h-96 rounded-lg overflow-hidden"
             >
-              <ChevronLeft size={24} className="text-black" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 hover:bg-white rounded-full transition"
-            >
-              <ChevronRight size={24} className="text-black" />
-            </button>
-
-            {/* Dots */}
-            <div className="flex justify-center gap-2 mt-6">
-              {portfolioCategories.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition ${index === currentSlide ? "bg-primary" : "bg-gray-400"}`}
-                />
+              {portfolioCategories.map((category, index) => (
+                <SwiperSlide key={index}>
+                  <div className="relative h-full w-full">
+                    <img
+                      src={category.image || "/placeholder.svg"}
+                      alt={category.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                      <h3 className="text-4xl font-bold text-white text-center px-4">{category.title}</h3>
+                    </div>
+                  </div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
+
+            {/* Custom Navigation Buttons */}
+            <button className="swiper-button-prev absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 hover:bg-white rounded-full transition">
+              <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button className="swiper-button-next absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 hover:bg-white rounded-full transition">
+              <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Custom Pagination */}
+            <div className="swiper-pagination flex justify-center gap-2 mt-6"></div>
           </div>
         </div>
       </section>
