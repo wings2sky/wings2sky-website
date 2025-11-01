@@ -37,7 +37,7 @@ const plans = [
   },
   {
     name: "Platinum",
-    price: "₹80000/year",
+    price: "₹79,000/year",
     tagline: "Complete support for established brands with premium growth tools",
     features: [
       "Easy Ship Prime Enrol",
@@ -70,13 +70,13 @@ export default function Plans() {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className={`p-8 rounded-xl border bg-card border-border relative group shadow-sm hover:shadow-md transition ${
+              className={`p-8 rounded-xl border bg-card border-border relative group shadow-sm hover:shadow-md transition flex flex-col ${
                 plan.highlight ? "border-[#FF7F00]/60" : "border-border"
               }`}
             >
@@ -94,7 +94,7 @@ export default function Plans() {
               <p className="text-3xl font-bold text-[#FF7F00] mb-6">{plan.price}</p>
 
               {/* Features */}
-              <ul className="space-y-3 text-left mb-8">
+              <ul className="space-y-3 text-left mb-8 flex-grow">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-2 text-muted-foreground">
                     <CheckCircle className="text-[#FF7F00] shrink-0 mt-1" size={18} />
@@ -103,11 +103,11 @@ export default function Plans() {
                 ))}
               </ul>
 
-              {/* Button */}
+              {/* Button - Now uniform height and alignment */}
               <motion.a
                 href="/contact"
                 whileHover={{ scale: 1.05 }}
-                className={`inline-block w-full text-center py-3 font-semibold rounded-lg transition ${
+                className={`inline-flex items-center justify-center w-full py-3 font-semibold rounded-lg transition min-h-[48px] ${
                   plan.highlight
                     ? "bg-[#FF7F00] text-white hover:bg-[#e46f00]"
                     : "bg-muted text-foreground hover:bg-muted/80"

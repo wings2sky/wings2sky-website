@@ -280,34 +280,35 @@ export default function SalesAnalyticsSwiper() {
                       className="w-full h-full object-cover"
                     />
                     {/* Enhanced overlay for better text visibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
-                      <div className="grid md:grid-cols-2 gap-6 items-end">
-                        <div>
-                          <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6">
+                      <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-end">
+                        <div className="bg-black/40 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-white/20">
+                          <h3 className="text-xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg">
                             {item.title}
                           </h3>
-                          <p className="text-white/90 mb-4 drop-shadow-md">{item.description}</p>
+                          <p className="text-white/90 mb-4 drop-shadow-md text-sm md:text-base">{item.description}</p>
                           
                           {/* Progress Bar Visualization */}
                           <div className="mb-4">
-                            <div className="flex justify-between text-white text-sm mb-2 drop-shadow-md">
-                              <span className="font-semibold bg-black/30 px-2 py-1 rounded">
+                            <div className="flex flex-col md:flex-row md:justify-between gap-2 text-white text-sm mb-2 drop-shadow-md">
+                              <span className="font-semibold bg-black/50 px-2 py-1 rounded text-xs md:text-sm">
                                 {item.timeframe.previous}: {formattedMetric.previous}
                               </span>
-                              <span className="font-semibold bg-black/30 px-2 py-1 rounded">
+                              <span className="font-semibold bg-black/50 px-2 py-1 rounded text-xs md:text-sm">
                                 {item.timeframe.current}: {formattedMetric.current}
                               </span>
                             </div>
-                            <div className="w-full bg-white/30 rounded-full h-3">
+                            <div className="w-full bg-white/30 rounded-full h-2 md:h-3">
                               <div 
-                                className="bg-green-500 h-3 rounded-full transition-all duration-1000 ease-out shadow-lg"
+                                className="bg-green-500 h-2 md:h-3 rounded-full transition-all duration-1000 ease-out shadow-lg"
                                 style={{ width: `${Math.min(100, (Number(item.metrics.current) / Number(item.metrics.previous)) * 50)}%` }}
                               ></div>
                             </div>
                           </div>
                         </div>
                         
-                        <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4 border border-white/20 shadow-xl">
+                        {/* Metrics Card - Hidden on mobile */}
+                        <div className="hidden md:block bg-black/60 backdrop-blur-sm rounded-lg p-4 border border-white/20 shadow-xl">
                           <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-2">
                               <span className="text-white font-semibold drop-shadow-md">
@@ -354,53 +355,54 @@ export default function SalesAnalyticsSwiper() {
             })}
           </Swiper>
 
-          {/* Thumbnail Swiper */}
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            modules={[Thumbs, FreeMode]}
-            watchSlidesProgress
-            freeMode={true}
-            spaceBetween={12}
-            slidesPerView={4}
-            breakpoints={{
-              320: {
-                slidesPerView: 2,
-              },
-              640: {
-                slidesPerView: 3,
-              },
-              1024: {
-                slidesPerView: 4,
-              },
-              1280: {
-                slidesPerView: 5,
-              }
-            }}
-            className="thumb-swiper max-w-4xl mx-auto"
-          >
-            {SALES_ANALYTICS_DATA.map((item) => (
-              <SwiperSlide key={item.id}>
-                <div className="cursor-pointer rounded-lg overflow-hidden border-2 border-transparent transition-all duration-300 hover:border-primary opacity-60 hover:opacity-100 group">
-                  <div className="relative">
-                    <img
-                      src={item?.id == 1 ? "./sales-before.jpeg" : item?.id === 2 ? "./sales-after.jpeg"  :item.image || "/placeholder.svg"}
-                      alt={item.title}
-                      className="w-full h-20 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300"></div>
-                    <div className="absolute bottom-1 left-1 right-1">
-                      <div className="flex items-center justify-between">
-                        {/* <MetricIcon type={item.metrics.type} /> */}
-                        <span className="text-white text-xs font-bold bg-green-600 px-2 py-0.5 rounded shadow-md">
-                          +{item.metrics.growth}%
-                        </span>
+          {/* Thumbnail Swiper - Hidden on mobile */}
+          <div className="hidden md:block">
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              modules={[Thumbs, FreeMode]}
+              watchSlidesProgress
+              freeMode={true}
+              spaceBetween={12}
+              slidesPerView={4}
+              breakpoints={{
+                320: {
+                  slidesPerView: 2,
+                },
+                640: {
+                  slidesPerView: 3,
+                },
+                1024: {
+                  slidesPerView: 4,
+                },
+                1280: {
+                  slidesPerView: 5,
+                }
+              }}
+              className="thumb-swiper max-w-4xl mx-auto"
+            >
+              {SALES_ANALYTICS_DATA.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <div className="cursor-pointer rounded-lg overflow-hidden border-2 border-transparent transition-all duration-300 hover:border-primary opacity-60 hover:opacity-100 group">
+                    <div className="relative">
+                      <img
+                        src={item?.id == 1 ? "./sales-before.jpeg" : item?.id === 2 ? "./sales-after.jpeg"  :item.image || "/placeholder.svg"}
+                        alt={item.title}
+                        className="w-full h-20 object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300"></div>
+                      <div className="absolute bottom-1 left-1 right-1">
+                        <div className="flex items-center justify-between">
+                          <span className="text-white text-xs font-bold bg-green-600 px-2 py-0.5 rounded shadow-md">
+                            +{item.metrics.growth}%
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
 
           {/* Custom Navigation Buttons - Hidden on mobile */}
           <button
@@ -418,16 +420,15 @@ export default function SalesAnalyticsSwiper() {
         </div>
 
         {/* Summary Stats */}
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {SALES_ANALYTICS_DATA.slice(0, 4).map((item) => (
-            <div key={item.id} className="bg-background border border-border rounded-lg p-4 text-center shadow-sm">
-         
-              <div className="text-2xl font-bold text-foreground">
+            <div key={item.id} className="bg-background border border-border rounded-lg p-3 md:p-4 text-center shadow-sm">
+              <div className="text-lg md:text-2xl font-bold text-foreground">
                 {formatMetric(item.metrics).display}
               </div>
-              <div className="text-sm text-muted-foreground capitalize">{item.metrics.type}</div>
-              <div className="text-green-600 text-sm font-semibold flex items-center justify-center gap-1 mt-1">
-                <TrendingUp size={14} />
+              <div className="text-xs md:text-sm text-muted-foreground capitalize">{item.metrics.type}</div>
+              <div className="text-green-600 text-xs md:text-sm font-semibold flex items-center justify-center gap-1 mt-1">
+                <TrendingUp size={12} />
                 +{item.metrics.growth}%
               </div>
             </div>

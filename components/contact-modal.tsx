@@ -141,9 +141,20 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
     }
   }
 
+  const getMaxPhoneLength = (): number => {
+    const currentCountry = getCurrentCountry()
+    return Array.isArray(currentCountry.digits) ? currentCountry.digits[1] : currentCountry.digits
+  }
+
   const formatPhoneInput = (value: string): string => {
+    // First, remove any non-digit characters and limit to max length
+    const digitsOnly = value.replace(/\D/g, '')
+    const maxLength = getMaxPhoneLength()
+    const limitedDigits = digitsOnly.slice(0, maxLength)
+    
+    // Then format with libphonenumber
     const asYouType = new AsYouType(getCurrentCountry().code as any)
-    return asYouType.input(value)
+    return asYouType.input(limitedDigits)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -405,6 +416,7 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
                 errors.phone ? 'border-red-500' : 'border-border'
               }`}
               placeholder={`e.g., ${getCurrentCountry().code === 'IN' ? '9876543210' : 'Enter phone number'}`}
+              maxLength={20} // Set a reasonable max length for formatted numbers
             />
             {errors.phone && (
               <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
@@ -414,11 +426,11 @@ export default function LeadModal({ isOpen, onClose }: LeadModalProps) {
                 ✓ Valid {getCurrentCountry().name} phone number
               </p>
             )}
-            {!errors.phone && !formData.phone && (
+            {/* {!errors.phone && !formData.phone && (
               <p className="text-muted-foreground text-sm mt-1">
                 {getPhoneDigitMessage()}
               </p>
-            )}
+            )} */}
           </div>
 
           {/* Service Selection */}

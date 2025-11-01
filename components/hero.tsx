@@ -1,11 +1,31 @@
 "use client"
-
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
+import LeadModal from "./contact-modal"
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [hasModalShown, setHasModalShown] = useState(false)
+
+  // Auto-show modal after 40 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!hasModalShown) {
+        setIsModalOpen(true)
+        setHasModalShown(true)
+      }
+    }, 20000) // 20 seconds
+
+    return () => clearTimeout(timer)
+  }, [hasModalShown])
   return (
+    <>
+         <LeadModal
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-secondary to-background overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -49,5 +69,6 @@ export default function Hero() {
         </div>
       </div>
     </section>
+    </>
   )
 }

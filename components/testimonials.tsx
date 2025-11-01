@@ -53,7 +53,6 @@ const testimonials = [
     text: "Professional, reliable, and results-oriented. Wings 2 Sky exceeded our expectations in every way.",
     rating: 5,
   },
-  
 ]
 
 export default function Testimonials() {
@@ -112,7 +111,7 @@ export default function Testimonials() {
           >
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.id}>
-                <div className="p-6 bg-card rounded-lg border border-border hover:border-primary transition-all duration-300 ease-in-out hover:shadow-lg h-full">
+                <div className="p-6 bg-card rounded-lg border border-border hover:border-primary transition-all duration-300 ease-in-out hover:shadow-lg h-full flex flex-col">
                   <div className="flex items-center gap-4 mb-4">
                     <img
                       src={testimonial.image || "/placeholder.svg"}
@@ -131,21 +130,21 @@ export default function Testimonials() {
                     ))}
                   </div>
 
-                  <p className="text-muted-foreground italic leading-relaxed">"{testimonial.text}"</p>
+                  <p className="text-muted-foreground italic leading-relaxed flex-grow">"{testimonial.text}"</p>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
 
-          {/* Custom Navigation Buttons */}
+          {/* Custom Navigation Buttons - Hidden on mobile */}
           <button
-            className="testimonial-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-primary-foreground p-3 rounded-full hover:bg-primary/90 transition-all duration-300 transform hover:scale-110 shadow-lg -translate-x-4"
+            className="testimonial-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-primary-foreground p-3 rounded-full hover:bg-primary/90 transition-all duration-300 transform hover:scale-110 shadow-lg -translate-x-4 hidden md:flex items-center justify-center"
             aria-label="Previous testimonial"
           >
             <ChevronLeft size={24} />
           </button>
           <button
-            className="testimonial-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-primary-foreground p-3 rounded-full hover:bg-primary/90 transition-all duration-300 transform hover:scale-110 shadow-lg translate-x-4"
+            className="testimonial-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-primary-foreground p-3 rounded-full hover:bg-primary/90 transition-all duration-300 transform hover:scale-110 shadow-lg translate-x-4 hidden md:flex items-center justify-center"
             aria-label="Next testimonial"
           >
             <ChevronRight size={24} />
@@ -154,7 +153,6 @@ export default function Testimonials() {
           {/* Custom Pagination */}
           <div className="testimonial-pagination flex justify-center gap-2 mt-8 !relative" />
         </div>
-
       </div>
 
       <style jsx global>{`
@@ -178,6 +176,15 @@ export default function Testimonials() {
         .testimonial-pagination {
           position: relative !important;
           bottom: 0 !important;
+        }
+
+        /* Ensure all slides have the same height */
+        .swiper-slide {
+          height: auto;
+        }
+        
+        .swiper-slide > div {
+          height: 100%;
         }
       `}</style>
     </section>
