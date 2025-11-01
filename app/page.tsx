@@ -10,6 +10,9 @@ import FAQ from "@/components/faq"
 import ServicesSection from "@/components/services-section"
 import Footer from "@/components/footer"
 import Testimonials from "@/components/testimonials"
+import PartnershipsWithLogos from "@/components/partners"
+import Plans from "@/components/Plans"
+// import PartnershipsWithLogos from "@components/partners"
 
 
 export const metadata: Metadata = {
@@ -30,6 +33,8 @@ export default function Home() {
       <WhyChooseUs />
       <BusinessBoost />
       <ServicesSection />
+      <Plans />
+      <PartnershipsWithLogos />
       <Testimonials />
       <FAQ />
       <Footer />
