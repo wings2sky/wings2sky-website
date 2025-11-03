@@ -1,12 +1,19 @@
+// components/services-section.tsx
+"use client"
+
+import React, { useState } from 'react'
 import ServiceCard from "@/components/service-card"
+import ServiceModal from "@/components/service-modal"
 
 export default function ServicesSection() {
+  const [selectedService, setSelectedService] = useState<number | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const services = [
     {
       icon: "📢",
       title: "Digital Marketing",
-      description:
-        "Promotion of brands to connect with potential customers using the internet and digital communication.",
+      description: "Promotion of brands to connect with potential customers using the internet and digital communication.",
     },
     {
       icon: "💻",
@@ -21,8 +28,7 @@ export default function ServicesSection() {
     {
       icon: "📱",
       title: "Social Media",
-      description:
-        "Social media platforms like Instagram, Twitter and Facebook to promote your brand & sell product online.",
+      description: "Social media platforms like Instagram, Twitter and Facebook to promote your brand & sell product online.",
     },
     {
       icon: "📸",
@@ -35,6 +41,18 @@ export default function ServicesSection() {
       description: "Graphic design is a craft where professionals create visual content to communicate messages.",
     },
   ]
+
+  const handleViewMore = (index: number) => {
+    setSelectedService(index)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedService(null)
+  }
+
+  const currentService = selectedService !== null ? services[selectedService] : null
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
@@ -49,9 +67,24 @@ export default function ServicesSection() {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <ServiceCard key={index} icon={service.icon} title={service.title} description={service.description} />
+            <ServiceCard 
+              key={index} 
+              icon={service.icon} 
+              title={service.title} 
+              description={service.description}
+              onViewMore={() => handleViewMore(index)}
+            />
           ))}
         </div>
+
+        {/* Service Modal */}
+        {currentService && (
+          <ServiceModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            service={currentService}
+          />
+        )}
       </div>
     </section>
   )
