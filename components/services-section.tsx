@@ -1,4 +1,3 @@
-// components/services-section.tsx
 "use client"
 
 import React, { useState } from 'react'
@@ -36,9 +35,9 @@ export default function ServicesSection() {
       description: "All ecommerce photography with images editing, retouch, color correction and enhance the images.",
     },
     {
-      icon: "🎨",
-      title: "Graphics Designing",
-      description: "Graphic design is a craft where professionals create visual content to communicate messages.",
+      icon: "🛒",
+      title: "Ecommerce Account Management",
+      description: "We do account management for Flipkart, Amazon, Meesho and many more with optimized performance strategies.",
     },
   ]
 
