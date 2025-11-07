@@ -77,6 +77,12 @@ export default function Navigation() {
               Projects
             </Link>
             <Link
+              href="/blogs"
+              className={`transition ${isActive("/blogs") ? "text-primary font-semibold" : "text-foreground hover:text-primary"}`}
+            >
+              Blogs
+            </Link>
+            <Link
               href="/contact"
               className={`transition ${isActive("/contact") ? "text-primary font-semibold" : "text-foreground hover:text-primary"}`}
             >
@@ -127,6 +133,13 @@ export default function Navigation() {
               onClick={() => setIsOpen(false)}
             >
               Projects
+            </Link>
+            <Link
+              href="/blogs"
+              className={`block px-4 py-2 rounded transition ${isActive("/blogs") ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-primary/10"}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Blogs
             </Link>
             <Link
               href="/contact"
