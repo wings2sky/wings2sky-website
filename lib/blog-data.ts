@@ -7,6 +7,7 @@ export interface BlogPost {
     date: string
     readTime: string
     image: string
+    image1?:string
     category: string
     tags: string[]
   }
@@ -14,47 +15,37 @@ export interface BlogPost {
   export const blogPosts: BlogPost[] = [
     {
       id: "1",
-      title: "10 Common E-commerce Mistakes That Are Costing You Sales",
-      excerpt: "Discover the most frequent e-commerce pitfalls and learn how to avoid them to boost your conversion rates and revenue.",
+      title: "The Ultimate Guide to Amazon A+ Content: Design, Strategy, and Conversion",
+      excerpt: "In today’s competitive e-commerce world, standing out on Amazon isn’t just about having a great product it’s about how you present it. Amazon A+ Content (also known as Enhanced Brand Content) allows sellers to showcase their products using rich visuals, comparison charts, storytelling, and design elements that increase trust and boost conversion rates.",
       content: `
-        <p>Running an e-commerce business can be challenging, and many store owners make common mistakes that significantly impact their sales. In this comprehensive guide, we'll explore the top 10 e-commerce mistakes and how to fix them.</p>
+      <p>If you’re a brand owner or seller aiming to elevate your listings, this guide will walk you through everything you need to know from strategy to design and how it impacts your sales performance.</p>
         
-        <h2>1. Poor Website Navigation</h2>
-        <p>Complex navigation structures confuse visitors and lead to high bounce rates. Ensure your menu is intuitive and products are easy to find.</p>
-        
-        <h2>2. Slow Loading Speed</h2>
-        <p>Studies show that 53% of mobile visitors leave a site that takes longer than 3 seconds to load. Optimize images and minimize code to improve speed.</p>
-        
-        <h2>3. Lack of Mobile Optimization</h2>
-        <p>With over 60% of e-commerce traffic coming from mobile devices, a non-responsive design is a recipe for failure.</p>
-        
-        <h2>4. Complicated Checkout Process</h2>
-        <p>Reduce form fields and offer guest checkout options to minimize cart abandonment.</p>
-        
-        <h2>5. Poor Product Photography</h2>
-        <p>High-quality images from multiple angles significantly increase conversion rates.</p>
-        
-        <h2>6. Inadequate Product Descriptions</h2>
-        <p>Detailed, benefit-focused descriptions help customers make informed decisions.</p>
-        
-        <h2>7. Hidden Shipping Costs</h2>
-        <p>Unexpected costs at checkout are the number one reason for cart abandonment.</p>
-        
-        <h2>8. Lack of Trust Signals</h2>
-        <p>Include security badges, customer reviews, and clear return policies.</p>
-        
-        <h2>9. Ignoring SEO Best Practices</h2>
-        <p>Optimize product pages for search engines to drive organic traffic.</p>
-        
-        <h2>10. Poor Customer Service</h2>
-        <p>Quick responses and excellent support build customer loyalty and repeat business.</p>
-        
-        <p>By addressing these common mistakes, you can significantly improve your e-commerce performance and drive more sales.</p>
-      `,
+      <h2> What is Amazon A+ Content? </h2>
+      <p>Amazon A+ Content is a feature available to brand-registered sellers that enhances the product description section with multimedia elements such as:<br>High-quality images and infographics<br> Comparison charts<br> Custom Modules<br> Detailed storytelling sections<br> Videos for A+ Premium Content<br> This visual-rich content helps your listing look professional, builds brand trust, and answers customer queries before they even ask ultimately increasing conversion rates and reducing return rates.</p>
+      
+      <h2>Why Amazon A+ Content Matters</h2>
+      <p>Here’s why A+ Content is a must-have for every Amazon seller: <br>✅ Boosts Conversions – On average, listings with A+ Content see 10–15% higher conversions.<br> ✅ Improves Brand Image – Professionally designed content builds credibility.<br> ✅ Reduces Returns – Detailed visuals clarify product usage and features.<br> ✅ Enhances SEO – Well-structured content with relevant keywords improves visibility.</p>
+      
+      <h2>Design: The Heart of A+ Content</h2>
+      <p>Your design decides how long customers engage with your listing. Keep it simple, clean, and story-driven. <br>Design Tips: <br>1. Use High-Resolution Images – Showcase product features clearly. <br>Maintain Brand Consistency – Use your logo, color scheme, and fonts. <br>Highlight Key Features Visually – Use icons and infographics. <br>Add Lifestyle Images – Help buyers imagine the product in real life. <br>Use Comparison Charts – Demonstrate why your product is superior.</p>
+      
+      <h2>Strategy: Turning Browsers into Buyers</h2>
+      <p>Creating great design is just one part strategy is what converts views into sales. <br>Smart A+ Content Strategies: <br>Tell a Story: Don’t just list features explain how your product improves life. <br>Focus on Benefits: People buy solutions, not specs. <br>Add SEO Keywords Naturally: Optimize for both Amazon and Google. <br>Use Data-Driven Decisions: Analyze which modules or visuals perform best. <br>Test & Update Regularly: A+ Content isn’t “set and forget”  keep improving.</p>
+      
+      <h2>Conversion: Measuring the Impact</h2>
+      <p>Once your A+ Content is live, monitor its performance using: <br>📊 Amazon Brand Analytics <br>📈 Conversion Rate (CR) Reports <br>💬 Customer Feedback & Q&A <br>Look for metrics such as increased click-through rates, add-to-cart ratios, and average order value.</p>
+      
+      <h2>Pro Tips from Wings2Sky</h2>
+      <p>At Wings2Sky E-Solution Pvt. Ltd., we’ve helped dozens of brands optimize their Amazon presence. <br>Here’s what we’ve learned: <br>✨ Personalized visuals perform 40% better. <br>✨ Data-driven A/B testing boosts conversions over time. <br>✨ Transparent analytics build brand trust and long-term growth. <br>Need help designing your A+ Content? <br>👉 Connect with us today — let’s craft content that sells! <br>9289088384 | connect@wings2sky.com</p>
+      
+      <h2>Conclusion</h2>
+      <p>Amazon A+ Content isn’t just about looking good it’s about communicating your brand story effectively and turning clicks into loyal customers. With the right mix of design, strategy, and analytics, your listings can become your most powerful sales tool. <br>Start optimizing today, and watch your conversion rates soar! 🚀</p>
+    `,
       author: "Prince Rajput",
       date: "2024-01-15",
       readTime: "2 min read",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=400&fit=crop",
+      image: "https://i.ibb.co/nM8vdHFy/Whats-App-Image-2025-11-11-at-4-59-06-PM.jpg",
+      image1:"https://i.ibb.co/bk0wmtQ/Whats-App-Image-2025-11-11-at-4-59-06-PM-1.jpg",
       category: "E-commerce Strategy",
       tags: ["E-commerce", "Mistakes", "Conversion", "SEO"]
     },

@@ -60,16 +60,16 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
         {/* Article Header */}
         <article className="bg-card rounded-lg shadow-lg overflow-hidden">
-          <div className="relative h-64 md:h-80 w-full">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
-            />
-          </div>
+        <div className="relative w-full aspect-[16/9]">
+  <Image
+    src={post.image1}
+    alt={post.title}
+    fill
+    className="object-contain"
+    priority
+  />
+</div>
+
 
           <div className="p-8">
             {/* Meta Information */}
