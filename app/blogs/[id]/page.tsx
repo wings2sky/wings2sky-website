@@ -62,7 +62,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         <article className="bg-card rounded-lg shadow-lg overflow-hidden">
         <div className="relative w-full aspect-[16/9]">
   <Image
-    src={post.image1}
+    src={post.image1 || post.image}
     alt={post.title}
     fill
     className="object-contain"
