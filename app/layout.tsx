@@ -30,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <meta name="google-site-verification" content="9-u9v3h3t_TPp_d_hEvQeMLBg89D7eWKnuacgDRdBio" />
         <link rel="stylesheet" href="https://unpkg.com/swiper@12/swiper-bundle.min.css" />
       </head>
       <body className={`font-sans antialiased`}>
