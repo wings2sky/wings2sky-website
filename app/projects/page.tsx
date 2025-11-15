@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   title: "Projects - Wings2Sky",
   description:
     "View our portfolio of successful projects and case studies. See how we've helped businesses achieve their goals.",
-  keywords: "projects, portfolio, case studies, web development, e-commerce solutions",
+  keywords: "projects, portfolio, case studies, web development, e-commerce solutions,Digital marketing campaign results",
 }
 
 export default function ProjectsPage() {

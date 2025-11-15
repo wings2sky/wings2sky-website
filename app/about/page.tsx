@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "About Us - Wings2Sky",
   description:
     "Learn about Wings2Sky, a leading digital solutions consultancy with over a decade of experience in e-commerce and digital marketing.",
-  keywords: "about, company, team, experience, digital solutions, e-commerce",
+  keywords: "about, company, team, experience, digital solutions, e-commerce,About Wings2Sky,Digital solutions consultancy,Leading digital marketing company,Business growth solutions provider,amazon experts,flipkart seller,meesho sellers,flipkart experts",
 }
 
 export default function AboutPage() {

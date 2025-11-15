@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Contact Us - Wings2Sky",
   description:
     "Get in touch with Wings2Sky. Contact us for e-commerce solutions, digital marketing, and business growth strategies.",
-  keywords: "contact, support, e-commerce help, digital marketing consultation",
+  keywords: "contact, support, e-commerce help, digital marketing consultation,Contact digital solutions company,Hire digital marketing experts,Hire web development agency",
 }
 
 export default function ContactPage() {
