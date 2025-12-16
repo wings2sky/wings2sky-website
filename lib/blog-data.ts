@@ -1104,7 +1104,127 @@ export const blogPosts: BlogPost[] = [
       "SEO friendly website",
       "web development solutions"
     ]
+  },
+  {
+    id: "15",
+    slug: "delhi-air-pollution-aqi-crisis-2025",
+    title: "Delhi Air Pollution Crisis 2025: AQI Levels, Causes, and Government Measures",
+    excerpt:
+      "Delhi’s air pollution continues to dominate headlines and Twitter trends. Understand current AQI levels, root causes, government actions, and how citizens can stay safe.",
+    content: `
+    <p>Delhi’s air pollution crisis has once again become a major concern, trending heavily on Twitter and search engines. With AQI levels frequently touching hazardous marks, residents are facing severe health and lifestyle challenges.</p>
+  
+    <p>From vehicle emissions to stubble burning and weather conditions, multiple factors contribute to Delhi’s deteriorating air quality.</p>
+  
+    <h2>Table of Contents</h2>
+    <p>• Current AQI Status in Delhi</p>
+    <p>• Major Causes of Air Pollution</p>
+    <p>• Government Restrictions & GRAP Measures</p>
+    <p>• Health Impact and Safety Tips</p>
+  
+    <h2>Current AQI Status in Delhi</h2>
+    <p>Delhi AQI levels have consistently remained in the <strong>Very Poor to Severe</strong> category, triggering emergency protocols and public advisories.</p>
+  
+    <h2>Major Causes of Air Pollution</h2>
+    <p><strong>Vehicular Emissions:</strong> High traffic density remains a leading contributor.</p>
+    <p><strong>Stubble Burning:</strong> Seasonal crop burning impacts air quality drastically.</p>
+    <p><strong>Weather Conditions:</strong> Low wind speed traps pollutants.</p>
+  
+    <h2>Government Restrictions & GRAP Measures</h2>
+    <p>Authorities have imposed construction bans, vehicle restrictions, and fuel usage regulations under GRAP.</p>
+  
+    <h2>Health Impact and Safety Tips</h2>
+    <p>Residents are advised to limit outdoor exposure, use air purifiers, and follow official advisories.</p>
+    `,
+    author: "Prince Rajput",
+    date: "2025-10-05",
+    readTime: "4 min read",
+    image: "https://i.ibb.co/JR0vjr0R/download.jpg",
+    category: "Delhi News",
+    tags: ["Delhi AQI", "Air Pollution", "Delhi Smog", "Health"],
+    keywords: [
+      "Delhi AQI today",
+      "Delhi air pollution news",
+      "Delhi smog update",
+      "GRAP restrictions Delhi",
+      "Delhi pollution causes"
+    ]
+  },
+  {
+    id: "16",
+    slug: "delhi-government-latest-announcements",
+    title: "Delhi Government Latest Announcements: Policies Trending on Twitter",
+    excerpt:
+      "Delhi government decisions related to pollution, transport, and education are trending on Twitter. Here’s a complete breakdown.",
+    content: `
+    <p>Recent announcements by the Delhi government have sparked massive discussions on Twitter and news platforms.</p>
+  
+    <h2>Table of Contents</h2>
+    <p>• Pollution Control Policies</p>
+    <p>• Transport & Vehicle Rules</p>
+    <p>• School & Education Updates</p>
+  
+    <h2>Pollution Control Policies</h2>
+    <p>New restrictions aim to curb emissions during peak pollution periods.</p>
+  
+    <h2>Transport & Vehicle Rules</h2>
+    <p>Odd-even schemes and PUC enforcement are being actively discussed.</p>
+  
+    <h2>School & Education Updates</h2>
+    <p>Schools have shifted to online modes during extreme pollution days.</p>
+    `,
+    author: "Prince Rajput",
+    date: "2025-11-07",
+    readTime: "4 min read",
+    image: "https://i.ibb.co/4gKnVkTW/download-1.jpg",
+    category: "Politics",
+    tags: ["Delhi Government", "Policies", "Twitter Trends"],
+    keywords: [
+      "Delhi government news",
+      "Delhi policy updates",
+      "Delhi rules today",
+      "Delhi education update"
+    ]
+  },
+  {
+    id: "17",
+    slug: "delhi-cybercrime-online-fraud-awareness",
+    title: "Rising Cybercrime in Delhi: Online Fraud Cases Trending on Twitter",
+    excerpt:
+      "Cybercrime incidents in Delhi are trending on Twitter. Learn common fraud types and how to protect yourself.",
+    content: `
+    <p>Delhi has witnessed a surge in cybercrime cases, raising concerns among residents and businesses.</p>
+  
+    <h2>Table of Contents</h2>
+    <p>• Types of Cybercrime</p>
+    <p>• Recent Delhi Cases</p>
+    <p>• Safety Tips</p>
+  
+    <h2>Types of Cybercrime</h2>
+    <p>Online scams, phishing attacks, and identity theft are most common.</p>
+  
+    <h2>Recent Delhi Cases</h2>
+    <p>Police operations have busted multiple fraud networks.</p>
+  
+    <h2>Safety Tips</h2>
+    <p>Avoid sharing OTPs, use strong passwords, and verify unknown links.</p>
+    `,
+    author: "Prince Rajput",
+    date: "2025-11-08",
+    readTime: "3 min read",
+    image: "https://i.ibb.co/5XqGWGSp/cybercrime.png",
+    category: "Cyber Security",
+    tags: ["Cybercrime", "Delhi News", "Online Fraud"],
+    keywords: [
+      "Delhi cybercrime",
+      "online fraud Delhi",
+      "Delhi cyber safety",
+      "scam awareness"
+    ]
   }
+  
+  
+  
   
   
   
