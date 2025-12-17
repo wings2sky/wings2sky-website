@@ -1106,120 +1106,266 @@ export const blogPosts: BlogPost[] = [
     ]
   },
   {
-    id: "15",
-    slug: "delhi-air-pollution-aqi-crisis-2025",
-    title: "Delhi Air Pollution Crisis 2025: AQI Levels, Causes, and Government Measures",
-    excerpt:
-      "Delhi’s air pollution continues to dominate headlines and Twitter trends. Understand current AQI levels, root causes, government actions, and how citizens can stay safe.",
-    content: `
-    <p>Delhi’s air pollution crisis has once again become a major concern, trending heavily on Twitter and search engines. With AQI levels frequently touching hazardous marks, residents are facing severe health and lifestyle challenges.</p>
-  
-    <p>From vehicle emissions to stubble burning and weather conditions, multiple factors contribute to Delhi’s deteriorating air quality.</p>
-  
-    <h2>Table of Contents</h2>
-    <p>• Current AQI Status in Delhi</p>
-    <p>• Major Causes of Air Pollution</p>
-    <p>• Government Restrictions & GRAP Measures</p>
-    <p>• Health Impact and Safety Tips</p>
-  
-    <h2>Current AQI Status in Delhi</h2>
-    <p>Delhi AQI levels have consistently remained in the <strong>Very Poor to Severe</strong> category, triggering emergency protocols and public advisories.</p>
-  
-    <h2>Major Causes of Air Pollution</h2>
-    <p><strong>Vehicular Emissions:</strong> High traffic density remains a leading contributor.</p>
-    <p><strong>Stubble Burning:</strong> Seasonal crop burning impacts air quality drastically.</p>
-    <p><strong>Weather Conditions:</strong> Low wind speed traps pollutants.</p>
-  
-    <h2>Government Restrictions & GRAP Measures</h2>
-    <p>Authorities have imposed construction bans, vehicle restrictions, and fuel usage regulations under GRAP.</p>
-  
-    <h2>Health Impact and Safety Tips</h2>
-    <p>Residents are advised to limit outdoor exposure, use air purifiers, and follow official advisories.</p>
+    "id": "15",
+    "slug": "delhi-air-pollution-aqi-crisis-2025",
+    "title": "Delhi Air Pollution Crisis 2025: AQI Levels, Causes, and Government Measures",
+    "excerpt": "Delhi's air quality has plunged into 'hazardous' territory with AQI levels exceeding 600 in parts of the city, triggering the highest level of emergency measures. This is a breakdown of the severe health crisis, its root causes, and the unprecedented GRAP Stage IV restrictions now in force.",
+    "content": `
+      <p>Delhi has woken up to a severe public health and environmental emergency as a thick, toxic haze has blanketed the city, pushing air quality to its worst levels of the season. The crisis has halted daily life, disrupted travel, and forced authorities to implement the strictest emergency measures available[citation:2][citation:5]. Social media, particularly Twitter, is flooded with grim images and urgent discussions about the city's deteriorating atmosphere.</p>
+    
+      <h2>Table of Contents</h2>
+      <p>• Current AQI Status: From "Hazardous" to Off the Charts</p>
+      <p>• Major Causes: A Perfect Storm of Emissions and Weather</p>
+      <p>• Government Restrictions: GRAP Stage IV in Full Force</p>
+      <p>• Health Impact and Essential Safety Tips</p>
+      <p>• Public Frustration and Looking Ahead</p>
+    
+      <h2>Current AQI Status in Delhi</h2>
+      <p>Delhi's air quality has not just been "poor" or "very poor" – it has been officially classified as <strong>"hazardous"</strong>. On December 15, the city's average AQI was recorded at 433[citation:2], and by the morning of December 16, it had worsened to an average of 471[citation:5]. This level is more than 30 times the World Health Organization's safe limit[citation:5].</p>
+      <p>However, these city-wide averages mask even more alarming hyper-local conditions. On December 14, several monitoring stations recorded staggering numbers: <strong>AQI 644 in Anand Vihar, 635 in Wazirpur, and 560 in Mundka</strong>[citation:7]. These readings are well above the maximum scale of 500 used by many government apps[citation:5], indicating an environmental crisis of extreme severity. The dense smog has severely reduced visibility, leading to the cancellation of over 40 flights and delays for numerous trains[citation:2][citation:5].</p>
+    
+      <h2>Major Causes of Air Pollution</h2>
+      <p>This crisis is the result of a convergence of long-standing and immediate factors:</p>
+      <p><strong>Primary Emission Sources:</strong></p>
+      <ul>
+        <li><strong>Stubble Burning:</strong> The seasonal burning of crop residue in neighbouring states like Punjab and Haryana continues to be a major contributor, sending thick plumes of smoke toward Delhi[citation:2].</li>
+        <li><strong>Vehicular Emissions:</strong> Heavy traffic density, particularly from older, more polluting vehicles, remains a leading source of urban pollution[citation:2].</li>
+        <li><strong>Industrial & Local Pollution:</strong> Industrial emissions, construction dust, and the use of diesel generators add to the toxic mix[citation:2][citation:6].</li>
+      </ul>
+      <p><strong>Aggravating Weather Conditions (The "Pollution Trap"):</strong></p>
+      <p>The emissions are made drastically worse by winter weather. <strong>Low wind speeds</strong> prevent pollutants from dispersing, while <strong>temperature inversions</strong> act like a lid, trapping a dense layer of smog close to the ground[citation:2][citation:7]. High moisture levels further encourage smog formation[citation:5]. This combination has created a dangerous scenario where pollutants accumulate hour after hour[citation:7].</p>
+    
+      <h2>Government Restrictions & GRAP Measures</h2>
+      <p>In response, the Commission for Air Quality Management (CAQM) has invoked <strong>Stage IV of the Graded Response Action Plan (GRAP)</strong>, the highest emergency level[citation:5]. These are the most stringent curbs possible under the plan:</p>
+      <ul>
+        <li><strong>Transport & Vehicle Bans:</strong>
+          <ul>
+            <li>Complete ban on the entry of <strong>BS-III petrol and BS-IV diesel vehicles</strong> into Delhi[citation:4].</li>
+            <li>BS-IV diesel trucks are barred from entering, except those carrying essential goods[citation:4].</li>
+            <li>Only electric, CNG, and BS-VI compliant vehicles are allowed unrestricted movement[citation:4].</li>
+          </ul>
+        </li>
+        <li><strong>Activity Halts:</strong>
+          <ul>
+            <li>A <strong>complete ban on all construction and demolition</strong> activity across the National Capital Region (NCR)[citation:5][citation:7].</li>
+            <li>Shutdown of polluting industries and dust-generating activities[citation:7].</li>
+          </ul>
+        </li>
+        <li><strong>Work & Education:</strong>
+          <ul>
+            <li>All government and private offices must operate at 50% capacity, with half the staff mandated to work from home[citation:2].</li>
+            <li>Schools have shifted to <strong>online or hybrid classes</strong>, with younger children required to study entirely online[citation:5].</li>
+          </ul>
+        </li>
+      </ul>
+      <p>Enforcement is strict, with penalties of up to ₹20,000 and vehicle seizure for violations[citation:4].</p>
+    
+      <h2>Health Impact and Safety Tips</h2>
+      <p>Exposure to this level of pollution poses severe health risks. Prolonged exposure can cause respiratory problems even in healthy individuals[citation:5]. Hospitals have reported a surge in patients with breathing difficulties, and doctors warn of the long-term damage, especially to children's developing lungs[citation:8]. One pediatrician at a recent protest starkly stated, <em>"We are literally killing our kids"</em>[citation:8].</p>
+      <p><strong>Essential Safety Measures for Residents:</strong></p>
+      <ul>
+        <li><strong>Minimize Exposure:</strong> Strictly avoid all outdoor activities, especially exercise. Keep windows and doors closed[citation:7].</li>
+        <li><strong>Use Protective Gear:</strong> If you must go outside, wear a <strong>KN95/FFP2 mask</strong> with a tight seal[citation:2].</li>
+        <li><strong>Purify Indoor Air:</strong> Use high-performance air purifiers at home and set your HVAC system to recirculation mode[citation:2].</li>
+        <li><strong>Follow Advisories:</strong> Heed official health warnings. Vulnerable groups (children, elderly, those with heart or lung conditions) must be extra cautious[citation:5].</li>
+      </ul>
+    
+      <h2>Public Frustration and Looking Ahead</h2>
+      <p>The recurring nature of this crisis has led to growing public anger and protest. Residents express frustration over what they see as a lack of permanent solutions and political will[citation:8]. Controversial and expensive temporary fixes, like a recently attempted cloud seeding operation that failed due to a lack of atmospheric moisture, have drawn criticism from experts who argue for tackling emission sources instead[citation:8].</p>
+      <p>The pollution's impact is now visibly etching itself into the city's heritage, with studies showing "black crusts" forming on the historic Red Fort due to airborne carbon and heavy metals[citation:8].</p>
+      <p>Experts point to China's successful, sustained war on air pollution as a model, demonstrating that with coordinated policy, technological investment, and strict enforcement, dramatic improvements are possible without halting economic growth[citation:6]. For now, Delhi residents await a change in weather—stronger winds or rain—for immediate relief, while the debate on long-term solutions grows louder[citation:7][citation:8].</p>
     `,
-    author: "Prince Rajput",
-    date: "2025-10-05",
-    readTime: "4 min read",
-    image: "https://i.ibb.co/JR0vjr0R/download.jpg",
-    category: "Delhi News",
-    tags: ["Delhi AQI", "Air Pollution", "Delhi Smog", "Health"],
-    keywords: [
+    "author": "Prince Rajput",
+    "date": "2025-12-17",
+    "readTime": "8 min read",
+    "image": "https://i.ibb.co/JR0vjr0R/download.jpg",
+    "category": "Delhi News",
+    "tags": ["Delhi AQI", "Air Pollution", "Delhi Smog", "Health", "GRAP", "Emergency"],
+    "keywords": [
       "Delhi AQI today",
       "Delhi air pollution news",
       "Delhi smog update",
       "GRAP restrictions Delhi",
-      "Delhi pollution causes"
+      "Delhi pollution causes",
+      "hazardous air quality",
+      "health advisory Delhi",
+      "vehicle ban Delhi"
     ]
   },
   {
-    id: "16",
-    slug: "delhi-government-latest-announcements",
-    title: "Delhi Government Latest Announcements: Policies Trending on Twitter",
-    excerpt:
-      "Delhi government decisions related to pollution, transport, and education are trending on Twitter. Here’s a complete breakdown.",
-    content: `
-    <p>Recent announcements by the Delhi government have sparked massive discussions on Twitter and news platforms.</p>
-  
-    <h2>Table of Contents</h2>
-    <p>• Pollution Control Policies</p>
-    <p>• Transport & Vehicle Rules</p>
-    <p>• School & Education Updates</p>
-  
-    <h2>Pollution Control Policies</h2>
-    <p>New restrictions aim to curb emissions during peak pollution periods.</p>
-  
-    <h2>Transport & Vehicle Rules</h2>
-    <p>Odd-even schemes and PUC enforcement are being actively discussed.</p>
-  
-    <h2>School & Education Updates</h2>
-    <p>Schools have shifted to online modes during extreme pollution days.</p>
+    "id": "16",
+    "slug": "delhi-government-latest-announcements",
+    "title": "Delhi Government Latest Announcements: Policies Trending on Twitter",
+    "excerpt": "As Delhi battles severe smog, the government has activated GRAP-IV, imposing 50% work-from-home rules, new vehicle bans, and financial aid for workers. Here's a complete breakdown of the latest emergency measures and the public reaction.",
+    "content": `
+      <p>In response to one of the worst air pollution crises this season, the Delhi government has announced a sweeping set of emergency measures that have become the primary topic of discussion on Twitter and national news platforms. The capital is currently under Stage IV of the Graded Response Action Plan (GRAP), the strictest level of anti-pollution curbs, following days of hazardous air quality.</p>
+    
+      <h2>Table of Contents</h2>
+      <p>• The Pollution Crisis: A "Gas Chamber" Situation</p>
+      <p>• Pollution Control: New Restrictions & GRAP-IV Explained</p>
+      <p>• Transport & Vehicle Rules: Major Bans and Public Backlash</p>
+      <p>• School & Education Updates: Shift to Online Learning</p>
+      <p>• Economic & Worker Support: Financial Aid Announced</p>
+      <p>• Public Reaction & Health Advisory</p>
+    
+      <h2>The Pollution Crisis: A "Gas Chamber" Situation</h2>
+      <p>Delhi's air quality deteriorated sharply over the weekend, with the Air Quality Index (AQI) hitting 498 in the 'severe plus' category on December 15[citation:1]. On Monday, December 16, a dense toxic smog blanketed the city, with average AQI readings around 471—more than 30 times the World Health Organization's safe limit[citation:2][citation:3]. Healthcare professionals described the city as a "gas chamber," with hospitals reporting an influx of patients with breathing difficulties and eye irritation[citation:2]. The crisis led to significant travel disruption, including the cancellation of over 40 flights and delays for dozens of trains[citation:2].</p>
+    
+      <h2>Pollution Control Policies</h2>
+      <p>The Commission for Air Quality Management (CAQM) invoked GRAP-IV across the National Capital Region (NCR). The key components of this emergency plan include:</p>
+      <ul>
+        <li><strong>Complete Ban on Construction and Demolition:</strong> All construction activity has been halted across Delhi and the NCR. A separate ban prohibits trucks from bringing construction material into the capital.</li>
+        <li><strong>Work-From-Home Mandate:</strong> In a major move, the Delhi government has mandated that all government and private offices operate at 50% capacity. Starting December 18, half of all staff must work from home. Essential services like healthcare, police, public transport, and electricity are exempt from this rule[citation:4][citation:6].</li>
+        <li><strong>PUC Certificate Enforcement:</strong> In a strict new directive, vehicles without a valid Pollution Under Control (PUC) certificate will be denied fuel at all petrol pumps in Delhi.</li>
+      </ul>
+    
+      <h2>Transport & Vehicle Rules</h2>
+      <p>The most controversial announcement has been a sweeping new restriction on vehicle entry. Starting Thursday, December 19, the Delhi government will prohibit the entry of <strong>all non-BS VI vehicles</strong> from outside its borders[citation:5][citation:8]. This is a significant escalation from the GRAP-III rule, which only restricted BS-III petrol and BS-IV diesel vehicles[citation:5].</p>
+      <p>The move has triggered a wave of anxiety and criticism. Officials estimate it will impact over 200,000 vehicles in Gurgaon, 400,000 in Noida, and 550,000 in Ghaziabad alone[citation:5]. Commuters have slammed the decision as "abrupt" and "impractical," arguing that it obstructs the free movement of people in the integrated NCR region where lakhs cross borders daily for work[citation:5]. Many have criticized the lack of adequate public transport alternatives, warning of extra pressure on the already overloaded Delhi Metro[citation:5].</p>
+    
+      <h2>School & Education Updates</h2>
+      <p>To protect children's health, schools have been directed to adopt a hybrid model of learning. Classes for students in grades 6 to 9 will be conducted in a combination of physical and online modes[citation:1]. For younger children, schools have shifted entirely to online classes[citation:3]. The Supreme Court of India has also issued a circular advising lawyers and litigants to appear for hearings virtually[citation:3].</p>
+    
+      <h2>Economic & Worker Support</h2>
+      <p>Acknowledging the economic impact of the construction ban, the Delhi government announced a support package for daily wage workers. Registered construction workers who are unable to work due to the halt in activity will receive a one-time financial assistance of <strong>Rs. 10,000</strong>. This amount will be transferred directly to their bank accounts via Direct Benefit Transfer (DBT)[citation:1][citation:4].</p>
+    
+      <h2>Public Reaction & Health Advisory</h2>
+      <p>The announcements have sparked massive debate on social media, with hashtags related to Delhi pollution trending. While some support the strict measures, a common public sentiment, as echoed by residents, is frustration with what is seen as a pattern of "quick fixes" instead of addressing root causes like crop burning and industrial emissions[citation:2][citation:5]. Environment Minister Manjinder Singh Sirsa stated that "no government can eradicate pollution from the capital within nine to ten months," while also blaming previous administrations for inaction[citation:1][citation:8].</p>
+      <p>Authorities have issued urgent health advisories, urging all residents, especially children, the elderly, and those with heart or lung conditions, to avoid outdoor activities and wear N95 masks if going outside is unavoidable[citation:2][citation:3].</p>
+      <p><em>The government has stated these measures will be in force until air quality shows sustained improvement. Citizens are advised to monitor official channels for updates on restrictions and health guidelines.</em></p>
     `,
-    author: "Prince Rajput",
-    date: "2025-11-07",
-    readTime: "4 min read",
-    image: "https://i.ibb.co/4gKnVkTW/download-1.jpg",
-    category: "Politics",
-    tags: ["Delhi Government", "Policies", "Twitter Trends"],
-    keywords: [
+    "author": "Prince Rajput",
+    "date": "2025-12-17",
+    "readTime": "7 min read",
+    "image": "https://i.ibb.co/4gKnVkTW/download-1.jpg",
+    "category": "Politics",
+    "tags": ["Delhi Government", "Policies", "Twitter Trends", "Air Pollution", "GRAP", "Transport Ban"],
+    "keywords": [
       "Delhi government news",
       "Delhi policy updates",
       "Delhi rules today",
-      "Delhi education update"
+      "Delhi education update",
+      "Delhi air pollution",
+      "GRAP IV",
+      "work from home Delhi",
+      "vehicle ban Delhi"
     ]
   },
   {
-    id: "17",
-    slug: "delhi-cybercrime-online-fraud-awareness",
-    title: "Rising Cybercrime in Delhi: Online Fraud Cases Trending on Twitter",
-    excerpt:
-      "Cybercrime incidents in Delhi are trending on Twitter. Learn common fraud types and how to protect yourself.",
-    content: `
-    <p>Delhi has witnessed a surge in cybercrime cases, raising concerns among residents and businesses.</p>
-  
-    <h2>Table of Contents</h2>
-    <p>• Types of Cybercrime</p>
-    <p>• Recent Delhi Cases</p>
-    <p>• Safety Tips</p>
-  
-    <h2>Types of Cybercrime</h2>
-    <p>Online scams, phishing attacks, and identity theft are most common.</p>
-  
-    <h2>Recent Delhi Cases</h2>
-    <p>Police operations have busted multiple fraud networks.</p>
-  
-    <h2>Safety Tips</h2>
-    <p>Avoid sharing OTPs, use strong passwords, and verify unknown links.</p>
+    "id": "17",
+    "slug": "delhi-cybercrime-online-fraud-awareness",
+    "title": "Rising Cybercrime in Delhi: Online Fraud Cases Trending on Twitter",
+    "excerpt": "Delhi faces a cybercrime epidemic with sophisticated scams costing citizens ₹1,000 crore in 2025. Learn about the latest fraud tactics, police operations, and essential protection strategies in this comprehensive guide.",
+    "content": `
+      <p>Delhi is currently facing an unprecedented surge in cybercrime cases, with sophisticated online frauds becoming a daily concern for residents and businesses alike. According to Delhi Police data, citizens have lost nearly <strong>₹1,000 crore</strong> to cybercrime in 2025 alone, marking a disturbing escalation in both frequency and sophistication of attacks.</p>
+      
+      <h2>Table of Contents</h2>
+      <p>• Understanding Delhi's Cybercrime Crisis</p>
+      <p>• Types of Cybercrime Plaguing the Capital</p>
+      <p>• Recent Major Cases and Police Operations</p>
+      <p>• How These Sophisticated Scams Actually Work</p>
+      <p>• Essential Safety Tips for Every Delhi Resident</p>
+      <p>• What to Do If You Become a Victim</p>
+      <p>• The Future of Cyber Security in Delhi</p>
+      
+      <h2>Understanding Delhi's Cybercrime Crisis</h2>
+      <p>Delhi has emerged as both a target and operational hub for cybercriminals, with the city's dense population and high digital adoption creating perfect conditions for fraudsters. The National Capital Region (NCR) has witnessed a <strong>300% increase</strong> in reported cyber fraud cases since 2022, according to recent police briefings. What makes Delhi particularly vulnerable is its position as India's financial and administrative center, attracting organized crime networks that operate across state and international borders.</p>
+      
+      <h2>Types of Cybercrime Plaguing the Capital</h2>
+      <p>The landscape of cybercrime in Delhi has evolved far beyond simple phishing emails. Today's criminals employ sophisticated psychological tactics and technical methods:</p>
+      
+      <h3>1. Advanced Financial Fraud</h3>
+      <p><strong>Investment Scams:</strong> The most devastating financially, these scams use social engineering to build trust before stealing large sums. Fraudsters often create fake trading platforms with realistic-looking interfaces that show false profits until victims attempt withdrawals.</p>
+      
+      <h3>2. 'Digital Arrest' Scams</h3>
+      <p>This terrifying new trend involves criminals impersonating law enforcement to psychologically trap victims. Using spoofed phone numbers that appear legitimate and sometimes even fake video calls showing people in police uniforms, they convince victims they're under investigation for serious crimes like money laundering or terrorism links.</p>
+      
+      <h3>3. Business Email Compromise (BEC)</h3>
+      <p>Also known as 'CEO fraud,' this targets corporate employees, particularly in finance departments. Criminals research organizational hierarchies, then impersonate executives to authorize fraudulent transfers. The Delhi Police's Cyber Cell reports these scams have drained <strong>₹200+ crore</strong> from NCR businesses in the last year.</p>
+      
+      <h3>4. SIM-Swap and OTP Bypass Fraud</h3>
+      <p>Using social engineering or insider contacts at telecom providers, criminals transfer victims' mobile numbers to SIM cards they control, intercepting OTPs to bypass bank security. Delhi's Cyber Police Station has registered 1,200 such cases in 2025.</p>
+      
+      <h2>Recent Major Cases and Police Operations</h2>
+      <p>Delhi Police and national agencies have launched coordinated operations against these growing threats:</p>
+      
+      <h3>Operation Chakra-V (December 2025)</h3>
+      <p>The Central Bureau of Investigation (CBI) dismantled a massive phishing factory operating from Delhi and Noida, seizing equipment used to send fraudulent messages through <strong>21,000 illegal SIM cards</strong>. This operation revealed how criminals bypass KYC regulations to obtain bulk SIMs specifically for fraud.</p>
+      
+      <h3>Inter-State Racket Busted (December 14, 2025)</h3>
+      <p>Delhi Police's Cyber Cell arrested nine members of an inter-state gang that used compromised bank accounts and hawala networks to move stolen funds. Investigators found one account had processed <strong>₹5.24 crore</strong> in just five days before being frozen.</p>
+      
+      <h3>Pan-India Investment Scam Unraveled (November 23, 2025)</h3>
+      <p>Following a complaint about a ₹5.92 crore loss, police tracked a network that used Facebook advertisements promising unrealistic returns. The investigation revealed connections to scam compounds in Cambodia and Myanmar, showing the international dimension of Delhi's cybercrime problem.</p>
+      
+      <h2>How These Sophisticated Scams Actually Work</h2>
+      <p>Understanding the mechanics behind these frauds is crucial for protection:</p>
+      
+      <h3>The Psychology of Scams</h3>
+      <p>Criminals exploit three primary psychological triggers: <strong>urgency</strong> (creating time pressure), <strong>authority</strong> (impersonating officials), and <strong>greed</strong> (promising unrealistic returns). Investment scams typically use a combination, starting with small "returns" to build credibility before requesting larger investments.</p>
+      
+      <h3>The Technical Infrastructure</h3>
+      <p>Modern cybercriminals operate like tech startups, with specialized teams for different functions: <strong>Phishermen</strong> gather credentials, <strong>Account Compromisers</strong> hack into systems, <strong>Money Mules</strong> transfer funds, and <strong>Cash-Out Teams</strong> convert digital money to physical currency through complex networks.</p>
+      
+      <h2>Essential Safety Tips for Every Delhi Resident</h2>
+      <p>Protecting yourself requires both technological measures and behavioral changes:</p>
+      
+      <h3>1. Financial Transaction Safety</h3>
+      <p><strong>Never share OTPs, PINs, or passwords</strong> - legitimate organizations never ask for these. Enable <strong>Two-Factor Authentication (2FA)</strong> using authenticator apps rather than SMS when possible. Regularly review bank statements and set transaction alerts for amounts above ₹10,000.</p>
+      
+      <h3>2. Communication Vigilance</h3>
+      <p><strong>Verify independently</strong> - if someone claiming to be from your bank, police, or workplace contacts you with an urgent request, end the communication and call back using official numbers from their website or your records. Be especially wary of calls creating panic about legal issues.</p>
+      
+      <h3>3. Digital Hygiene Practices</h3>
+      <p>Use a <strong>password manager</strong> to create and store unique, complex passwords for every account. Enable automatic updates on all devices and applications. Before entering personal information on any website, verify the URL begins with <strong>https://</strong> and shows a valid security certificate.</p>
+      
+      <h3>4. Social Media Caution</h3>
+      <p>Review privacy settings on all social platforms - fraudsters often gather personal information to customize scams. Be suspicious of unexpected friend requests or messages from unknown contacts, especially those quickly moving conversations to other platforms like WhatsApp.</p>
+      
+      <h2>What to Do If You Become a Victim</h2>
+      <p>Immediate action can significantly increase recovery chances:</p>
+      
+      <h3>Step 1: Contact Financial Institutions Immediately</h3>
+      <p>Call your bank's 24/7 helpline to report unauthorized transactions. Under RBI guidelines, prompt reporting within 3 hours provides the highest chance of fund recovery. Simultaneously, call the national cybercrime helpline at <strong>1930</strong>.</p>
+      
+      <h3>Step 2: Document Everything</h3>
+      <p>Take screenshots of all relevant communications, transaction IDs, phone numbers, and website URLs. Preserve this evidence without altering timestamps - it's crucial for investigation.</p>
+      
+      <h3>Step 3: File Official Complaints</h3>
+      <p>Report the incident on the <strong>National Cyber Crime Reporting Portal (cybercrime.gov.in)</strong> and visit your local police station to file a First Information Report (FIR). Cybercrimes are cognizable offenses, and police are obligated to register your complaint.</p>
+      
+      <h3>Step 4: Secure Your Digital Identity</h3>
+      <p>Change passwords on all important accounts, alert credit bureaus if financial information was compromised, and consider placing a temporary fraud alert on your credit profile.</p>
+      
+      <h2>The Future of Cyber Security in Delhi</h2>
+      <p>Authorities are implementing new strategies to combat the rising tide of cybercrime:</p>
+      
+      <h3>Technological Countermeasures</h3>
+      <p>Delhi Police is deploying artificial intelligence systems to detect patterns in fraudulent transactions and identify mule accounts before money is withdrawn. The "Cyber Prahari" initiative trains officers in every police station to handle digital evidence properly.</p>
+      
+      <h3>Legal Framework Strengthening</h3>
+      <p>The Supreme Court's December 2025 directive giving CBI a "free hand" to investigate pan-India 'digital arrest' scams represents a significant shift toward coordinated national action against cybercrime networks.</p>
+      
+      <h3>Public Awareness Campaigns</h3>
+      <p>Through social media, community workshops, and school programs, authorities are working to educate citizens - particularly vulnerable groups like seniors and small business owners - about recognizing and reporting cyber fraud.</p>
+      
+      <p>The battle against cybercrime in Delhi requires constant vigilance from both authorities and citizens. By understanding the threats, implementing protective measures, and reporting incidents promptly, residents can significantly reduce their risk in an increasingly digital world.</p>
     `,
-    author: "Prince Rajput",
-    date: "2025-11-08",
-    readTime: "3 min read",
-    image: "https://i.ibb.co/5XqGWGSp/cybercrime.png",
-    category: "Cyber Security",
-    tags: ["Cybercrime", "Delhi News", "Online Fraud"],
-    keywords: [
+    "author": "Prince Rajput",
+    "date": "2025-11-08",
+    "readTime": "12 min read",
+    "image": "https://i.ibb.co/5XqGWGSp/cybercrime.png",
+    "category": "Cyber Security",
+    "tags": ["Cybercrime", "Delhi News", "Online Fraud", "Police Operations", "Safety Tips", "Financial Fraud"],
+    "keywords": [
       "Delhi cybercrime",
       "online fraud Delhi",
       "Delhi cyber safety",
-      "scam awareness"
+      "scam awareness",
+      "digital arrest scam",
+      "investment fraud",
+      "cyber police Delhi",
+      "online security tips"
     ]
   }
   
