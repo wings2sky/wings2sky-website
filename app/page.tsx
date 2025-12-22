@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Wings2Sky - E-Commerce & Digital Solutions",
   description:
     "Transform your online business with Wings2Sky. Expert e-commerce management, digital marketing, and proven growth strategies.",
-  keywords: "e-commerce, digital solutions, marketplace management, business growth,Digital agency for business growth,Complete digital solutions under one roof,E-commerce and web development experts,Digital transformation partners",
+  keywords: "ecommerce, ebusiness, online shopping platform, biggest ecommerce platforms, what is ecommerce, online commerce, ecommerce selling products, ecommerce products to sell, best ecommerce websites,e-commerce, digital solutions, marketplace management, business growth,Digital agency for business growth,Complete digital solutions under one roof,E-commerce and web development experts,Digital transformation partners",
 }
 
 export default function Home() {
