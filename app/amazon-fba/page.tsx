@@ -1,4 +1,3 @@
-// app/amazon-fba-calculator/page.tsx
 "use client"
 
 import { useState, useEffect } from "react"
@@ -71,48 +70,1190 @@ export default function AmazonFBACalculatorPage() {
     revenue: 0
   })
 
-  // Sample categories data from PDF
-  const categories: CategoryType[] = [
-    {
-      name: "Automotive",
-      subcategories: [
-        {
-          name: "Helmets & Riding Gloves",
-          priceRanges: [
-            { min: 0, max: 300, feePercent: 0 },
-            { min: 301, max: 1000, feePercent: 6.5 },
-            { min: 1001, max: Infinity, feePercent: 8.5 }
-          ]
-        },
-        {
-          name: "Tyres & Rims",
-          priceRanges: [
-            { min: 0, max: 300, feePercent: 0 },
-            { min: 301, max: 500, feePercent: 5 },
-            { min: 501, max: Infinity, feePercent: 7 }
-          ]
-        }
-      ]
-    },
-    {
-      name: "Electronics & Accessories",
-      subcategories: [
-        {
-          name: "Mobile Phones",
-          priceRanges: [
-            { min: 0, max: Infinity, feePercent: 5 }
-          ]
-        },
-        {
-          name: "Laptops",
-          priceRanges: [
-            { min: 0, max: 70000, feePercent: 6 },
-            { min: 70001, max: Infinity, feePercent: 7 }
-          ]
-        }
-      ]
-    }
-  ]
+  // Complete categories data with all categories and subcategories
+// Update the categories with exact fee percentages from PDF
+const categories: CategoryType[] = [
+  {
+    name: "Automotive",
+    subcategories: [
+      {
+        name: "Helmets & Riding Gloves",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 6.5 },
+          { min: 1001, max: Infinity, feePercent: 8.5 }
+        ]
+      },
+      {
+        name: "Tyres & Rims",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: Infinity, feePercent: 7 }
+        ]
+      },
+      {
+        name: "Vehicles – 2-Wheelers, 4-Wheelers & Electric Vehicles",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 50000, feePercent: 5 },
+          { min: 50001, max: Infinity, feePercent: 2 }
+        ]
+      },
+      {
+        name: "Car & Bike Parts, Brakes, Engine, Exhaust, Suspension, Wipers, Body Fittings",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 14 },
+          { min: 501, max: 1000, feePercent: 15 },
+          { min: 1001, max: Infinity, feePercent: 16 }
+        ]
+      },
+      {
+        name: "Cleaning Kits, Car Interior/Exterior Care, Lighting & Paints",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 11 },
+          { min: 501, max: Infinity, feePercent: 13 }
+        ]
+      },
+      {
+        name: "Accessories (Floor Mats, Covers, Riding Gear)",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 14 }
+        ]
+      },
+      {
+        name: "Vehicle Tools & Appliances",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 8 },
+          { min: 501, max: Infinity, feePercent: 8.5 }
+        ]
+      },
+      {
+        name: "Oils, Lubricants",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 10.5 },
+          { min: 501, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Batteries & Air Fresheners",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 8.5 }
+        ]
+      },
+      {
+        name: "Car Electronics – Devices",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 7.5 },
+          { min: 501, max: 1000, feePercent: 9.5 },
+          { min: 1001, max: Infinity, feePercent: 12 }
+        ]
+      },
+      {
+        name: "Car Electronics – Accessories",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 10.5 },
+          { min: 501, max: 1000, feePercent: 11 },
+          { min: 1001, max: Infinity, feePercent: 15 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Baby Products, Toys & Education",
+    subcategories: [
+      {
+        name: "Baby Hardlines (Swings, Bouncers, Carriers, Safety, Décor, Furniture, Car Seats & Accessories)",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 10 },
+          { min: 501, max: 1000, feePercent: 9 },
+          { min: 1001, max: Infinity, feePercent: 6.5 }
+        ]
+      },
+      {
+        name: "Baby Strollers",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: 1000, feePercent: 8 },
+          { min: 1001, max: Infinity, feePercent: 9 }
+        ]
+      },
+      {
+        name: "Baby Diapers",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5.5 },
+          { min: 501, max: Infinity, feePercent: 9.5 }
+        ]
+      },
+      {
+        name: "Toys – Drones",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 30 }
+        ]
+      },
+      {
+        name: "Toys – Party Supplies (Balloons, Banners, Masks, Confetti, etc.)",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 8.5 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Toys – Games & Puzzles, Board Games, Adult Games, Building Sets",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 8.5 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Toys – Infant & Pre-school Toys (Electronic/Non-Electronic)",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 8.5 },
+          { min: 1001, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Toys – Outdoor, Activity & Sports Toys",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 9.5 },
+          { min: 501, max: Infinity, feePercent: 10.5 }
+        ]
+      },
+      {
+        name: "Toys – Plush Toys, Action Figures & Dolls",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 10.5 }
+        ]
+      },
+      {
+        name: "Toys – Remote & Non-Remote Controlled Vehicles & Vehicle Sets",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 8.5 },
+          { min: 501, max: 1000, feePercent: 10.5 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Toys – STEM, Art & Craft, Learning & Development",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 8.5 },
+          { min: 1001, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Baby & Kids Furniture and Home Décor",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 8.5 },
+          { min: 501, max: 1000, feePercent: 6 },
+          { min: 1001, max: Infinity, feePercent: 8.5 }
+        ]
+      },
+      {
+        name: "Baby Walker",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 9.5 },
+          { min: 501, max: 1000, feePercent: 7 },
+          { min: 1001, max: Infinity, feePercent: 5 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Books, Music, Movies, Video Games & Entertainment",
+    subcategories: [
+      {
+        name: "Books",
+        priceRanges: [
+          { min: 0, max: 250, feePercent: 3 },
+          { min: 251, max: 500, feePercent: 4.5 },
+          { min: 501, max: 1000, feePercent: 9 },
+          { min: 1001, max: Infinity, feePercent: 13.5 }
+        ]
+      },
+      {
+        name: "School Textbook Bundles",
+        priceRanges: [
+          { min: 0, max: 250, feePercent: 2 },
+          { min: 251, max: 1000, feePercent: 3 },
+          { min: 1001, max: 1500, feePercent: 4 },
+          { min: 1501, max: Infinity, feePercent: 4.5 }
+        ]
+      },
+      {
+        name: "Movies",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 6.5 }
+        ]
+      },
+      {
+        name: "Music",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 6.5 }
+        ]
+      },
+      {
+        name: "Email Gift Cards",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 0 }
+        ]
+      },
+      {
+        name: "Musical Instruments – Guitars",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 10 },
+          { min: 501, max: 1000, feePercent: 8 },
+          { min: 1001, max: Infinity, feePercent: 10 }
+        ]
+      },
+      {
+        name: "Musical Instruments – Keyboards",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 8 },
+          { min: 501, max: 1000, feePercent: 12 },
+          { min: 1001, max: Infinity, feePercent: 8 }
+        ]
+      },
+      {
+        name: "Musical Instruments – Microphones",
+        priceRanges: [
+          { min: 0, max: 1000, feePercent: 9.5 },
+          { min: 1001, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Musical Instruments – Others",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 10 },
+          { min: 301, max: 500, feePercent: 7 },
+          { min: 501, max: 1000, feePercent: 10.5 },
+          { min: 1001, max: Infinity, feePercent: 11 }
+        ]
+      },
+      {
+        name: "Musical Instruments – DJ & VJ Equipment, Recording, Computer, Cables, PA & Stage",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 6 },
+          { min: 301, max: 500, feePercent: 4.5 },
+          { min: 501, max: 1000, feePercent: 5.5 },
+          { min: 1001, max: Infinity, feePercent: 11 }
+        ]
+      },
+      {
+        name: "Video Games – Online Game Services",
+        priceRanges: [
+          { min: 0, max: 1000, feePercent: 0 },
+          { min: 1001, max: 2000, feePercent: 2 },
+          { min: 2001, max: Infinity, feePercent: 3 }
+        ]
+      },
+      {
+        name: "Video Games – Accessories",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 10.5 },
+          { min: 501, max: 1000, feePercent: 12.5 },
+          { min: 1001, max: Infinity, feePercent: 13.5 }
+        ]
+      },
+      {
+        name: "Video Games – Consoles",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 7 },
+          { min: 501, max: 1000, feePercent: 5 },
+          { min: 1001, max: Infinity, feePercent: 9 }
+        ]
+      },
+      {
+        name: "Video Games – Other Products",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 9 },
+          { min: 501, max: 1000, feePercent: 10 },
+          { min: 1001, max: Infinity, feePercent: 12 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Industrial, Medical, Scientific Supplies & Office Products",
+    subcategories: [
+      {
+        name: "Business & Industrial - Scientific Supplies",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 15000, feePercent: 11.5 },
+          { min: 15001, max: Infinity, feePercent: 7 }
+        ]
+      },
+      {
+        name: "OTC Medicine",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 12 },
+          { min: 501, max: Infinity, feePercent: 15 }
+        ]
+      },
+      {
+        name: "Masks",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 8 }
+        ]
+      },
+      {
+        name: "Weighing Scales & Fat Analyzers",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 11 },
+          { min: 301, max: 500, feePercent: 10.5 },
+          { min: 501, max: Infinity, feePercent: 13.5 }
+        ]
+      },
+      {
+        name: "Business & Industrial - Electrical Testing Equipment",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 6 }
+        ]
+      },
+      {
+        name: "Business & Industrial - Commercial Food Equipment",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 5.5 }
+        ]
+      },
+      {
+        name: "Body Support - Wearables and Soft Aids",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 6 }
+        ]
+      },
+      {
+        name: "Stethoscopes",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 10.5 }
+        ]
+      },
+      {
+        name: "Packing Materials",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 5 }
+        ]
+      },
+      {
+        name: "Power & Hand Tools and Water Dispenser",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 8 },
+          { min: 501, max: Infinity, feePercent: 10 }
+        ]
+      },
+      {
+        name: "Office Products - Office Supplies",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 10 },
+          { min: 501, max: 1000, feePercent: 12 },
+          { min: 1001, max: Infinity, feePercent: 13 }
+        ]
+      },
+      {
+        name: "Office Furniture - Study Table, Office & Gaming Chairs",
+        priceRanges: [
+          { min: 0, max: 1000, feePercent: 16.5 },
+          { min: 1001, max: 15000, feePercent: 15.5 },
+          { min: 15001, max: Infinity, feePercent: 11 }
+        ]
+      },
+      {
+        name: "Office Products - Electronic Devices",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 4.5 },
+          { min: 501, max: 1000, feePercent: 10.5 },
+          { min: 1001, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Office Products - Arts and Crafts",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 2 },
+          { min: 501, max: Infinity, feePercent: 5 }
+        ]
+      },
+      {
+        name: "Office Products - Writing Instruments",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 11 },
+          { min: 1001, max: Infinity, feePercent: 14 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Clothing, Fashion, Jewellery, Luggage & Shoes",
+    subcategories: [
+      {
+        name: "Apparel – Accessories",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 13 },
+          { min: 501, max: 1000, feePercent: 17 },
+          { min: 1001, max: Infinity, feePercent: 19 }
+        ]
+      },
+      {
+        name: "Apparel – Sweat Shirts and Jackets",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 14 },
+          { min: 501, max: Infinity, feePercent: 18 }
+        ]
+      },
+      {
+        name: "Apparel – Shorts",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 2 },
+          { min: 501, max: 1000, feePercent: 19.5 },
+          { min: 1001, max: Infinity, feePercent: 24 }
+        ]
+      },
+      {
+        name: "Apparel – Baby",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 7 }
+        ]
+      },
+      {
+        name: "Apparel – Ethnic Wear",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 1 },
+          { min: 501, max: 1000, feePercent: 10 },
+          { min: 1001, max: Infinity, feePercent: 16.5 }
+        ]
+      },
+      {
+        name: "Watches",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 14 },
+          { min: 301, max: 500, feePercent: 8 },
+          { min: 501, max: Infinity, feePercent: 15 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Electronics (Camera, Mobile, PC, Wireless) & Accessories",
+    subcategories: [
+      {
+        name: "Mobile Phones",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 5 }
+        ]
+      },
+      {
+        name: "Laptops",
+        priceRanges: [
+          { min: 0, max: 70000, feePercent: 6 },
+          { min: 70001, max: Infinity, feePercent: 7 }
+        ]
+      },
+      {
+        name: "Headphones & Earphones",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 18 },
+          { min: 501, max: Infinity, feePercent: 18 }
+        ]
+      },
+      {
+        name: "Power Banks & Chargers",
+        priceRanges: [
+          { min: 0, max: 1000, feePercent: 20 }
+        ]
+      },
+      {
+        name: "Cases & Covers",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 25 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Grocery, Food & Pet Supplies",
+    subcategories: [
+      {
+        name: "Grocery - Herbs and Spices",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 5.5 },
+          { min: 1001, max: Infinity, feePercent: 8 }
+        ]
+      },
+      {
+        name: "Grocery & Gourmet - Oils",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 1.5 },
+          { min: 501, max: 1000, feePercent: 7.5 },
+          { min: 1001, max: Infinity, feePercent: 9 }
+        ]
+      },
+      {
+        name: "Grocery - Dried Fruits and Nuts",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: 1000, feePercent: 8 },
+          { min: 1001, max: Infinity, feePercent: 9 }
+        ]
+      },
+      {
+        name: "Grocery - Hampers and Gifting",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: 1000, feePercent: 9 },
+          { min: 1001, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Grocery & Gourmet - Beverages",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: 1000, feePercent: 7 },
+          { min: 1001, max: Infinity, feePercent: 10 }
+        ]
+      },
+      {
+        name: "Pet Food",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 11.5 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Pet - Aquatics Supplies",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 10.5 },
+          { min: 501, max: Infinity, feePercent: 14 }
+        ]
+      },
+      {
+        name: "Pet Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 2 },
+          { min: 301, max: 500, feePercent: 10.5 },
+          { min: 501, max: Infinity, feePercent: 12 }
+        ]
+      },
+      {
+        name: "Pet Comforters (Bed, Feeder, Cages, Carriers, Crates, Kennels, Doors)",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 10.5 },
+          { min: 501, max: 1000, feePercent: 11 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Pet Essentials (Health Care, Grooming, Bath Supplies, Supplements, Tick/Flea, Dental)",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 12.5 },
+          { min: 501, max: 1000, feePercent: 13 },
+          { min: 1001, max: Infinity, feePercent: 14 }
+        ]
+      },
+      {
+        name: "Pet Accessories (Apparel, Collar, Leash, Harness)",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 11 },
+          { min: 501, max: Infinity, feePercent: 12.5 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Health, Beauty, Personal Care & Personal  Appliances",
+    subcategories: [
+      {
+        name: "Beauty - Fragrance",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 12.5 },
+          { min: 501, max: Infinity, feePercent: 14 }
+        ]
+      },
+      {
+        name: "Beauty - Haircare, Bath and Shower",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: Infinity, feePercent: 8 }
+        ]
+      },
+      {
+        name: "Beauty - Makeup",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 2 },
+          { min: 501, max: 1000, feePercent: 3.5 },
+          { min: 1001, max: Infinity, feePercent: 7 }
+        ]
+      },
+      {
+        name: "Face Wash",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: 1000, feePercent: 9 },
+          { min: 1001, max: Infinity, feePercent: 9.5 }
+        ]
+      },
+      {
+        name: "Moisturizer Cream",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6.5 },
+          { min: 501, max: 1000, feePercent: 9 },
+          { min: 1001, max: Infinity, feePercent: 9.5 }
+        ]
+      },
+      {
+        name: "Sunscreen",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: 1000, feePercent: 9 },
+          { min: 1001, max: Infinity, feePercent: 9.5 }
+        ]
+      },
+      {
+        name: "Deodorants",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 6.5 },
+          { min: 1001, max: Infinity, feePercent: 7 }
+        ]
+      },
+      {
+        name: "Facial Steamers",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 2.5 },
+          { min: 501, max: Infinity, feePercent: 7 }
+        ]
+      },
+      {
+        name: "Health & Personal Care - Ayurvedic, Oral Care, Sanitizers, Pooja Supplies",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: Infinity, feePercent: 7 }
+        ]
+      },
+      {
+        name: "Health & Household - Sports Nutrition & Meal Replacement Shakes",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 9 }
+        ]
+      },
+      {
+        name: "Health & Household - Cleaning, Laundry, Air Fresheners, Hygiene",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 4.5 },
+          { min: 501, max: Infinity, feePercent: 6 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Home, Décor, Furniture, Outdoor, Lawn & Garden",
+    subcategories: [
+      {
+        name: "Bean Bags & Inflatables",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 8 }
+        ]
+      },
+      {
+        name: "Mattresses",
+        priceRanges: [
+          { min: 0, max: 1000, feePercent: 25.5 },
+          { min: 1001, max: 20000, feePercent: 16 },
+          { min: 20001, max: Infinity, feePercent: 13.5 }
+        ]
+      },
+      {
+        name: "Rugs and Doormats",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 2 },
+          { min: 501, max: Infinity, feePercent: 9 }
+        ]
+      },
+      {
+        name: "Clocks",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 0 },
+          { min: 501, max: 1000, feePercent: 9 },
+          { min: 1001, max: Infinity, feePercent: 10 }
+        ]
+      },
+      {
+        name: "Wall Art",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 11 },
+          { min: 501, max: Infinity, feePercent: 13.5 }
+        ]
+      },
+      {
+        name: "Home - Fragrance & Candles",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Bedsheets, Blankets and Covers",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 0 },
+          { min: 501, max: 1000, feePercent: 7 },
+          { min: 1001, max: Infinity, feePercent: 8.5 }
+        ]
+      },
+      {
+        name: "Home Furnishing (Excluding Curtain and Accessories)",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 0 },
+          { min: 501, max: 1000, feePercent: 7 },
+          { min: 1001, max: Infinity, feePercent: 11 }
+        ]
+      },
+      {
+        name: "Containers, Boxes, Bottles & Kitchen Storage",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: Infinity, feePercent: 12 }
+        ]
+      },
+      {
+        name: "Home Improvement - Accessories",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 2.5 },
+          { min: 501, max: Infinity, feePercent: 13.5 }
+        ]
+      },
+      {
+        name: "Home Decor Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 3 },
+          { min: 501, max: 1000, feePercent: 12 },
+          { min: 1001, max: Infinity, feePercent: 17 }
+        ]
+      },
+      {
+        name: "Indoor Lighting",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: 1000, feePercent: 14.5 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Curtains and Accessories",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 16.5 },
+          { min: 501, max: 1000, feePercent: 11.5 },
+          { min: 1001, max: Infinity, feePercent: 16.5 }
+        ]
+      },
+      {
+        name: "Lawn & Garden - Plants, Seeds & Bulbs",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 9.5 },
+          { min: 501, max: 1000, feePercent: 11.5 },
+          { min: 1001, max: Infinity, feePercent: 11 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Kitchen, Large & Small Appliances",
+    subcategories: [
+      {
+        name: "Kitchen - Glassware & Ceramicware",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 4 },
+          { min: 501, max: 1000, feePercent: 11 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Kitchen - Gas Stoves & Pressure Cookers",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1500, feePercent: 6 },
+          { min: 1501, max: Infinity, feePercent: 10 }
+        ]
+      },
+      {
+        name: "Cookware, Tableware & Dinnerware",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: 1000, feePercent: 9 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Kitchen Tools & Supplies - Choppers, Knives, Bakeware & Accessories",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Large Appliances (excl. Accessories, Refrigerators and Chimneys)",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 5.5 }
+        ]
+      },
+      {
+        name: "Large Appliances - Accessories",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 16 }
+        ]
+      },
+      {
+        name: "Large Appliances - Chimneys",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 9.5 }
+        ]
+      },
+      {
+        name: "Large Appliances – Refrigerators",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 5 }
+        ]
+      },
+      {
+        name: "Small Appliances",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 6.5 },
+          { min: 1001, max: 5000, feePercent: 4.5 },
+          { min: 5001, max: Infinity, feePercent: 8 }
+        ]
+      },
+      {
+        name: "Fans and Robotic Vacuums",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 3000, feePercent: 6.5 },
+          { min: 3001, max: Infinity, feePercent: 8 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Sports, Gym & Sporting Equipment",
+    subcategories: [
+      {
+        name: "Bicycles",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 5.5 },
+          { min: 1001, max: Infinity, feePercent: 6 }
+        ]
+      },
+      {
+        name: "Gym Equipments",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: 1000, feePercent: 10 },
+          { min: 1001, max: 35000, feePercent: 12 },
+          { min: 35001, max: Infinity, feePercent: 10 }
+        ]
+      },
+      {
+        name: "Sports - Cricket & Badminton Equipments, Tennis, Table Tennis, Squash, Football, Volleyball, Basketball, Throwball, Swimming",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6 },
+          { min: 501, max: 1000, feePercent: 8 },
+          { min: 1001, max: Infinity, feePercent: 8.5 }
+        ]
+      },
+      {
+        name: "Sports Collectibles",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 17 }
+        ]
+      },
+      {
+        name: "Sports - Cricket Bats, Badminton Racquets, Tennis Racquets, Pickleball Paddles, Squash Racquets & TT Tables",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: 1000, feePercent: 7 },
+          { min: 1001, max: Infinity, feePercent: 7.5 }
+        ]
+      },
+      {
+        name: "Sports & Outdoors - Footwear",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 12.5 },
+          { min: 501, max: 1000, feePercent: 14.5 },
+          { min: 1001, max: Infinity, feePercent: 16 }
+        ]
+      }
+    ]
+  },
+  {
+    name: "Others",
+    subcategories: [
+      {
+        name: "Coin Collectibles",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 15 }
+        ]
+      },
+      {
+        name: "Silver Coins & Bars",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 5 }
+        ]
+      },
+      {
+        name: "Furniture - Other Products",
+        priceRanges: [
+          { min: 0, max: 1000, feePercent: 13.5 },
+          { min: 1001, max: 15000, feePercent: 15.5 },
+          { min: 15001, max: Infinity, feePercent: 11 }
+        ]
+      },
+      {
+        name: "Toys - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 9.5 },
+          { min: 1001, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Grocery & Gourmet - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 1000, feePercent: 7 },
+          { min: 1001, max: Infinity, feePercent: 9 }
+        ]
+      },
+      {
+        name: "Office - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 10 },
+          { min: 501, max: 1000, feePercent: 10.5 },
+          { min: 1001, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Personal Care Appliances - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 7.5 },
+          { min: 301, max: 500, feePercent: 10.5 },
+          { min: 501, max: 1000, feePercent: 11 },
+          { min: 1001, max: Infinity, feePercent: 7.5 }
+        ]
+      },
+      {
+        name: "Beauty - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 7 },
+          { min: 501, max: Infinity, feePercent: 9 }
+        ]
+      },
+      {
+        name: "Health & Personal Care - Other Household Supplies",
+        priceRanges: [
+          { min: 0, max: 500, feePercent: 4.5 },
+          { min: 501, max: Infinity, feePercent: 6.5 }
+        ]
+      },
+      {
+        name: "Health & Household - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: Infinity, feePercent: 11.5 }
+        ]
+      },
+      {
+        name: "Business & Industrial Supplies - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 15000, feePercent: 8 },
+          { min: 15001, max: Infinity, feePercent: 5 }
+        ]
+      },
+      {
+        name: "Kitchen - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: 1000, feePercent: 11.5 },
+          { min: 1001, max: Infinity, feePercent: 12.5 }
+        ]
+      },
+      {
+        name: "Lawn & Garden - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 9 },
+          { min: 301, max: 15000, feePercent: 10 },
+          { min: 15001, max: Infinity, feePercent: 5 }
+        ]
+      },
+      {
+        name: "Luggage - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 9 },
+          { min: 501, max: Infinity, feePercent: 8 }
+        ]
+      },
+      {
+        name: "Baby - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 6.5 },
+          { min: 501, max: 1000, feePercent: 8 },
+          { min: 1001, max: Infinity, feePercent: 7.5 }
+        ]
+      },
+      {
+        name: "Pet - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 10.5 },
+          { min: 501, max: Infinity, feePercent: 12 }
+        ]
+      },
+      {
+        name: "Apparel - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 4.5 },
+          { min: 501, max: 1000, feePercent: 11 },
+          { min: 1001, max: Infinity, feePercent: 19 }
+        ]
+      },
+      {
+        name: "Home - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 5 },
+          { min: 501, max: 1000, feePercent: 13 },
+          { min: 1001, max: Infinity, feePercent: 18 }
+        ]
+      },
+      {
+        name: "Home Improvement - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 4.5 },
+          { min: 501, max: Infinity, feePercent: 13.5 }
+        ]
+      },
+      {
+        name: "Indoor Lighting - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 8.5 },
+          { min: 501, max: 1000, feePercent: 10.5 },
+          { min: 1001, max: Infinity, feePercent: 16 }
+        ]
+      },
+      {
+        name: "Sports - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 9 },
+          { min: 501, max: Infinity, feePercent: 13 }
+        ]
+      },
+      {
+        name: "Automotive - Other Products",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 0 },
+          { min: 301, max: 500, feePercent: 15.5 },
+          { min: 501, max: Infinity, feePercent: 16 }
+        ]
+      },
+      {
+        name: "Consumable Physical Gift Card",
+        priceRanges: [
+          { min: 0, max: Infinity, feePercent: 5 }
+        ]
+      },
+      {
+        name: "Warranty Services",
+        priceRanges: [
+          { min: 0, max: 300, feePercent: 10 },
+          { min: 301, max: 500, feePercent: 29 },
+          { min: 501, max: Infinity, feePercent: 30 }
+        ]
+      }
+    ]
+  }
+]
 
   // Calculate all fees
   const calculateFees = () => {
@@ -238,6 +1379,11 @@ export default function AmazonFBACalculatorPage() {
     })
   }
 
+  // Reset subcategory when category changes
+  useEffect(() => {
+    setSelectedSubcategory("")
+  }, [selectedCategory])
+
   useEffect(() => {
     if (sellingPrice && costPrice && selectedCategory && selectedSubcategory) {
       calculateFees()
@@ -274,7 +1420,11 @@ export default function AmazonFBACalculatorPage() {
     "Seasonal Fee Adjustments: Plan for peak season surcharges and adjust pricing accordingly during high-demand periods.",
     "Regular Profit Analysis: Use our calculator monthly to analyze profitability and identify optimization opportunities."
   ]
-
+const getDisplayName = (name: string) => {
+  const maxLength = 40; // Adjust based on your design
+  if (name.length <= maxLength) return name;
+  return name.substring(0, maxLength - 3) + '...';
+}
   return (
       <>
       <Navigation />
