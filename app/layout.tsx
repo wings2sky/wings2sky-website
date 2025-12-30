@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Wings2Sky - E-Commerce & Digital Solutions",
   description:
     "Professional e-commerce management, digital marketing, and business growth strategies. Boost your online sales with Wings2Sky.",
-  keywords: "e-commerce, digital marketing, marketplace management, business growth, online sales",
+  keywords: "ecommerce-services,ecommerce services Delhi, e-commerce solutions Dwarka, digital marketing agency Delhi, website development Delhi, Amazon listing services, Flipkart product listing, online store development, ecommerce management, SEO services Delhi, social media marketing Delhi, PPC management, marketplace management, ecommerce consulting, ecommerce website design, Shopify development, WooCommerce expert, product photography Delhi, catalog management, inventory management, payment gateway integration, logistics support, ecommerce SEO, Google Ads Delhi, Facebook marketing, Instagram advertising, business growth solutions, online sales increase, Delhi ecommerce agency, Dwarka digital marketing, top ecommerce company,best ecommerce service provider in Dwarka Delhi, e-commerce, digital marketing, marketplace management, business growth, online sales",
   authors: [{ name: "Wings2Sky" }],
   openGraph: {
     title: "Wings2Sky - E-Commerce & Digital Solutions",
