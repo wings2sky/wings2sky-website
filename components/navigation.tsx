@@ -81,7 +81,17 @@ export default function Navigation() {
 
           {/* Logo - centered on mobile, left on desktop */}
           <div className="flex-1 flex justify-center md:justify-start">
-            <Link href="/" className="flex items-center">
+            <Link 
+              href="/" 
+              className="flex items-center"
+              onClick={() => {
+                setIsOpen(false)
+                // If already on homepage, scroll to top
+                if (pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+              }}
+            >
               <div className="h-16 w-48 relative">
                 <Image 
                   src={SkyLogo} 
@@ -100,6 +110,12 @@ export default function Navigation() {
             <Link
               href="/"
               className={`transition ${isActive("/") ? "text-primary font-semibold" : "text-foreground hover:text-primary"}`}
+              onClick={() => {
+                // If already on homepage, scroll to top
+                if (pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+              }}
             >
               Home
             </Link>
@@ -209,7 +225,13 @@ export default function Navigation() {
             <Link
               href="/"
               className={`block px-4 py-2 rounded transition ${isActive("/") ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-primary/10"}`}
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false)
+                // If already on homepage, scroll to top
+                if (pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+              }}
             >
               Home
             </Link>
