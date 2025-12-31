@@ -17,12 +17,13 @@ const Footer = dynamic(() => import("@/components/footer"))
 const Testimonials = dynamic(() => import("@/components/testimonials"))
 const PartnershipsWithLogos = dynamic(() => import("@/components/partners"))
 const Plans = dynamic(() => import("@/components/Plans"))
+const SEOContent = dynamic(() => import("@/components/seo-content"))
 
 
 export const metadata: Metadata = {
-  title: "Wings2Sky - E-Commerce & Digital Solutions",
+  title: "Wings2Sky - E-Commerce Services Delhi | Digital Marketing Agency Dwarka",
   description:
-    "Transform your online business with Wings2Sky. Expert e-commerce management, digital marketing, and proven growth strategies.",
+    "Best ecommerce service provider in Dwarka Delhi. Expert e-commerce solutions, digital marketing agency Delhi, website development, Amazon listing services, Flipkart product listing, SEO services, social media marketing, PPC management, marketplace management, and business growth solutions.",
   keywords: "ecommerce-services,ecommerce services Delhi, e-commerce solutions Dwarka, digital marketing agency Delhi, website development Delhi, Amazon listing services, Flipkart product listing, online store development, ecommerce management, SEO services Delhi, social media marketing Delhi, PPC management, marketplace management, ecommerce consulting, ecommerce website design, Shopify development, WooCommerce expert, product photography Delhi, catalog management, inventory management, payment gateway integration, logistics support, ecommerce SEO, Google Ads Delhi, Facebook marketing, Instagram advertising, business growth solutions, online sales increase, Delhi ecommerce agency, Dwarka digital marketing, top ecommerce company,best ecommerce service provider in Dwarka Delhi, e-commerce, digital marketing, marketplace management, business growth, online sales, ebusiness, online shopping platform, biggest ecommerce platforms, what is ecommerce, online commerce, ecommerce selling products, ecommerce products to sell, best ecommerce websites,e-commerce, digital solutions, marketplace management, business growth,Digital agency for business growth,Complete digital solutions under one roof,E-commerce and web development experts,Digital transformation partners",
 }
 
@@ -39,6 +40,7 @@ export default function Home() {
       <ServicesSection />
       <Plans />
       <PartnershipsWithLogos />
+      <SEOContent />
       <Testimonials />
       <FAQ />
       <Footer />

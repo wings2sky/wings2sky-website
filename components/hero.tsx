@@ -32,12 +32,14 @@ export default function Hero() {
           {/* Left Content */}
           <div className="space-y-6 z-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Digital Solutions For Your Business
+              E-Commerce Services Delhi | Digital Marketing Agency Dwarka
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Transform your online presence with our comprehensive digital solutions. We specialize in e-commerce
-              optimization, digital marketing, and business growth strategies designed to help you reach new heights in
-              the digital landscape.
+              Leading <strong>ecommerce services provider in Dwarka Delhi</strong> offering comprehensive 
+              <strong>e-commerce solutions</strong>, <strong>digital marketing</strong>, and 
+              <strong>marketplace management</strong>. We help businesses achieve <strong>online sales increase</strong> 
+              through expert <strong>website development</strong>, <strong>SEO services</strong>, and 
+              <strong>ecommerce management</strong> strategies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
