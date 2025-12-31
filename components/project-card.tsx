@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 interface Project {
   id: number
@@ -14,10 +15,13 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="group bg-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition">
       <div className="relative h-48 overflow-hidden bg-muted">
-        <img
+        <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+          fill
+          className="object-cover group-hover:scale-105 transition duration-300"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          loading="lazy"
         />
       </div>
 

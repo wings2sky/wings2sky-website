@@ -3,6 +3,7 @@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { useState } from "react"
+import Image from "next/image"
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -102,11 +103,16 @@ export default function PhotoshootClient() {
                 globe.
               </p>
             </div>
-            <img
-              src="/professional-product-photography-studio-setup.jpg"
-              alt="Photography Studio"
-              className="w-full rounded-lg shadow-lg"
-            />
+            <div className="relative w-full aspect-video rounded-lg shadow-lg overflow-hidden">
+              <Image
+                src="/professional-product-photography-studio-setup.jpg"
+                alt="Photography Studio"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -118,11 +124,16 @@ export default function PhotoshootClient() {
           <div className="grid md:grid-cols-3 gap-8">
             {photoshootServices.map((service, index) => (
               <div key={index} className="bg-card rounded-lg overflow-hidden hover:shadow-lg transition">
-                <img
-                  src={service.image || "/placeholder.svg"}
-                  alt={service.title}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="relative w-full h-48">
+                  <Image
+                    src={service.image || "/placeholder.svg"}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    loading="lazy"
+                  />
+                </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-foreground mb-2">{service.title}</h3>
                   <p className="text-muted-foreground">{service.description}</p>
@@ -162,10 +173,13 @@ export default function PhotoshootClient() {
               {portfolioCategories.map((category, index) => (
                 <SwiperSlide key={index}>
                   <div className="relative h-full w-full">
-                    <img
+                    <Image
                       src={category.image || "/placeholder.svg"}
                       alt={category.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                       <h3 className="text-4xl font-bold text-white text-center px-4">{category.title}</h3>

@@ -1,18 +1,22 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Navigation from "@/components/navigation"
 import Hero from "@/components/hero"
-import SalesComparisonSwiper from "@/components/sales-comparison-swiper"
-import ServicesInteractive from "@/components/services-interactive"
-import WhatWeDo from "@/components/what-we-do"
-import WhyChooseUs from "@/components/why-choose-us"
-import BusinessBoost from "@/components/business-boost"
-import FAQ from "@/components/faq"
-import ServicesSection from "@/components/services-section"
-import Footer from "@/components/footer"
-import Testimonials from "@/components/testimonials"
-import PartnershipsWithLogos from "@/components/partners"
-import Plans from "@/components/Plans"
-// import PartnershipsWithLogos from "@components/partners"
+
+// Dynamically import below-the-fold components for better initial load performance
+const SalesComparisonSwiper = dynamic(() => import("@/components/sales-comparison-swiper"), {
+  loading: () => <div className="py-20 px-4 sm:px-6 lg:px-8 bg-card" />,
+})
+const ServicesInteractive = dynamic(() => import("@/components/services-interactive"))
+const WhatWeDo = dynamic(() => import("@/components/what-we-do"))
+const WhyChooseUs = dynamic(() => import("@/components/why-choose-us"))
+const BusinessBoost = dynamic(() => import("@/components/business-boost"))
+const FAQ = dynamic(() => import("@/components/faq"))
+const ServicesSection = dynamic(() => import("@/components/services-section"))
+const Footer = dynamic(() => import("@/components/footer"))
+const Testimonials = dynamic(() => import("@/components/testimonials"))
+const PartnershipsWithLogos = dynamic(() => import("@/components/partners"))
+const Plans = dynamic(() => import("@/components/Plans"))
 
 
 export const metadata: Metadata = {

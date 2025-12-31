@@ -63,7 +63,9 @@ export default function Hero() {
               alt="Digital Solutions"
               width={400}
               height={500}
+              priority
               className="w-full h-full object-cover rounded-2xl shadow-2xl"
+              sizes="(max-width: 768px) 0px, 400px"
             />
           </div>
         </div>

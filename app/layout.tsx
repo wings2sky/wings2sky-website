@@ -5,8 +5,16 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import FloatingContact from "@/components/floating-contact"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const geist = Geist({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+})
+const geistMono = Geist_Mono({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: false,
+})
 
 export const metadata: Metadata = {
   title: "Wings2Sky - E-Commerce & Digital Solutions",
@@ -31,9 +39,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
       <meta name="google-site-verification" content="9-u9v3h3t_TPp_d_hEvQeMLBg89D7eWKnuacgDRdBio" />
-        <link rel="stylesheet" href="https://unpkg.com/swiper@12/swiper-bundle.min.css" />
       </head>
-      <body className={`font-sans antialiased`}>
+      <body className={`${geist.className} antialiased`}>
         {children}
         <FloatingContact />
         <Analytics />

@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, TrendingUp, Users, DollarSign, ShoppingCart 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Thumbs, FreeMode, Autoplay } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
+import Image from "next/image"
 
 // Import Swiper styles
 import 'swiper/css'
@@ -274,10 +275,13 @@ export default function SalesAnalyticsSwiper() {
               return (
                 <SwiperSlide key={item.id}>
                   <div className="relative w-full h-full">
-                    <img
-                      src={item?.id == 1 ? "./sales-before.jpeg" : item?.id === 2 ? "./sales-after.jpeg"  :item.image || "/placeholder.svg"}
+                    <Image
+                      src={item?.id == 1 ? "/sales-before.jpeg" : item?.id === 2 ? "/sales-after.jpeg"  :item.image || "/placeholder.svg"}
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                      loading="lazy"
                     />
                     {/* Enhanced overlay for better text visibility */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 md:p-6">
@@ -383,11 +387,14 @@ export default function SalesAnalyticsSwiper() {
               {SALES_ANALYTICS_DATA.map((item) => (
                 <SwiperSlide key={item.id}>
                   <div className="cursor-pointer rounded-lg overflow-hidden border-2 border-transparent transition-all duration-300 hover:border-primary opacity-60 hover:opacity-100 group">
-                    <div className="relative">
-                      <img
-                        src={item?.id == 1 ? "./sales-before.jpeg" : item?.id === 2 ? "./sales-after.jpeg"  :item.image || "/placeholder.svg"}
+                    <div className="relative h-20">
+                      <Image
+                        src={item?.id == 1 ? "/sales-before.jpeg" : item?.id === 2 ? "/sales-after.jpeg"  :item.image || "/placeholder.svg"}
                         alt={item.title}
-                        className="w-full h-20 object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 50vw, 200px"
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300"></div>
                       <div className="absolute bottom-1 left-1 right-1">
