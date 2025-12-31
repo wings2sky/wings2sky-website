@@ -1,4 +1,23 @@
+# robots.txt for wings2sky.com
+# This file tells search engines which pages to crawl and index
+
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /calculators/
 
-Sitemap: https://wings2sky.com/sitemap.xml 
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Sitemap location
+Sitemap: https://wings2sky.com/sitemap.xml
+
+# Crawl-delay (optional - helps prevent server overload)
+Crawl-delay: 1
