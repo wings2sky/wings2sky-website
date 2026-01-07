@@ -199,3 +199,7 @@
   font-weight: bold;
 }
 
+p a {
+  text-decoration: underline;
+  text-decoration-color:white ;
+}
