@@ -2,138 +2,100 @@
 "use client"
 
 import React from 'react'
-import { X, Check } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import { X } from 'lucide-react'
 
 interface ServiceModalProps {
   isOpen: boolean
   onClose: () => void
   service: {
-    icon: string
     title: string
-    description: string
+    icon: string
+    detailedDescription: string
+    whatWeDo: string[]
+    whoFor?: string
+    technologyFocus?: string
+    platforms?: string
+    results: string[]
   }
 }
 
 export default function ServiceModal({ isOpen, onClose, service }: ServiceModalProps) {
-  const router = useRouter()
-  
   if (!isOpen) return null
 
-  // Service-specific features (shorter list)
-  const getServiceFeatures = (title: string) => {
-    const features: { [key: string]: string[] } = {
-      "Digital Marketing": [
-        "Social Media Marketing",
-        "Google & Facebook Ads",
-        "Content Marketing",
-        "Email Campaigns",
-        "Analytics & Reporting",
-        "Conversion Optimization"
-      ],
-      "Website Development": [
-        "Modern UI/UX Design",
-        "Mobile Responsive",
-        "SEO Optimization",
-        "Fast Performance",
-        "Free Hosting (3 Months)",
-        "24/7 Support"
-      ],
-      "Search Engine Marketing": [
-        "PPC Campaign Management",
-        "Keyword Research",
-        "Landing Page Optimization",
-        "Competitor Analysis",
-        "ROI Tracking",
-        "Ad Copy Creation"
-      ],
-      "Social Media": [
-        "Content Calendar",
-        "Community Management",
-        "Influencer Collaboration",
-        "Social Media Analytics",
-        "Engagement Strategy",
-        "Brand Monitoring"
-      ],
-      "E-Commerce Photoshoot": [
-        "Product Photography",
-        "Image Retouching",
-        "Background Removal",
-        "Multiple Angle Shots",
-        "Brand Styling",
-        "Fast Turnaround"
-      ],
-      "Graphics Designing": [
-        "Brand Identity Design",
-        "Marketing Materials",
-        "Social Media Graphics",
-        "Custom Illustrations",
-        "Logo Design",
-        "Print Design"
-      ]
-    }
-
-    return features[title] || [
-      "Customized Solutions",
-      "Quality Assurance",
-      "Professional Execution",
-      "Timely Delivery",
-      "Ongoing Support",
-      "Best Practices"
-    ]
-  }
-
-  const serviceFeatures = getServiceFeatures(service.title)
-
-  const handleContactClick = () => {
-    onClose()
-    router.push('/contact')
-  }
-
   return (
-    <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-card border border-border rounded-xl max-w-2xl w-full">
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-border">
-          <div className="flex items-center gap-4">
-            <div className="text-3xl">{service.icon}</div>
-            <div>
-              <h3 className="text-2xl font-bold text-foreground">{service.title}</h3>
-              <p className="text-muted-foreground mt-1 text-sm">{service.description}</p>
-            </div>
-          </div>
-          <button
-            onClick={onClose}
-            className="cursor-pointer p-2 hover:bg-muted rounded-lg transition-colors"
-          >
-            <X  size={24} />
-          </button>
-        </div>
-
-        {/* Content */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="fixed inset-0 bg-black/50" onClick={onClose} />
+      
+      <div className="relative bg-background rounded-lg shadow-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto m-4">
         <div className="p-6">
-          {/* Service Features */}
-          <div className="mb-6">
-            <h4 className="text-lg font-semibold text-foreground mb-4">
-              What's Included
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {serviceFeatures.map((feature, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <Check size={18} className="text-green-500 flex-shrink-0" />
-                  <span className="text-foreground text-sm">{feature}</span>
-                </div>
-              ))}
+          {/* Header */}
+          <div className="flex justify-between items-start mb-6">
+            <div className="flex items-center gap-3">
+              <span className="text-3xl">{service.icon}</span>
+              <h2 className="text-2xl font-bold text-foreground">{service.title}</h2>
+            </div>
+            <button
+              onClick={onClose}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          
+          {/* Content */}
+          <div className="space-y-6">
+            <p className="text-muted-foreground">
+              {service.detailedDescription}
+            </p>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">What we do:</h3>
+              <ul className="space-y-2 pl-4">
+                {service.whatWeDo.map((item, index) => (
+                  <li key={index} className="text-muted-foreground list-disc">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {service.whoFor && (
+              <div>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">Who this is for:</h3>
+                <p className="text-muted-foreground">{service.whoFor}</p>
+              </div>
+            )}
+            
+            {service.technologyFocus && (
+              <div>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">Technology focus:</h3>
+                <p className="text-muted-foreground">{service.technologyFocus}</p>
+              </div>
+            )}
+            
+            {service.platforms && (
+              <div>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">Platforms we manage:</h3>
+                <p className="text-muted-foreground">{service.platforms}</p>
+              </div>
+            )}
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">Results you can expect:</h3>
+              <ul className="space-y-2 pl-4">
+                {service.results.map((result, index) => (
+                  <li key={index} className="text-muted-foreground list-disc">
+                    {result}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-
-          {/* CTA Section */}
-          <div className="pt-4 border-t border-border">
-            <button 
-              onClick={handleContactClick}
-              className="cursor-pointer w-full py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition text-center"
-            >
-              Schedule Free Consultation
+          
+          {/* Footer */}
+          <div className="mt-8 pt-6 border-t">
+            <button className="w-full bg-primary text-primary-foreground py-3 rounded-md font-medium hover:bg-primary/90 transition-colors">
+              Get Started with {service.title}
             </button>
           </div>
         </div>

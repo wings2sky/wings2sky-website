@@ -55,9 +55,9 @@ const projects = [
 ]
 
 export const metadata: Metadata = {
-  title: "Projects - Wings2Sky",
+  title: "Projects & Case Studies | Ecommerce & Marketplace Growth",
   description:
-    "View our portfolio of successful projects and case studies. See how we've helped businesses achieve their goals.",
+    "Explore Wings2Sky projects showcasing ecommerce growth, Amazon services, website development, and digital marketing work delivered with measurable results.",
   keywords: "projects, portfolio, case studies, web development, e-commerce solutions,Digital marketing campaign results",
 }
 
