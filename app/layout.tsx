@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: "Best ecommerce service provider in Dwarka Delhi offering e-commerce solutions, digital marketing, website development, marketplace management, and business growth services.",
     type: "website",
   },
-  generator: 'v0.app'
+  generator: 'wings2sky-web-app'
 }
 
 export default function RootLayout({
@@ -51,26 +51,7 @@ export default function RootLayout({
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-XXXXXXX');
-            `,
-          }}
-        />
-        
-        {/* Google Analytics (gtag.js) */}
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-9KEF8KZ39Q"
-        />
-        <Script
-          id="google-analytics-config"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-9KEF8KZ39Q');
+              })(window,document,'script','dataLayer','GTM-5STJ56NR');
             `,
           }}
         />
@@ -79,7 +60,7 @@ export default function RootLayout({
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=G-9KEF8KZ39Q"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5STJ56NR"
             height="0"
             width="0"
             style={{ display: 'none', visibility: 'hidden' }}
