@@ -18,6 +18,10 @@ const Testimonials = dynamic(() => import("@/components/testimonials"))
 const PartnershipsWithLogos = dynamic(() => import("@/components/partners"))
 const Plans = dynamic(() => import("@/components/Plans"))
 const SEOContent = dynamic(() => import("@/components/seo-content"))
+const ServiceCategoriesOverview = dynamic(() =>
+  import("@/components/services-catalog").then((mod) => mod.ServiceCategoriesOverview),
+)
+const IndustriesSection = dynamic(() => import("@/components/services-catalog").then((mod) => mod.IndustriesSection))
 
 
 export const metadata: Metadata = {
@@ -37,6 +41,8 @@ export default function Home() {
       <WhatWeDo />
       <WhyChooseUs />
       <BusinessBoost />
+      <ServiceCategoriesOverview />
+      <IndustriesSection />
       <ServicesSection />
       <Plans />
       <PartnershipsWithLogos />

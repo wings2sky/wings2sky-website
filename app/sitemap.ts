@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next'
 import { blogPosts } from '@/lib/blog-data'
+import { catalogServiceSlugs } from '@/lib/services-catalog'
+import { industries } from '@/lib/industries-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://wings2sky.com'
@@ -24,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/industries`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/photoshoot`,
@@ -97,6 +105,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  // Service detail pages - the original overview pages plus the services catalogue
+  const servicePages = [
+    'digital-marketing',
+    'seo',
+    'paid-ads',
+    'website-development',
+    'social-media',
+    'ecommerce-photoshoot',
+    'ecommerce-management',
+    ...catalogServiceSlugs,
+  ].map((slug) => ({
+    url: `${baseUrl}/services/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  // Industry pages
+  const industryPages = industries.map((industry) => ({
+    url: `${baseUrl}/industries/${industry.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
   // Blog posts - dynamically generated from blog-data.ts
   const blogPages = blogPosts.map((post) => ({
     url: `${baseUrl}/blogs/${post.slug}`,
@@ -106,6 +139,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   // Combine all pages
-  return [...staticPages, ...calculatorPages, ...blogPages]
+  return [...staticPages, ...calculatorPages, ...servicePages, ...industryPages, ...blogPages]
 }
 

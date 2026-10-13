@@ -68,11 +68,11 @@ export const blogPosts: BlogPost[] = [
     <p>Amazon A+ Content is no longer optional it's essential. In today's competitive e-commerce environment, customers don't just buy products; they buy experiences, emotions, and stories. With the right blend of design, storytelling, and strategy, your listings can transform from simple product pages into powerful brand showcases that drive long-term growth.</p>
     <p>Remember, great A+ Content isn't about how much you show — it's about how clearly and confidently you communicate value. Every image, every sentence, and every layout choice should guide the buyer toward one decision: clicking "Buy Now."</p>
   `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2024-01-15",
     readTime: "2 min read",
-    image: "https://i.ibb.co/nM8vdHFy/Whats-App-Image-2025-11-11-at-4-59-06-PM.jpg",
-    image1: "https://i.ibb.co/bk0wmtQ/Whats-App-Image-2025-11-11-at-4-59-06-PM-1.jpg",
+    image: "/blog/whats-app-image-2025-11-11-at-4-59-06-pm.jpg",
+    image1: "/blog/whats-app-image-2025-11-11-at-4-59-06-pm-1.jpg",
     category: "E-commerce Strategy",
     tags: ["E-commerce", "Mistakes", "Conversion", "SEO"],
     keywords: [
@@ -120,7 +120,7 @@ export const blogPosts: BlogPost[] = [
     author: "Bhupinder Singh",
     date: "2024-01-12",
     readTime: "2 min read",
-    image: "https://i.ibb.co/93S0cftc/Blg-2.png",
+    image: "/blog/blg-2.jpg",
     category: "AI Technology",
     tags: ["AI", "Technology", "Personalization", "Future"],
     keywords: [
@@ -184,7 +184,7 @@ export const blogPosts: BlogPost[] = [
     author: "Bhupinder Singh",
     date: "2024-01-10",
     readTime: "1 min read",
-    image: "https://i.ibb.co/5X3ZVGxB/blog-3.png",
+    image: "/blog/blog-3.jpg",
     category: "Mobile Commerce",
     tags: ["Mobile", "Statistics", "Trends", "Shopping"],
     keywords: [
@@ -252,10 +252,10 @@ export const blogPosts: BlogPost[] = [
     <h2>Final Thoughts</h2>
     <p>Turning a visitor into a buyer is a blend of design, psychology, and data-driven strategy. When your mobile store feels fast, simple, and personal customers stay longer, trust more, and buy faster. Remember, mobile e-commerce isn't just the future it's the now.</p>
   `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2024-01-08",
     readTime: "2 min read",
-    image: "https://i.ibb.co/svPtC4Wm/Blog-4.png",
+    image: "/blog/blog-4.jpg",
     category: "Social Media",
     tags: ["Social Media", "Instagram", "TikTok", "Influencers"],
     keywords: [
@@ -332,10 +332,10 @@ export const blogPosts: BlogPost[] = [
     <h2>Final Thoughts</h2>
     <p>Starting your e-commerce journey might feel overwhelming at first, but every successful seller once started with a single listing. With patience, persistence, and smart strategy you can turn your passion into a profitable business. Remember, the key is to learn, adapt, and deliver value to your customers consistently.</p>
   `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2024-01-05",
     readTime: "2 min read",
-    image: "https://i.ibb.co/Xxt1PvNR/blog-5.png",
+    image: "/blog/blog-5.jpg",
     category: "SEO",
     tags: ["Voice Search", "SEO", "Optimization", "Technology"],
     keywords: [
@@ -414,7 +414,7 @@ export const blogPosts: BlogPost[] = [
     author: "Bhupinder Singh",
     date: "2024-01-03",
     readTime: "3 min read",
-    image: "https://i.ibb.co/FkHnKDZh/Blog-6.png",
+    image: "/blog/blog-6.jpg",
     category: "Customer Experience",
     tags: ["Reviews", "Trust", "Conversion", "Feedback"],
     keywords: [
@@ -505,10 +505,10 @@ export const blogPosts: BlogPost[] = [
     <h2>Final Thoughts</h2>
     <p>Becoming a successful Flipkart seller requires the right mix of product research, competitive pricing, quality service, and continuous optimization. While registration is easy, long-term success depends on smart sourcing, cost control, and customer satisfaction.</p>
     `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2024-01-18",
     readTime: "3 min read",
-    image: "https://i.ibb.co/8nqVWtvG/1ffb470b-d6ad-49e2-bcd0-aa1c2ea41b2b.png",
+    image: "/blog/1ffb470b-d6ad-49e2-bcd0-aa1c2ea41b2b.jpg",
     category: "E-commerce Strategy",
     tags: ["Flipkart", "Beginner", "Seller Guide", "E-commerce"],
     keywords: [
@@ -590,10 +590,10 @@ export const blogPosts: BlogPost[] = [
   
     <p>Whether you’re a solo entrepreneur or a growing company, registering on Flipkart opens the door to nationwide customers, powerful logistics support, and massive sales opportunities.</p>
     `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2024-02-10",
     readTime: "3 min read",
-    image: "https://i.ibb.co/Ng7519nM/41113f72-2701-4670-b648-186980f73273.png",
+    image: "/blog/41113f72-2701-4670-b648-186980f73273.jpg",
     // image1: "https://i.ibb.co/0c1XK5H/flipkart-seller-documents.jpg",
     category: "E-commerce Strategy",
     tags: ["Flipkart Seller", "E-commerce", "Online Business", "Beginner Guide"],
@@ -671,10 +671,10 @@ export const blogPosts: BlogPost[] = [
     <h2>Final Thoughts</h2>
     <p>A well-optimized catalog is the backbone of a successful Amazon store. With our expert catalog management and optimization services, you can strengthen your brand presence, improve customer experience, and drive sustainable sales growth on Amazon.</p>
     `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2025-01-20",
     readTime: "3 min read",
-    image: "https://i.ibb.co/0jn4DNdG/c332e35a-d9a4-4630-98fa-e721dad86bde.png",
+    image: "/blog/c332e35a-d9a4-4630-98fa-e721dad86bde.jpg",
     category: "E-commerce Strategy",
     tags: ["Amazon", "Catalog Management", "Listing Optimization", "E-commerce"],
     keywords: [
@@ -755,10 +755,10 @@ export const blogPosts: BlogPost[] = [
     <h2>Final Thoughts</h2>
     <p>With the right advertising strategy, Amazon can become your most profitable sales channel. Our expert Amazon advertising services are designed to help you scale faster, spend smarter, and achieve sustainable growth.</p>
     `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2024-01-22",
     readTime: "3 min read",
-    image: "https://i.ibb.co/hFx5JWKB/b7825aef-eee8-43ba-850b-511ec5870754.png",
+    image: "/blog/b7825aef-eee8-43ba-850b-511ec5870754.jpg",
     category: "E-commerce Strategy",
     tags: ["Amazon Ads", "Advertising", "PPC", "E-commerce"],
     keywords: [
@@ -841,11 +841,11 @@ export const blogPosts: BlogPost[] = [
     <h2>Final Thoughts</h2>
     <p>Effective product catalog management is not just about data — it’s about strategy, accuracy, and continuous optimization. With our expert Amazon catalog management services, you can focus on growing your business while we ensure your listings perform at their best.</p>
     `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2024-02-18",
     readTime: "4 min read",
     image:
-      "https://i.ibb.co/VcJJ1mkh/501dcf84-5930-4061-8657-945680781301.png",
+      "/blog/501dcf84-5930-4061-8657-945680781301.jpg",
     category: "E-commerce Services",
     tags: [
       "Amazon Catalog Management",
@@ -916,10 +916,10 @@ export const blogPosts: BlogPost[] = [
     <p>By offering seamless navigation, strong security, and personalized shopping experiences, you can boost sales and build long-term customer loyalty. At <strong>Web Idea Solution</strong>, our mission is to strengthen your digital presence—whether through improved online visibility or high-performance e-commerce development.</p>
     <p>Partner with us to build an e-commerce platform that sets your business apart and enhances your brand reputation. We’re always here to support your growth.</p>
     `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2025-01-25",
     readTime: "4 min read",
-    image: "https://i.ibb.co/k2785gPd/Top-5-Must-Have-Features-for-Your-E-Commerce-Website-in-2025-2048x1188.png",
+    image: "/blog/top-5-must-have-features-for-your-e-commerce-website-in-2025-2048x1188.jpg",
     category: "E-commerce Development",
     tags: ["E-commerce", "Web Development", "Delhi", "SEO", "Technology"],
     keywords: [
@@ -1015,10 +1015,10 @@ export const blogPosts: BlogPost[] = [
     <p>As we step into 2025, embracing a comprehensive SEO approach—powered by AI, voice and visual search optimization, and strong fundamentals—is essential for long-term success.</p>
     <p>Ready to boost your search engine rankings? <strong>Web Idea Solution</strong> is here to guide you toward higher visibility, increased traffic, and sustainable growth. Start your SEO leadership journey today.</p>
     `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2025-02-28",
     readTime: "5 min read",
-    image: "https://i.ibb.co/dJfB313R/Step-by-Step-Approach-to-Dominate-Search-Engine-Ranking-in-2025-2.jpg",
+    image: "/blog/step-by-step-approach-to-dominate-search-engine-ranking-in-2025-2.jpg",
     category: "SEO Strategy",
     tags: ["SEO", "Google Ranking", "AI SEO", "Digital Marketing"],
     keywords: [
@@ -1088,10 +1088,10 @@ export const blogPosts: BlogPost[] = [
     <p>Whether you need a brand-new website or a complete redesign, expert developers align your site with your business goals.</p>
     <p><strong>Web Idea Solution</strong> offers exclusive web design and development services tailored to your needs. Contact us today to build a website that delivers real results and drives long-term growth.</p>
     `,
-    author: "Prince Rajput",
+    author: "Wings2Sky Team",
     date: "2025-01-30",
     readTime: "4 min read",
-    image: "https://i.ibb.co/gZ6m9NfD/Build-Your-Website-today-2048x1188.webp",
+    image: "/blog/build-your-website-today-2048x1188.jpg",
     category: "Web Development",
     tags: ["Web Development", "Website Design", "Developers", "Business Growth"],
     keywords: [
@@ -1118,7 +1118,7 @@ export const blogPosts: BlogPost[] = [
   
       <!-- Image 1: Place above the first point -->
       <figure>
-        <img src="https://i.ibb.co/8LtFLnnT/Blog-1-Middle.png" alt="Amazon sales growth dashboard showing increasing metrics">
+        <img src="/blog/blog-1-middle.jpg" alt="Amazon sales growth dashboard showing increasing metrics">
         <figcaption>Optimizing your strategy can lead to significant sales growth, as demonstrated by agency results.</figcaption>
       </figure>
   
@@ -1275,7 +1275,7 @@ export const blogPosts: BlogPost[] = [
   
       <!-- Image 2: Place after the 10 points -->
       <figure>
-        <img src="https://i.ibb.co/mFqNxNBJ/Blgg-1-Last-Image.png" alt="Sales performance chart showing growth after optimization">
+        <img src="/blog/blgg-1-last-image.jpg" alt="Sales performance chart showing growth after optimization">
         <figcaption>Example of sales growth achievable through professional optimization services.</figcaption>
       </figure>
   
@@ -1314,7 +1314,7 @@ export const blogPosts: BlogPost[] = [
     "author": "Wings2Sky Team",
     "date": "2025-12-18",
     "readTime": "10 min read",
-    "image": "https://i.ibb.co/ZpPqBVzv/Blg-1-Header.png",
+    "image": "/blog/blg-1-header.jpg",
     "category": "E-Commerce",
     "tags": ["Amazon SEO", "E-commerce Growth", "Sales Optimization", "Product Listing", "Amazon Ads"],
     "keywords": [
@@ -1387,7 +1387,7 @@ export const blogPosts: BlogPost[] = [
       <p>SEO pulls in folks over time while quietly lowering ad bills. Instead of paying nonstop, it gains strength month after month. Visitors climb up without fresh cash going in every week. Unlike loud short-term pushes, this kind sticks around.</p>
   
       <div class="image-grid two-column">
-        <img src="https://i.ibb.co/3ykgQmp4/Blg2-Middle-Image.png" alt="Ecommerce SEO growth chart">
+        <img src="/blog/blg2-middle-image.jpg" alt="Ecommerce SEO growth chart">
       </div>
   
       <h2>3. Performance Marketing With Profit, Not Just ROAS</h2>
@@ -1454,7 +1454,7 @@ export const blogPosts: BlogPost[] = [
       <p>In 2026, phone design takes priority there's just no avoiding it. If your site crawls or appears cluttered on mobile, users will simply go somewhere else.</p>
   
       <div class="image-section">
-        <img src="https://i.ibb.co/xKXFnVd2/Blog-2-LAst-Image.png" alt="Conversion rate optimization example">
+        <img src="/blog/blog-2-last-image.jpg" alt="Conversion rate optimization example">
       </div>
   
       <h2>7. Retention Marketing Is the Real Growth Lever</h2>
@@ -1525,7 +1525,7 @@ export const blogPosts: BlogPost[] = [
     "author": "Wings2Sky Team",
     "date": "2026-01-05",
     "readTime": "9 min read",
-    "image": "https://i.ibb.co/7N1c5DDt/Blog-2-Header.png",
+    "image": "/blog/blog-2-header.jpg",
     "category": "Digital Marketing",
     "tags": [
       "Ecommerce Marketing",
@@ -1585,7 +1585,7 @@ export const blogPosts: BlogPost[] = [
   
       <!-- Image 1: After "Why Performance Marketing Is Essential for E-Commerce Growth" -->
       <figure>
-        <img src="https://i.ibb.co/GvV8pwbN/Blog-3-2nd-Image.png" alt="Performance marketing metrics dashboard showing ROI and conversion tracking">
+        <img src="/blog/blog-3-2nd-image.jpg" alt="Performance marketing metrics dashboard showing ROI and conversion tracking">
         <figcaption>Performance marketing provides clear ROI tracking and data-driven insights for e-commerce growth.</figcaption>
       </figure>
   
@@ -1602,7 +1602,7 @@ export const blogPosts: BlogPost[] = [
   
       <!-- Image 2: After "How Performance Marketing Helps Scale E-Commerce Businesses" -->
       <figure>
-        <img src="https://i.ibb.co/kgJ7fH50/Blog-3-3rd-Image.png" alt="Infographic showing 7 ways performance marketing scales e-commerce businesses">
+        <img src="/blog/blog-3-3rd-image.jpg" alt="Infographic showing 7 ways performance marketing scales e-commerce businesses">
         <figcaption>Seven key strategies through which performance marketing drives scalable e-commerce growth.</figcaption>
       </figure>
   
@@ -1705,7 +1705,7 @@ export const blogPosts: BlogPost[] = [
   
       <!-- Image 3: After "Is Performance Marketing Right for Your E-Commerce Business?" -->
       <figure>
-        <img src="https://i.ibb.co/gLpjMJ3v/Blog-3-4th-Image.png" alt="Checklist for determining if performance marketing is right for your e-commerce business">
+        <img src="/blog/blog-3-4th-image.jpg" alt="Checklist for determining if performance marketing is right for your e-commerce business">
         <figcaption>Use this checklist to determine if performance marketing aligns with your e-commerce business goals.</figcaption>
       </figure>
   
@@ -1772,7 +1772,7 @@ export const blogPosts: BlogPost[] = [
     "author": "Wings2Sky Team",
     "date": "2025-12-19",
     "readTime": "12 min read",
-    "image": "https://i.ibb.co/FLyXX8rX/Blog-3-1st-Image.png",
+    "image": "/blog/blog-3-1st-image.jpg",
     "category": "E-Commerce",
     "tags": ["Performance Marketing", "E-commerce Growth", "Digital Advertising", "ROI Optimization", "Customer Acquisition"],
     "keywords": [
@@ -1814,7 +1814,7 @@ export const blogPosts: BlogPost[] = [
       
       <!-- Image after "What Does Online Branding Mean in 2026?" -->
       <figure>
-        <img src="https://i.ibb.co/Xfmf8kdX/Blog-4th-2nd-Image.png" alt="Visual representation of modern online branding elements: website, social media, content, customer experience forming brand perception">
+        <img src="/blog/blog-4th-2nd-image.jpg" alt="Visual representation of modern online branding elements: website, social media, content, customer experience forming brand perception">
         <figcaption>In 2026, online branding extends beyond visuals to include voice, values, consistency, and customer experience across all touchpoints.</figcaption>
       </figure>
       
@@ -1973,7 +1973,7 @@ export const blogPosts: BlogPost[] = [
     "author": "Wings2Sky Team",
     "date": "2025-12-26",
     "readTime": "15 min read",
-    "image": "https://i.ibb.co/NghZtp2x/Blog-4th-1st-Image.png",
+    "image": "/blog/blog-4th-1st-image.jpg",
     "category": "Digital Marketing",
     "tags": ["Online Branding", "Digital Strategy", "Brand Building", "Marketing 2026", "Brand Identity"],
     "keywords": [
@@ -2000,7 +2000,7 @@ export const blogPosts: BlogPost[] = [
       
       <!-- Image after "Why Website Speed and Mobile Optimization Matter in 2026" -->
       <figure>
-        <img src="https://i.ibb.co/mYxKxXY/Blog-5-2nd-Image.png" alt="Graph showing mobile vs desktop traffic growth with speed impact metrics">
+        <img src="/blog/blog-5-2nd-image.jpg" alt="Graph showing mobile vs desktop traffic growth with speed impact metrics">
         <figcaption>With over 70% of traffic coming from mobile, speed optimization directly affects bounce rates, engagement, and sales.</figcaption>
       </figure>
       
@@ -2141,7 +2141,7 @@ export const blogPosts: BlogPost[] = [
     "author": "Wings2Sky Team",
     "date": "2025-12-28",
     "readTime": "12 min read",
-    "image": "https://i.ibb.co/spW1x4Mw/Blog-5-1st-Image.png",
+    "image": "/blog/blog-5-1st-image.jpg",
     "category": "Web Development",
     "tags": ["Website Speed", "Mobile Optimization", "SEO", "Conversion Rate", "Web Performance", "Ecommerce"],
     "keywords": [
@@ -2260,7 +2260,7 @@ export const blogPosts: BlogPost[] = [
     
     <!-- Image after "AI Adoption Roadmap for Ecommerce Teams (First 90 Days)" -->
     <figure>
-      <img src="https://i.ibb.co/1f60G7Bn/Blog-6-2nd-Image.png" alt="Visual roadmap showing 90-day AI adoption timeline with key milestones and metrics">
+      <img src="/blog/blog-6-2nd-image.jpg" alt="Visual roadmap showing 90-day AI adoption timeline with key milestones and metrics">
       <figcaption>A structured 90-day roadmap helps ecommerce teams implement AI systematically while measuring ROI at each phase.</figcaption>
     </figure>
     
@@ -2286,7 +2286,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2025-12-29",
   "readTime": "14 min read",
-  "image": "https://i.ibb.co/whYNDDWf/Blog-6-1st-Image.png",
+  "image": "/blog/blog-6-1st-image.jpg",
   "category": "Ecommerce",
   "tags": ["AI Marketing", "Ecommerce 2026", "Generative AI", "Dynamic Pricing", "Personalization", "Conversational Commerce", "AI Automation"],
   "keywords": [
@@ -2320,7 +2320,7 @@ export const blogPosts: BlogPost[] = [
     </div>
 
     <figure>
-      <img src="https://i.ibb.co/0yfsnSvT/Introduction-Why-Ypur-Amazonpp.jpg" alt="Amazon PPC growth funnel illustration">
+      <img src="/blog/introduction-why-ypur-amazonpp.jpg" alt="Amazon PPC growth funnel illustration">
       <figcaption>Amazon PPC is now essential for visibility, sales velocity, and profitability.</figcaption>
     </figure>
 
@@ -2350,7 +2350,7 @@ export const blogPosts: BlogPost[] = [
     <p>If search term reports are not reviewed weekly, you are paying for irrelevant clicks unknowingly.</p>
 
     <figure>
-      <img src="https://i.ibb.co/dYJXBHS/Why-Amazon-PPCCampaignsfail.jpg" alt="Common Amazon PPC mistakes diagram">
+      <img src="/blog/why-amazon-ppccampaignsfail.jpg" alt="Common Amazon PPC mistakes diagram">
       <figcaption>Most Amazon PPC losses come from structure and analysis gaps.</figcaption>
     </figure>
 
@@ -2425,7 +2425,7 @@ export const blogPosts: BlogPost[] = [
     </div>
 
     <figure>
-      <img src="https://i.ibb.co/TDY19g7P/Beginnervs-Advanced-Amazon-PPCStrategyin800450px.jpg" alt="Beginner vs advanced Amazon PPC strategy comparison">
+      <img src="/blog/beginnervs-advanced-amazon-ppcstrategyin800450px.jpg" alt="Beginner vs advanced Amazon PPC strategy comparison">
       <figcaption>PPC maturity determines how aggressively and safely you can scale.</figcaption>
     </figure>
 
@@ -2470,7 +2470,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-02",
   "readTime": "15 min read",
-  "image": "https://i.ibb.co/3qvRnfZ/Why-Amazon-PPCIs-No-Longer-Optionalin202.jpg",
+  "image": "/blog/why-amazon-ppcis-no-longer-optionalin202.jpg",
   "category": "Amazon Marketing",
   "tags": [
     "Amazon PPC",
@@ -2523,7 +2523,7 @@ export const blogPosts: BlogPost[] = [
     <p>If relevance gives you visibility, performance decides whether you keep that visibility.</p>
 
     <figure>
-      <img src="https://i.ibb.co/B2MGHJcX/Understandingthe-Amazon-A9-Algorithmin800450px.jpg" alt="Amazon A9 Algorithm explained with relevance and performance factors">
+      <img src="/blog/understandingthe-amazon-a9-algorithmin800450px.jpg" alt="Amazon A9 Algorithm explained with relevance and performance factors">
       <figcaption>The A9 algorithm balances relevance and performance to determine product rankings.</figcaption>
     </figure>
 
@@ -2624,7 +2624,7 @@ export const blogPosts: BlogPost[] = [
     <p>This is why sellers with structured PPC campaigns often rank faster organically.</p>
 
     <figure>
-      <img src="https://i.ibb.co/35WSHrhL/Amazon-SEOvs-Amazon-PPC-How-They-Work-Togetherin800450px.jpg" alt="Amazon SEO and PPC working together diagram">
+      <img src="/blog/amazon-seovs-amazon-ppc-how-they-work-togetherin800450px.jpg" alt="Amazon SEO and PPC working together diagram">
       <figcaption>SEO and PPC work together to drive sustainable, profitable growth.</figcaption>
     </figure>
 
@@ -2754,7 +2754,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/21Tyc7Hw/Amazon-SEOin2026.jpg",
+  "image": "/blog/amazon-seoin2026.jpg",
   "category": "Amazon Marketing",
   "tags": [
     "Amazon SEO 2026",
@@ -2813,7 +2813,7 @@ export const blogPosts: BlogPost[] = [
     <p>Amazon keyword research means identifying the exact search terms buyers use when they are ready to purchase a product, and mapping those keywords correctly across your listing.</p>
     
     <figure>
-      <img src="https://i.ibb.co/6Jr7B1DD/Prdct-Image-Optim-2nd-Image-jpg.jpg" alt="Amazon keyword research process showing buyer intent mapping">
+      <img src="/blog/prdct-image-optim-2nd-image-jpg.jpg" alt="Amazon keyword research process showing buyer intent mapping">
       <figcaption>Proper keyword research aligns your listing with buyer search intent.</figcaption>
     </figure>
 
@@ -3005,7 +3005,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/M5DHG2Vk/Amazon-Listing-1st-Image-jpg.jpg",
+  "image": "/blog/amazon-listing-1st-image-jpg.jpg",
   "category": "Amazon Marketing",
   "tags": [
     "Amazon SEO 2026",
@@ -3122,7 +3122,7 @@ export const blogPosts: BlogPost[] = [
     <h2>How to Fix Amazon Suppressed Listings (Step-by-Step)</h2>
     
     <figure>
-      <img src="https://i.ibb.co/0RL2RFRn/Amazon-Suppressed-Listing-2nd-Image-jpg.jpg" alt="Step-by-step guide to fix Amazon suppressed listings" width="800" height="450">
+      <img src="/blog/amazon-suppressed-listing-2nd-image-jpg.jpg" alt="Step-by-step guide to fix Amazon suppressed listings" width="800" height="450">
       <figcaption>Follow this systematic approach to resolve suppressed listings quickly.</figcaption>
     </figure>
 
@@ -3282,7 +3282,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/FbnVRBz1/Amazon-Suppressed-Listings-Banner-Image-1st-Image-jpg.jpg",
+  "image": "/blog/amazon-suppressed-listings-banner-image-1st-image-jpg.jpg",
   "category": "Amazon Seller Issues",
   "tags": [
     "Amazon Suppressed Listings",
@@ -3389,7 +3389,7 @@ export const blogPosts: BlogPost[] = [
     <h2>Common Reasons Amazon Account Health Rating Drops</h2>
     
     <figure>
-      <img src="https://i.ibb.co/HpbKFXsg/Account-health-rating-2nd-Image-jpg.jpg" alt="Amazon Account Health dashboard showing violations and performance metrics">
+      <img src="/blog/account-health-rating-2nd-image-jpg.jpg" alt="Amazon Account Health dashboard showing violations and performance metrics">
       <figcaption>Common account health issues displayed in Seller Central dashboard.</figcaption>
     </figure>
 
@@ -3512,7 +3512,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/9m9mNhkp/Account-Health-Rating-Explained-Banner-1st-Image-jpg.jpg",
+  "image": "/blog/account-health-rating-explained-banner-1st-image-jpg.jpg",
   "category": "Amazon Marketing",
   "tags": [
     "Amazon Account Health",
@@ -3681,7 +3681,7 @@ export const blogPosts: BlogPost[] = [
 
     <h2>How D2C and Emerging Brands Can Compete with Big FMCG</h2>
     <figure>
-    <img src="https://i.ibb.co/JjsRB8st/quick-Comm-4th-Img-jpg.jpg" alt="Quick commerce dark store model showing delivery zones in urban India">
+    <img src="/blog/quick-comm-4th-img-jpg.jpg" alt="Quick commerce dark store model showing delivery zones in urban India">
     <figcaption>Quick commerce operates through strategically placed dark stores for 10-20 minute deliveries.</figcaption>
   </figure>
     <p>Quick commerce is one of the few channels where new brands can compete with established giants.</p>
@@ -3743,7 +3743,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/cSmZpGDH/Quick-Comm-1st-Img.jpg",
+  "image": "/blog/quick-comm-1st-img.jpg",
   "category": "E-commerce Strategy",
   "tags": [
     "Quick Commerce India",
@@ -4003,7 +4003,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/dwBD3Ccs/Whtsapp-Comm-1st-Image-jpg.jpg",
+  "image": "/blog/whtsapp-comm-1st-image-jpg.jpg",
   "category": "E-commerce Strategy",
   "tags": [
     "WhatsApp Commerce",
@@ -4071,7 +4071,7 @@ export const blogPosts: BlogPost[] = [
     <p>A winning performance marketing strategy in 2026 is built on five pillars:</p>
     
     <figure>
-      <img src="https://i.ibb.co/35WSHrhL/Amazon-SEOvs-Amazon-PPC-How-They-Work-Togetherin800450px.jpg" alt="Performance marketing strategy framework showing full-funnel approach for Indian ecommerce">
+      <img src="/blog/amazon-seovs-amazon-ppc-how-they-work-togetherin800450px.jpg" alt="Performance marketing strategy framework showing full-funnel approach for Indian ecommerce">
       <figcaption>A complete performance marketing framework for Indian ecommerce brands in 2026.</figcaption>
     </figure>
 
@@ -4249,7 +4249,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/WpDg7JLP/Performance-Mrktng-1st-Image-jpg.jpg",
+  "image": "/blog/performance-mrktng-1st-image-jpg.jpg",
   "category": "Digital Marketing",
   "tags": [
     "Performance Marketing India",
@@ -4417,7 +4417,7 @@ export const blogPosts: BlogPost[] = [
     <h2>India vs Global Ecommerce Conversion Differences</h2>
         
     <figure>
-      <img src="https://i.ibb.co/5gk1ZFkQ/Indn-Ecmrc-Web-1st-Image-jpg.jpg" alt="Mobile ecommerce conversion issues showing slow load times and poor UX on Indian websites">
+      <img src="/blog/indn-ecmrc-web-1st-image-jpg.jpg" alt="Mobile ecommerce conversion issues showing slow load times and poor UX on Indian websites">
       <figcaption>Mobile optimization is critical for Indian ecommerce conversion - slow sites lose customers instantly.</figcaption>
     </figure>
     <h3>How Indian Ecommerce Behavior Is Different</h3>
@@ -4548,7 +4548,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/V0xTyK3P/Indn-Ecmrc-Web-2nd-Image-jpg.jpg",
+  "image": "/blog/indn-ecmrc-web-2nd-image-jpg.jpg",
   "category": "E-commerce Strategy",
   "tags": [
     "Ecommerce Conversion Rate",
@@ -4664,7 +4664,7 @@ export const blogPosts: BlogPost[] = [
 
     <h2>AI in Fraud Detection and Risk Management</h2>
     <figure>
-    <img src="https://i.ibb.co/Vp9FZbkm/AIistransftmng-2nd-Image-jpg.jpg" alt="AI-driven inventory forecasting dashboard showing demand prediction for Indian ecommerce">
+    <img src="/blog/aiistransftmng-2nd-image-jpg.jpg" alt="AI-driven inventory forecasting dashboard showing demand prediction for Indian ecommerce">
     <figcaption>AI-powered inventory management helps Indian ecommerce brands predict demand and reduce stockouts.</figcaption>
   </figure>
     <h3>Protecting Ecommerce Operations at Scale</h3>
@@ -4798,7 +4798,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-03",
   "readTime": "18 min read",
-  "image": "https://i.ibb.co/tMxpZSdt/AIistransftmng-1st-Image-jpg.jpg",
+  "image": "/blog/aiistransftmng-1st-image-jpg.jpg",
   "category": "Technology & Operations",
   "tags": [
     "AI Ecommerce India",
@@ -5012,7 +5012,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-07",
   "readTime": "12 min read",
-  "image": "https://i.ibb.co/Jb49n4n/Best-Amazon-PPC-Agency-in-India-2026-Guide.jpg",
+  "image": "/blog/best-amazon-ppc-agency-in-india-2026-guide.jpg",
   "category": "Amazon Advertising & PPC",
   "tags": [
     "Amazon PPC Agency India",
@@ -5250,7 +5250,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-07",
   "readTime": "11 min read",
-  "image": "https://i.ibb.co/nMtHkHdq/Marketing-Agency.jpg",
+  "image": "/blog/marketing-agency.jpg",
   "category": "Ecommerce Marketing",
   "tags": [
     "Ecommerce Marketing Agency Delhi",
@@ -5498,7 +5498,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-07",
   "readTime": "10 min read",
-  "image": "https://i.ibb.co/PGm0bH1j/Best-Ecommerce-Website-1.jpg",
+  "image": "/blog/best-ecommerce-website-1.jpg",
   "category": "Ecommerce Development",
   "tags": [
     "Ecommerce Website Development Delhi",
@@ -5795,7 +5795,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-07",
   "readTime": "12 min read",
-  "image": "https://i.ibb.co/ycMrcgvD/Shopify-vs-Custom-Ecommerce-Website-India-Guide.jpg",
+  "image": "/blog/shopify-vs-custom-ecommerce-website-india-guide.jpg",
   "category": "Ecommerce Platform",
   "tags": [
     "Shopify vs Custom",
@@ -6038,7 +6038,7 @@ export const blogPosts: BlogPost[] = [
   "author": "Wings2Sky Team",
   "date": "2026-01-07",
   "readTime": "9 min read",
-  "image": "https://i.ibb.co/7mM2nZG/Myntra-Seller-Fees-Profit-Margin-Explained-2026.jpg",
+  "image": "/blog/myntra-seller-fees-profit-margin-explained-2026.jpg",
   "category": "Marketplace Selling",
   "tags": [
     "Myntra Seller",

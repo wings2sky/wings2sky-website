@@ -1,57 +1,62 @@
+import Image from "next/image"
 import { Building2 } from "lucide-react"
 
 const partners = [
-  { name: "Amazon", icon: "/amazon.svg", color: "#232F3E" },
-  { name: "Flipkart", icon: "/flipkart-icon.svg", color: "#2874F0" },
-  { name: "Shopify", icon: "/shopify-icon.svg", color: "#95BF47" },
-  { name: "Myntra", icon: "/myntra.svg", color: "#E21A70" },
-  { name: "Instagram", icon: "/instagram.svg", color: "#E1306C" },
-  { name: "Meta", icon: "/meta.svg", color: "#1877F2" },
-  { name: "Meesho", icon: "/meesho.svg", color: "#FF0066" },
+  { name: "Amazon", icon: "/amazon.svg" },
+  { name: "Flipkart", icon: "/flipkart-icon.svg" },
+  { name: "Shopify", icon: "/shopify-icon.svg" },
+  { name: "Myntra", icon: "/myntra.svg" },
+  { name: "Instagram", icon: "/instagram.svg" },
+  { name: "Meta", icon: "/meta.svg" },
+  { name: "Meesho", icon: "/meesho.svg" },
 ]
+
+// Even number of copies: the track slides by exactly half its width, then repeats
+const MARQUEE_COPIES = 4
 
 export default function Partnerships() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+    <section className="border-y border-border bg-card px-4 sm:px-6 lg:px-8 py-12 md:py-14">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-            Our Proud <span className="text-primary">Partnerships</span>
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-medium text-primary">
+            <Building2 size={13} />
+            Trusted by Industry Leaders
+          </span>
+          <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            Our Proud{" "}
+            <span className="bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent">Partnerships</span>
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
         </div>
 
-        {/* Partners Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-items-center">
-          {partners.map((partner, index) => (
-            <div
-              key={index}
-              className="group p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-all duration-300 cursor-pointer flex flex-col items-center justify-center h-32 w-full"
-            >
-              <div className="opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
-                <img 
-                  src={partner.icon} 
-                  alt={partner.name}
-                  className="h-9 w-auto"
-                  style={{ color: partner.color }}
-                />
-              </div>
-              <p className="mt-3 text-sm font-medium text-muted-foreground group-hover:text-primary transition">
-                {partner.name}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer Badge */}
-        <div className="flex justify-center mt-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
-            <Building2 className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">
-              Trusted by Industry Leaders
-            </span>
-          </div>
+        {/* Partners - continuously scrolling strip, pauses on hover */}
+        <div className="marquee relative mt-8 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+          <ul className="marquee-track py-2">
+            {/* The list is repeated so the loop has no visible seam */}
+            {Array.from({ length: MARQUEE_COPIES }).flatMap((_, copy) =>
+              partners.map((partner) => (
+                <li
+                  key={`${copy}-${partner.name}`}
+                  aria-hidden={copy > 0}
+                  className={`mr-4 flex shrink-0 items-center gap-3 rounded-2xl border border-border bg-background py-2.5 pl-2.5 pr-6 shadow-sm transition hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 ${
+                    copy > 0 ? "marquee-clone" : ""
+                  }`}
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white">
+                    <Image
+                      src={partner.icon}
+                      alt=""
+                      width={26}
+                      height={26}
+                      className={`h-[26px] w-[26px] object-contain ${partner.name === "Meesho" ? "scale-150" : ""}`}
+                    />
+                  </span>
+                  <span className="font-semibold text-foreground">{partner.name}</span>
+                </li>
+              )),
+            )}
+          </ul>
         </div>
       </div>
     </section>

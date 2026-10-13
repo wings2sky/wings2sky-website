@@ -1,125 +1,133 @@
-"use client"
-
-import { BarChart3, TrendingUp } from "lucide-react"
+import Link from "next/link"
 import Image from "next/image"
-import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer } from "recharts"
+import boostPhoto from "../public/business-boost.jpg"
+import { ArrowRight, BarChart3, LineChart, Megaphone, Search, TrendingUp, UserCheck } from "lucide-react"
 
-const engagementData = [
-  { month: "Jan", engagement: 40 },
-  { month: "Feb", engagement: 60 },
-  { month: "Mar", engagement: 45 },
-  { month: "Apr", engagement: 80 },
-  { month: "May", engagement: 95 },
-  { month: "Jun", engagement: 110 },
+const stats = [
+  { icon: BarChart3, value: "1000", label: "Active Sellers" },
+  { icon: TrendingUp, value: "30.34%", label: "Growth Rate" },
 ]
 
-const growthData = [
-  { name: "Week 1", value: 20 },
-  { name: "Week 2", value: 35 },
-  { name: "Week 3", value: 50 },
-  { name: "Week 4", value: 75 },
-]
-
-const chartData = [
-  { name: "Organic", value: 45, fill: "#f97316" },
-  { name: "Paid", value: 30, fill: "#06b6d4" },
-  { name: "Direct", value: 25, fill: "#8b5cf6" },
+// The four things the paragraph promises, shown as a simple flow beside the photo
+const boostSteps = [
+  {
+    icon: Search,
+    title: "Optimize listings",
+  },
+  {
+    icon: TrendingUp,
+    title: "Increase visibility",
+  },
+  {
+    icon: Megaphone,
+    title: "Run compelling campaigns",
+  },
+  {
+    icon: UserCheck,
+    title: "Build loyal customers",
+  },
 ]
 
 export default function BusinessBoost() {
   return (
-    <section className="py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section className="relative overflow-hidden bg-background px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <div aria-hidden className="pointer-events-none absolute -right-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
+
+      <div className="relative max-w-7xl mx-auto">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
           {/* Left Content */}
-          <div>
-            <h2 className="text-4xl font-bold text-foreground mb-6">Does Your Online Business Need A Boost?</h2>
-            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Boost your business with our E-commerce Seller Account Management Services! We don't just manage your
+          <div className="min-w-0">
+            <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-medium text-primary">
+              Seller Account Management
+            </span>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-tight">
+              Does Your Online Business Need{" "}
+              <span className="bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent">A Boost?</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+              Boost your business with our E-commerce Seller Account Management Services! We don&apos;t just manage your
               store—we enhance it to attract high-quality leads. Our team uses advanced analytics and innovative
               strategies to optimize listings, increase visibility, and create compelling campaigns that turn visitors
               into loyal customers. Partner with us to drive more leads and focus on growing your success!
             </p>
-            <div className="flex gap-6">
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <BarChart3 size={24} className="text-primary" />
-                </div>
-                <div>
-                  <p className="font-bold text-foreground">1000</p>
-                  <p className="text-sm text-muted-foreground">Active Sellers</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="p-3 bg-primary/10 rounded-lg">
-                  <TrendingUp size={24} className="text-primary" />
-                </div>
-                <div>
-                  <p className="font-bold text-foreground">30.34%</p>
-                  <p className="text-sm text-muted-foreground">Growth Rate</p>
-                </div>
-              </div>
+
+            <dl className="mt-7 flex flex-wrap gap-3">
+              {stats.map((stat) => {
+                const Icon = stat.icon
+
+                return (
+                  <div key={stat.label} className="flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                      <Icon size={22} />
+                    </span>
+                    <div>
+                      <dd className="text-xl font-bold leading-tight text-foreground">{stat.value}</dd>
+                      <dt className="text-sm text-muted-foreground">{stat.label}</dt>
+                    </div>
+                  </div>
+                )
+              })}
+            </dl>
+
+            <div className="mt-7 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold whitespace-nowrap text-primary-foreground shadow-lg shadow-primary/30 transition hover:bg-primary/90"
+              >
+                Boost My Store
+                <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/services/ecommerce-management"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card/60 px-7 py-3.5 font-semibold whitespace-nowrap text-foreground transition hover:border-primary/60 hover:text-primary"
+              >
+                How Account Management Works
+              </Link>
             </div>
           </div>
 
-          {/* Right Side - Image with Charts */}
-          <div className="hidden md:block relative h-96">
-            {/* Main Image */}
-            <div className="relative w-full h-full flex items-center justify-center">
+          {/* Right Side - photo with the "how we boost your store" steps */}
+          <div className="relative min-w-0 lg:pb-10 lg:pl-10">
+            <div className="relative ml-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-3xl border border-border shadow-2xl shadow-primary/15 lg:max-w-none lg:w-[78%]">
               <Image
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&h=600&fit=crop"
-                alt="Professional woman with phone"
-                width={400}
-                height={500}
-                className="relative z-20 object-cover rounded-2xl shadow-2xl"
+                src={boostPhoto}
+                alt="Happy online seller"
+                fill
+                placeholder="blur"
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 480px"
               />
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
 
-              {/* Top Left - Engagement Line Chart */}
-              <div className="absolute top-0 left-0 bg-white rounded-xl shadow-lg p-3 w-32 h-24 z-30">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={engagementData.slice(0, 3)}>
-                    <Line type="monotone" dataKey="engagement" stroke="#f97316" strokeWidth={2} dot={false} />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-
-              {/* Top Right - Pie Chart */}
-              <div className="absolute top-8 right-0 bg-white rounded-xl shadow-lg p-3 w-28 h-28 z-30">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie data={chartData} innerRadius={25} outerRadius={40} paddingAngle={2} dataKey="value">
-                      {chartData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.fill} />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-
-              {/* Bottom Left - Growth Bar Chart */}
-              <div className="absolute bottom-0 left-0 bg-white rounded-xl shadow-lg p-3 w-32 h-24 z-30">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={growthData}>
-                    <Bar dataKey="value" fill="#f97316" radius={[4, 4, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-
-              {/* Bottom Right - Stats Card */}
-              <div className="absolute bottom-8 right-0 bg-white rounded-xl shadow-lg p-4 w-32 z-30">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-orange-400 rounded-full flex items-center justify-center text-white text-sm">
-                    ▶
-                  </div>
-                  <span className="font-bold text-sm">26,504</span>
+            <div className="relative mt-4 rounded-3xl border border-border bg-card/90 p-5 sm:p-6 shadow-2xl shadow-primary/10 backdrop-blur lg:absolute lg:bottom-0 lg:left-0 lg:mt-0 lg:w-[19rem]">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                  <LineChart size={20} />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">How we boost your store</p>
+                  <p className="text-xs text-muted-foreground">Analytics-led, step by step</p>
                 </div>
-                <div className="text-xs text-muted-foreground">Engagement</div>
               </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute top-12 right-20 w-16 h-16 bg-blue-100 rounded-full opacity-40 z-10"></div>
-              <div className="absolute bottom-20 left-10 w-12 h-12 bg-orange-200 rounded-full opacity-40 z-10"></div>
-              <div className="absolute top-1/2 right-10 w-8 h-8 border-2 border-orange-400 rounded-full opacity-60 z-10"></div>
+              <ol className="mt-5">
+                {boostSteps.map((step, index) => {
+                  const Icon = step.icon
+                  const isLast = index === boostSteps.length - 1
+
+                  return (
+                    <li key={step.title} className="relative flex items-center gap-3 pb-3.5 last:pb-0">
+                      {/* Connector between steps */}
+                      {!isLast && <span aria-hidden className="absolute left-4 top-8 bottom-0 w-px bg-border" />}
+                      <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-orange-500 text-white shadow-md shadow-primary/30">
+                        <Icon size={15} />
+                      </span>
+                      <p className="text-sm font-semibold text-foreground">{step.title}</p>
+                    </li>
+                  )
+                })}
+              </ol>
             </div>
           </div>
         </div>

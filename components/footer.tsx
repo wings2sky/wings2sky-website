@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Mail, Phone, MapPin } from "lucide-react"
 import Image from "next/image"
 import SkyLogo from "../public/new-logo.png"
+import SkyLogoLight from "../public/new-logo-light.png"
 
 export default function Footer() {
   const socialMediaLinks = [
@@ -61,13 +62,20 @@ export default function Footer() {
           <div className="md:col-span-3 lg:col-span-1">
             <div className="flex justify-center md:justify-start mb-4">
               <div className="h-16 w-40 relative">
+                {/* White-text logo for dark mode, dark-text logo for light mode */}
                 <Image 
                   src={SkyLogo} 
                   alt="Wings2Sky Logo"
                   fill
-                  className="object-contain"
+                  className="object-contain hidden dark:block"
                   sizes="(max-width: 768px) 160px, 200px"
-                  priority
+                />
+                <Image 
+                  src={SkyLogoLight} 
+                  alt="Wings2Sky Logo"
+                  fill
+                  className="object-contain dark:hidden"
+                  sizes="(max-width: 768px) 160px, 200px"
                 />
               </div>
             </div>
@@ -98,7 +106,7 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold text-foreground mb-3 text-center md:text-left">Quick Links</h4>
               <ul className="space-y-2">
-                {["Home", "About", "Projects", "Contact"].map((item) => (
+                {["Home", "About", "Services", "Industries", "Projects", "Contact"].map((item) => (
                   <li key={item} className="text-center md:text-left">
                     <Link 
                       href={`/${item === "Home" ? "" : item.toLowerCase()}`} 
@@ -116,15 +124,17 @@ export default function Footer() {
               <h4 className="font-semibold text-foreground mb-3 text-center md:text-left">Services</h4>
               <ul className="space-y-2">
                 {[
-                  "Digital Marketing",
-                  "Website Development",
-                  "Social Media Marketing",
-                  "E-commerce Photoshoot"
+                  { label: "Digital Marketing", href: "/services/digital-marketing" },
+                  { label: "SEO", href: "/services/seo" },
+                  { label: "Website Development", href: "/services/website-development" },
+                  { label: "Social Media Marketing", href: "/services/social-media" },
+                  { label: "AI Solutions", href: "/services#ai-solutions" },
+                  { label: "E-commerce Photoshoot", href: "/photoshoot" },
                 ].map((service) => (
-                  <li key={service} className="text-center md:text-left">
-                    <a href="#" className="text-muted-foreground hover:text-primary transition text-sm lg:text-base block py-1">
-                      {service}
-                    </a>
+                  <li key={service.label} className="text-center md:text-left">
+                    <Link href={service.href} className="text-muted-foreground hover:text-primary transition text-sm lg:text-base block py-1">
+                      {service.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

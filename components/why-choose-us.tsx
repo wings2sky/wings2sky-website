@@ -1,5 +1,3 @@
-"use client"
-
 import { Briefcase, Eye, Shield, Package, Zap, TrendingUp } from "lucide-react"
 
 const reasons = [
@@ -43,31 +41,43 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Why You Need Our Ecommerce Services</h2>
-          <p className="text-lg text-muted-foreground mb-2">Because Your Great Product Deserves the Spotlight</p>
-          <p className="text-lg text-primary font-semibold">
+    <section className="bg-background px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-medium text-primary">
+            Because Your Great Product Deserves the Spotlight
+          </span>
+          <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight">
+            Why You Need Our{" "}
+            <span className="bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent">
+              Ecommerce Services
+            </span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
             Let Our Marketplace Experts Put Your Product at the Top of E-Commerce Searches
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {reasons.map((reason, index) => {
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {reasons.map((reason) => {
             const Icon = reason.icon
+
             return (
-              <div key={index} className="p-6 bg-card border border-border rounded-lg hover:shadow-lg transition">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Icon size={24} className="text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-foreground mb-2">{reason.title}</h3>
-                    <p className="text-sm text-muted-foreground">{reason.description}</p>
-                  </div>
-                </div>
-              </div>
+              <article
+                key={reason.title}
+                className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10"
+              >
+                {/* Accent line that grows on hover */}
+                <span
+                  aria-hidden
+                  className="absolute inset-x-6 top-0 h-0.5 origin-left scale-x-0 rounded-full bg-gradient-to-r from-primary to-orange-400 transition-transform duration-300 group-hover:scale-x-100"
+                />
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                  <Icon size={22} />
+                </span>
+                <h3 className="mt-5 text-lg font-semibold text-foreground">{reason.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{reason.description}</p>
+              </article>
             )
           })}
         </div>

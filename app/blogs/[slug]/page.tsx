@@ -1,15 +1,48 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, Calendar, Clock, User } from "lucide-react"
+import { ArrowLeft, ArrowRight, ChevronRight, Clock, List } from "lucide-react"
 import { blogPosts } from "@/lib/blog-data"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import BlogCard, { PostMeta } from "@/components/blog-card"
+import { Badge, CtaBand, HeroBackdrop } from "@/components/page-sections"
 
 interface BlogDetailPageProps {
   params: Promise<{
     slug: string
   }>
+}
+
+interface Heading {
+  id: string
+  text: string
+}
+
+// Adds anchor ids to the article's h2 headings and returns them for the table of contents
+function prepareContent(html: string): { content: string; headings: Heading[] } {
+  const headings: Heading[] = []
+  const usedIds = new Set<string>()
+
+  const content = html
+    .replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (_match, attributes: string, inner: string) => {
+      const text = inner.replace(/<[^>]+>/g, "").trim()
+      const baseId = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "section"
+      let id = baseId
+      let suffix = 2
+      while (usedIds.has(id)) {
+        id = `${baseId}-${suffix}`
+        suffix += 1
+      }
+      usedIds.add(id)
+      headings.push({ id, text })
+
+      return `<h2${attributes} id="${id}">${inner}</h2>`
+    })
+    // Images inside the article load only when the reader scrolls near them
+    .replace(/<img /g, '<img loading="lazy" decoding="async" ')
+
+  return { content, headings }
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
@@ -39,148 +72,182 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         // Priority 3: Most recent first
         return new Date(b.date).getTime() - new Date(a.date).getTime()
       })
-      .slice(0, 2) // Get top 2
+      .slice(0, 3) // Get top 3
   }
 
   const relatedPosts = getRelatedPosts(post)
+  const { content, headings } = prepareContent(post.content)
 
   return (
-    <>
+    <main className="min-h-screen bg-background">
       <Navigation />
-      <div className="min-h-screen bg-background py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back Button */}
-          <Link 
-            href="/blogs" 
-            className="inline-flex items-center text-primary hover:text-primary/80 mb-8 transition-colors"
-          >
-            <ArrowLeft size={20} className="mr-2" />
-            Back to Blogs
-          </Link>
 
-          {/* Article Header */}
-          <article className="bg-card rounded-lg shadow-lg overflow-hidden">
-            <div className="relative w-full aspect-[16/9]">
-              <Image
-                src={post.image1 || post.image}
-                alt={post.title}
-                fill
-                className="object-contain"
-                priority
-              />
+      {/* Article header */}
+      <header className="relative overflow-hidden bg-background px-4 sm:px-6 lg:px-8 pt-6 pb-10 md:pt-10 md:pb-12">
+        <HeroBackdrop />
+        <div className="relative mx-auto max-w-4xl">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+            <Link href="/" className="transition hover:text-primary">Home</Link>
+            <ChevronRight size={14} />
+            <Link href="/blogs" className="transition hover:text-primary">Blogs</Link>
+            <ChevronRight size={14} />
+            <span className="text-foreground line-clamp-1">{post.category}</span>
+          </nav>
+
+          <div className="mt-8">
+            <Badge>{post.category}</Badge>
+            <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.12]">
+              {post.title}
+            </h1>
+            <p className="mt-5 text-lg sm:text-xl text-muted-foreground leading-relaxed">{post.excerpt}</p>
+
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <PostMeta author={post.author} date={post.date} />
+              <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+                <Clock size={15} />
+                {post.readTime}
+              </span>
             </div>
+          </div>
+        </div>
+      </header>
 
-            <div className="p-8">
-              {/* Meta Information */}
-              <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-muted-foreground">
-                <div className="flex items-center">
-                  <User size={16} className="mr-1" />
-                  {post.author}
-                </div>
-                <div className="flex items-center">
-                  <Calendar size={16} className="mr-1" />
-                  {new Date(post.date).toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}
-                </div>
-                <div className="flex items-center">
-                  <Clock size={16} className="mr-1" />
-                  {post.readTime}
-                </div>
-                <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">
-                  {post.category}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                {post.title}
-              </h1>
-
-              {/* Excerpt */}
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                {post.excerpt}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {post.tags.map((tag) => (
-                  <span 
-                    key={tag}
-                    className="px-3 py-1 bg-secondary text-foreground rounded-full text-sm"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Content */}
-              <div 
-                className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-headings:mb-4 prose-p:mb-4"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
-            </div>
-          </article>
-
-          {/* Related Posts - Only show if there are related posts */}
-          {relatedPosts.length > 0 && (
-            <div className="mt-12">
-              <h2 className="text-2xl font-bold text-foreground mb-6">Related Articles</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {relatedPosts.map((relatedPost) => (
-                  <Link key={relatedPost.slug} href={`/blogs/${relatedPost.slug}`}>
-                    <div className="bg-card rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-border">
-                      <div className="relative h-40 w-full">
-                        <Image
-                          src={relatedPost.image}
-                          alt={relatedPost.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs text-primary font-medium">{relatedPost.category}</span>
-                          <span className="text-xs text-muted-foreground">{relatedPost.readTime}</span>
-                        </div>
-                        <h3 className="font-semibold text-foreground mb-2 line-clamp-2">
-                          {relatedPost.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
-                          {relatedPost.excerpt}
-                        </p>
-                        <div className="flex items-center justify-between text-xs text-muted-foreground">
-                          <span>By {relatedPost.author}</span>
-                          <span>{new Date(relatedPost.date).toLocaleDateString()}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Fallback if no related posts */}
-          {relatedPosts.length === 0 && (
-            <div className="mt-12 text-center">
-              <h2 className="text-2xl font-bold text-foreground mb-4">More Articles</h2>
-              <p className="text-muted-foreground mb-6">Check out our other blog posts</p>
-              <Link 
-                href="/blogs" 
-                className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-              >
-                View All Blogs
-              </Link>
-            </div>
-          )}
+      {/* Cover image - shown in full, never cropped */}
+      <div className="px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-5xl justify-center">
+          <Image
+            src={post.image1 || post.image}
+            alt={post.title}
+            width={1600}
+            height={900}
+            priority
+            className="h-auto max-h-[36rem] w-auto max-w-full rounded-3xl border border-border shadow-xl shadow-primary/10"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+          />
         </div>
       </div>
+
+      {/* Article body */}
+      <div className="px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-14">
+          <article className="min-w-0">
+            {/* Table of contents on small screens */}
+            {headings.length > 1 && (
+              <details className="group mb-8 rounded-2xl border border-border bg-card px-5 py-4 lg:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold text-foreground [&::-webkit-details-marker]:hidden">
+                  <span className="inline-flex items-center gap-2">
+                    <List size={16} className="text-primary" />
+                    In this article
+                  </span>
+                  <ChevronRight size={16} className="text-primary transition-transform group-open:rotate-90" />
+                </summary>
+                <ol className="mt-3 space-y-2 text-sm">
+                  {headings.map((heading) => (
+                    <li key={heading.id}>
+                      <a href={`#${heading.id}`} className="text-muted-foreground transition hover:text-primary">
+                        {heading.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </details>
+            )}
+
+            <div className="article-content" dangerouslySetInnerHTML={{ __html: content }} />
+
+            {/* Tags */}
+            <div className="mt-12 flex flex-wrap items-center gap-2 border-t border-border pt-8">
+              <span className="mr-1 text-sm font-semibold text-foreground">Tags:</span>
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-border bg-card px-3 py-1 text-sm text-muted-foreground"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+
+            <Link
+              href="/blogs"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-3"
+            >
+              <ArrowLeft size={16} />
+              Back to all articles
+            </Link>
+          </article>
+
+          {/* Sidebar */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-28 space-y-6">
+              {headings.length > 1 && (
+                <nav aria-label="Table of contents" className="rounded-2xl border border-border bg-card p-5">
+                  <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                    <List size={14} />
+                    In this article
+                  </p>
+                  <ol className="mt-4 max-h-[45vh] space-y-2.5 overflow-y-auto pr-1 text-sm">
+                    {headings.map((heading) => (
+                      <li key={heading.id}>
+                        <a
+                          href={`#${heading.id}`}
+                          className="block leading-snug text-muted-foreground transition hover:text-primary"
+                        >
+                          {heading.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              )}
+
+              <div className="rounded-2xl bg-gradient-to-br from-primary to-orange-500 p-5 text-white shadow-lg shadow-primary/20">
+                <p className="text-lg font-semibold leading-snug">Want this done for your store?</p>
+                <p className="mt-2 text-sm text-white/90 leading-relaxed">
+                  Book a free consultation and a Wings2Sky expert will suggest the right plan.
+                </p>
+                <Link
+                  href="/contact"
+                  className="group mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-primary transition hover:bg-white/90"
+                >
+                  Book a Free Consultation
+                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      {/* Related Posts - Only show if there are related posts */}
+      {relatedPosts.length > 0 && (
+        <section className="border-t border-border bg-card px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Related Articles</h2>
+              <Link href="/blogs" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                View all articles
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {relatedPosts.map((relatedPost) => (
+                <BlogCard key={relatedPost.slug} post={relatedPost} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <div className="border-t border-border">
+        <CtaBand
+          title="Want these strategies applied to your store?"
+          description="Book a free consultation and a Wings2Sky expert will suggest the right plan for your business."
+        />
+      </div>
+
       <Footer />
-    </>
+    </main>
   )
 }
 
@@ -219,6 +286,10 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
         'online selling'
       ].slice(0, 15) // Increased limit for better SEO
 
+  // Social previews need an absolute URL; article images are hosted on this site
+  const coverImage = post.image1 || post.image
+  const socialImage = coverImage.startsWith('/') ? `https://wings2sky.com${coverImage}` : coverImage
+
   return {
     title: `${post.title} | Wings2Sky Blogs`,
     description: post.excerpt,
@@ -227,7 +298,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: [post.image1 || post.image],
+      images: [socialImage],
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
@@ -237,7 +308,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.image1 || post.image],
+      images: [socialImage],
     },
     alternates: {
       canonical: `/blogs/${post.slug}`

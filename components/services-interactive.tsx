@@ -1,178 +1,171 @@
-"use client"
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Calculator, Store } from "lucide-react"
 
-import { useState } from "react"
-import { ShoppingCart, TrendingUp, X } from "lucide-react"
-
-interface OrderProof {
-  id: string
-  platform: string
-  orderCount: number
-  totalValue: string
-  recentOrders: Array<{
-    orderId: string
-    date: string
-    amount: string
-    status: string
-  }>
+interface Marketplace {
+  name: string
+  category: "Marketplace" | "Fashion" | "Beauty" | "Quick Commerce"
+  description: string
+  /** Logo file in /public; platforms without one show a brand-coloured initial */
+  logo?: string
+  tile?: { background: string; color: string }
+  calculatorHref?: string
 }
 
-const generateRandomOrders = (platform: string): OrderProof => {
-  const orderCounts = [150, 280, 195, 342, 267, 189]
-  const randomCount = orderCounts[Math.floor(Math.random() * orderCounts.length)]
-
-  const recentOrders = Array.from({ length: 5 }, (_, i) => ({
-    orderId: `ORD-${Math.random().toString(36).substr(2, 9).toUpperCase()}`,
-    date: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toLocaleDateString(),
-    amount: `₹${Math.floor(Math.random() * 50000 + 5000)}`,
-    status: ["Delivered", "Processing", "Shipped"][Math.floor(Math.random() * 3)],
-  }))
-
-  return {
-    id: platform,
-    platform,
-    orderCount: randomCount,
-    totalValue: `₹${(randomCount * Math.random() * 50000).toFixed(0)}`,
-    recentOrders,
-  }
-}
-
-const services = [
+const marketplaces: Marketplace[] = [
   {
-    title: "Sell On Amazon",
-    description: "Start selling on India's most visited shopping destination. Trusted by 10 Lakh+ businesses.",
-    platform: "Amazon",
-    logo: "https://bizability.org/wp-content/uploads/2015/03/amazon-seller-central.jpg",
-    color: "bg-gradient-to-r from-orange-400 to-yellow-300"
+    name: "Amazon",
+    category: "Marketplace",
+    description: "Seller Central setup, optimised listings, A+ content, Sponsored Ads and FBA support.",
+    logo: "/amazon.svg",
+    calculatorHref: "/amazon-fba",
   },
   {
-    title: "Sell On Flipkart",
-    description: "Sell across 3000+ categories to 50crores+ customers. India's favorite shopping destination.",
-    platform: "Flipkart",
-    logo: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/flipkart-icon.png",
-    color: "bg-gradient-to-r from-blue-400 to-blue-600"
+    name: "Flipkart",
+    category: "Marketplace",
+    description: "Seller Hub onboarding, catalogue and listing quality, Flipkart Ads and sale-event planning.",
+    logo: "/flipkart-icon.svg",
+    calculatorHref: "/flipkart-calculator",
   },
   {
-    title: "Sell On Meesho",
-    description: "Sell your products online on Meesho at 0% commission. Register as a Meesho seller today.",
-    platform: "Meesho",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/3/33/Meesho_logo.png",
-    color: "bg-gradient-to-r from-pink-500 to-pink-600"
+    name: "Meesho",
+    category: "Marketplace",
+    description: "Supplier onboarding, catalogue uploads, pricing and order management for value-focused shoppers.",
+    logo: "/meesho.svg",
+  },
+  {
+    name: "Myntra",
+    category: "Fashion",
+    description: "Brand onboarding, fashion cataloguing, product photoshoots and visibility campaigns.",
+    logo: "/myntra.svg",
+    calculatorHref: "/myntra-calculator",
+  },
+  {
+    name: "Ajio",
+    category: "Fashion",
+    description: "Brand onboarding, catalogue creation and merchandising support for fashion and lifestyle labels.",
+    tile: { background: "#2C4152", color: "#FFFFFF" },
+  },
+  {
+    name: "Nykaa",
+    category: "Beauty",
+    description: "Brand onboarding, listings and content for beauty, personal care and fashion sellers.",
+    tile: { background: "#FC2779", color: "#FFFFFF" },
+    calculatorHref: "/nykaa-calculator",
+  },
+  {
+    name: "Blinkit",
+    category: "Quick Commerce",
+    description: "Seller onboarding, catalogue setup, stock availability and in-app ads for quick-commerce orders.",
+    tile: { background: "#F8CB46", color: "#000000" },
+    calculatorHref: "/blinkit-calculator",
+  },
+  {
+    name: "Zepto",
+    category: "Quick Commerce",
+    description: "Brand listing, catalogue setup, pricing and visibility for fast-delivery shoppers.",
+    tile: { background: "#5E248F", color: "#FFFFFF" },
+  },
+  {
+    name: "Swiggy Instamart",
+    category: "Quick Commerce",
+    description: "Onboarding, catalogue and in-app visibility for brands selling through Instamart.",
+    tile: { background: "#FC8019", color: "#FFFFFF" },
   },
 ]
 
 export default function ServicesInteractive() {
-  const [selectedService, setSelectedService] = useState<OrderProof | null>(null)
-
   return (
-    <>
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Marketplace Solutions</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Click on any platform to see our proven track record of successful orders
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedService(generateRandomOrders(service.platform))}
-                className="p-8 bg-card rounded-xl border border-border hover:border-primary/50 transition group cursor-pointer text-left hover:shadow-lg hover:shadow-primary/10"
-              >
-                <div className={`w-16 h-16 mb-4 rounded-lg ${service.color} flex items-center justify-center p-3`}>
-                  <img 
-                    src={service.logo} 
-                    alt={`${service.platform} logo`}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-4">{service.description}</p>
-                {/* <div className="flex items-center gap-2 text-primary font-semibold">
-                  <TrendingUp size={18} />
-                  View Order Proof
-                </div> */}
-              </button>
-            ))}
-          </div>
+    <section className="bg-background px-4 sm:px-6 lg:px-8 py-14 md:py-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Heading */}
+        <div className="mx-auto max-w-4xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-medium text-primary">
+            <Store size={13} />
+            Marketplace Solutions
+          </span>
+          <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight">
+            Sell on Every Major Marketplace and{" "}
+            <span className="whitespace-nowrap bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent">
+              Quick-Commerce App
+            </span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
+            One team to launch, manage and grow your seller accounts, from the big marketplaces to fashion, beauty and
+            10-minute delivery apps.
+          </p>
         </div>
-      </section>
 
-      {/* Modal */}
-      {selectedService && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-card rounded-xl border border-border max-w-2xl w-full max-h-96 overflow-y-auto">
-            <div className="sticky top-0 bg-card border-b border-border p-6 flex justify-between items-center">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-primary/20 to-primary/10 flex items-center justify-center">
-                  <img 
-                    src={services.find(s => s.platform === selectedService.platform)?.logo}
-                    alt={`${selectedService.platform} logo`}
-                    className="w-6 h-6 object-contain"
+        {/* Platforms */}
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {marketplaces.map((marketplace) => (
+            <article
+              key={marketplace.name}
+              className="group flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 transition hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+            >
+              {marketplace.logo ? (
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-white">
+                  <Image
+                    src={marketplace.logo}
+                    alt={`${marketplace.name} logo`}
+                    width={26}
+                    height={26}
+                    className={`h-[26px] w-[26px] object-contain ${marketplace.name === "Meesho" ? "scale-150" : ""}`}
                   />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground">{selectedService.platform} - Order Proof</h3>
-              </div>
-              <button
-                onClick={() => setSelectedService(null)}
-                className="text-muted-foreground hover:text-foreground transition"
-              >
-                <X size={24} />
-              </button>
-            </div>
+                </span>
+              ) : (
+                <span
+                  aria-hidden
+                  style={{ backgroundColor: marketplace.tile?.background, color: marketplace.tile?.color }}
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg font-extrabold"
+                >
+                  {marketplace.name.replace("Swiggy ", "").charAt(0)}
+                </span>
+              )}
 
-            <div className="p-6 space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-background rounded-lg border border-border">
-                  <p className="text-sm text-muted-foreground mb-1">Total Orders Raised</p>
-                  <p className="text-3xl font-bold text-primary">{selectedService.orderCount}</p>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="font-semibold text-foreground transition group-hover:text-primary">
+                    Sell on {marketplace.name}
+                  </h3>
+                  <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+                    {marketplace.category}
+                  </span>
                 </div>
-                <div className="p-4 bg-background rounded-lg border border-border">
-                  <p className="text-sm text-muted-foreground mb-1">Total Order Value</p>
-                  <p className="text-3xl font-bold text-primary">{selectedService.totalValue}</p>
-                </div>
-              </div>
+                <p className="mt-1 text-sm text-muted-foreground leading-snug">{marketplace.description}</p>
 
-              <div>
-                <h4 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-                  <ShoppingCart size={20} />
-                  Recent Orders
-                </h4>
-                <div className="space-y-3">
-                  {selectedService.recentOrders.map((order) => (
-                    <div key={order.orderId} className="p-4 bg-background rounded-lg border border-border">
-                      <div className="flex justify-between items-start mb-2">
-                        <div>
-                          <p className="font-semibold text-foreground">{order.orderId}</p>
-                          <p className="text-sm text-muted-foreground">{order.date}</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-semibold text-primary">{order.amount}</p>
-                          <p
-                            className={`text-sm font-medium ${
-                              order.status === "Delivered"
-                                ? "text-green-500"
-                                : order.status === "Shipped"
-                                  ? "text-blue-500"
-                                  : "text-yellow-500"
-                            }`}
-                          >
-                            {order.status}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-semibold">
+                  <Link href="/contact" className="inline-flex items-center gap-1 text-primary">
+                    Start selling
+                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  {marketplace.calculatorHref && (
+                    <Link
+                      href={marketplace.calculatorHref}
+                      className="inline-flex items-center gap-1 text-muted-foreground transition hover:text-primary"
+                    >
+                      <Calculator size={14} />
+                      Fee calculator
+                    </Link>
+                  )}
                 </div>
               </div>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
-      )}
-    </>
+
+        {/* CTA */}
+        <p className="mt-7 text-center text-sm text-muted-foreground">
+          Selling on a platform that is not listed here?{" "}
+          <Link
+            href="/services/ecommerce-management"
+            className="group inline-flex items-center gap-1 font-semibold text-primary"
+          >
+            See how we manage seller accounts
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+          </Link>
+        </p>
+      </div>
+    </section>
   )
 }

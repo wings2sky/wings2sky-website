@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import FloatingContact from "@/components/floating-contact"
+import { ThemeProvider } from "@/components/theme-provider"
 import Script from "next/script"
 
 const geist = Geist({ 
@@ -37,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="9-u9v3h3t_TPp_d_hEvQeMLBg89D7eWKnuacgDRdBio" />
         
@@ -67,8 +68,10 @@ export default function RootLayout({
           />
         </noscript>
         
-        {children}
-        <FloatingContact />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+          {children}
+          <FloatingContact />
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

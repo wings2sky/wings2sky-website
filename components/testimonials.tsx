@@ -17,7 +17,6 @@ const testimonials = [
     id: 1,
     name: "Rajesh Kumar",
     company: "E-Commerce Store",
-    image: "/professional-man-avatar.jpg",
     text: "Wings 2 Sky transformed our online business. Our sales increased by 150% within 3 months. Their team is professional and results-driven.",
     rating: 5,
   },
@@ -25,7 +24,6 @@ const testimonials = [
     id: 2,
     name: "Priya Sharma",
     company: "Fashion Boutique",
-    image: "/professional-woman-avatar.jpg",
     text: "Excellent service and support. They helped us optimize our marketplace listings and our visibility improved significantly.",
     rating: 5,
   },
@@ -33,7 +31,6 @@ const testimonials = [
     id: 3,
     name: "Amit Patel",
     company: "Electronics Retailer",
-    image: "/professional-man-avatar-2.jpg",
     text: "The team at Wings 2 Sky is knowledgeable and dedicated. They provided strategies that directly impacted our bottom line.",
     rating: 5,
   },
@@ -41,7 +38,6 @@ const testimonials = [
     id: 4,
     name: "Neha Gupta",
     company: "Beauty Products",
-    image: "/professional-woman-avatar-2.jpg",
     text: "Outstanding results! Our order volume doubled and customer satisfaction improved. Highly recommended!",
     rating: 5,
   },
@@ -49,42 +45,51 @@ const testimonials = [
     id: 5,
     name: "Vikram Singh",
     company: "Home Decor Store",
-    image: "/professional-man-avatar-3.jpg",
     text: "Professional, reliable, and results-oriented. Wings 2 Sky exceeded our expectations in every way.",
     rating: 5,
   },
 ]
 
+const getInitials = (name: string) =>
+  name
+    .split(" ")
+    .map((part) => part.charAt(0))
+    .join("")
+    .slice(0, 2)
+    .toUpperCase()
+
 export default function Testimonials() {
   const swiperRef = useRef<SwiperType | null>(null)
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+    <section className="bg-background px-4 sm:px-6 lg:px-8 py-14 md:py-16">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">What Our Clients Say</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-medium text-primary">
+            Testimonials
+          </span>
+          <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight">
+            What Our{" "}
+            <span className="bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent">Clients Say</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
             Hear from businesses that have transformed their online presence with Wings2Sky
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative mt-8">
           <Swiper
             modules={[Navigation, Autoplay, Pagination]}
-            spaceBetween={30}
+            spaceBetween={16}
             slidesPerView={1}
             breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
               768: {
                 slidesPerView: 2,
-                spaceBetween: 30,
+                spaceBetween: 16,
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 30,
+                spaceBetween: 16,
               },
             }}
             autoplay={{
@@ -107,59 +112,61 @@ export default function Testimonials() {
             onSwiper={(swiper) => {
               swiperRef.current = swiper
             }}
-            className="pb-12"
           >
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.id}>
-                <div className="p-6 bg-card rounded-lg border border-border hover:border-primary transition-all duration-300 ease-in-out hover:shadow-lg h-full flex flex-col">
-                  <div className="flex items-center gap-4 mb-4">
-                    <img
-                      src={testimonial.image || "/placeholder.svg"}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <h3 className="font-semibold text-foreground">{testimonial.name}</h3>
-                      <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-1 mb-4">
+                <figure className="flex h-full flex-col rounded-2xl border border-border bg-card p-5 transition hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
+                  <div className="flex gap-0.5">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} size={16} className="fill-primary text-primary" />
+                      <Star key={i} size={14} className="fill-primary text-primary" />
                     ))}
                   </div>
 
-                  <p className="text-muted-foreground italic leading-relaxed flex-grow">"{testimonial.text}"</p>
-                </div>
+                  <blockquote className="mt-3 flex-grow text-sm text-foreground/90 leading-relaxed">
+                    &ldquo;{testimonial.text}&rdquo;
+                  </blockquote>
+
+                  <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-4">
+                    <span
+                      aria-hidden
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/15 text-sm font-bold text-primary"
+                    >
+                      {getInitials(testimonial.name)}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{testimonial.name}</p>
+                      <p className="text-xs text-muted-foreground">{testimonial.company}</p>
+                    </div>
+                  </figcaption>
+                </figure>
               </SwiperSlide>
             ))}
           </Swiper>
 
           {/* Custom Navigation Buttons - Hidden on mobile */}
           <button
-            className="testimonial-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-primary-foreground p-3 rounded-full hover:bg-primary/90 transition-all duration-300 transform hover:scale-110 shadow-lg -translate-x-4 hidden md:flex items-center justify-center"
+            className="testimonial-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 cursor-pointer bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition shadow-lg -translate-x-4 hidden md:flex items-center justify-center"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} />
           </button>
           <button
-            className="testimonial-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-primary text-primary-foreground p-3 rounded-full hover:bg-primary/90 transition-all duration-300 transform hover:scale-110 shadow-lg translate-x-4 hidden md:flex items-center justify-center"
+            className="testimonial-next absolute right-0 top-1/2 -translate-y-1/2 z-10 h-10 w-10 cursor-pointer bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition shadow-lg translate-x-4 hidden md:flex items-center justify-center"
             aria-label="Next testimonial"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} />
           </button>
-
-          {/* Custom Pagination */}
-          <div className="testimonial-pagination flex justify-center gap-2 mt-8 !relative" />
         </div>
+
+        {/* Custom Pagination */}
+        <div className="testimonial-pagination flex justify-center gap-2 mt-6 !relative" />
       </div>
 
       <style jsx global>{`
         .testimonial-bullet {
           width: 8px;
           height: 8px;
-          background-color: hsl(var(--muted-foreground));
+          background-color: var(--muted-foreground);
           opacity: 0.3;
           border-radius: 50%;
           transition: all 0.3s ease;
@@ -168,7 +175,7 @@ export default function Testimonials() {
         
         .testimonial-bullet-active {
           width: 24px;
-          background-color: hsl(var(--primary));
+          background-color: var(--primary);
           opacity: 1;
           border-radius: 8px;
         }

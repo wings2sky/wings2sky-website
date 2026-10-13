@@ -3,6 +3,8 @@
 
 import { useState, useEffect } from "react"
 import { Calculator, TrendingUp, PieChart, Smartphone, Zap, Shield, BarChart3, CheckCircle, AlertCircle, ShoppingBag, Tag, Percent, Truck, Package, CreditCard, Info } from "lucide-react"
+import CalculatorHero from "@/components/calculator-hero"
+import { CtaBand } from "@/components/page-sections"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
@@ -188,37 +190,22 @@ export default function NykaaCalculatorPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="calculator-page min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Nykaa Seller Commission Calculator
-            </h1>
-            <p className="text-xl mb-8 opacity-90">
-              Calculate your Nykaa seller commissions, shipping charges, and maximize your profit margins
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <CheckCircle className="h-4 w-4 mr-2" />
-                Commission Calculator
-              </Badge>
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <TrendingUp className="h-4 w-4 mr-2" />
-                Profit Calculator
-              </Badge>
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <Percent className="h-4 w-4 mr-2" />
-                15-30% Commission Range
-              </Badge>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CalculatorHero
+        href="/nykaa-calculator"
+        title="Nykaa Seller"
+        highlight="Commission Calculator"
+        description="Calculate your Nykaa seller commissions, shipping charges, and maximize your profit margins"
+        features={[
+          { icon: CheckCircle, label: "Commission Calculator" },
+          { icon: TrendingUp, label: "Profit Calculator" },
+          { icon: Percent, label: "15-30% Commission Range" },
+        ]}
+      />
 
       {/* Main Calculator Section */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 md:pt-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Calculator */}
           <div className="lg:col-span-2">
@@ -239,12 +226,12 @@ export default function NykaaCalculatorPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {steps.map((step) => (
                       <div key={step.number} className="text-center">
-                        <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                          <div className="text-purple-600">
+                        <div className="w-12 h-12 bg-primary/15 rounded-full flex items-center justify-center mx-auto mb-2">
+                          <div className="text-primary">
                             {step.icon}
                           </div>
                         </div>
-                        <div className="text-xs font-medium bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center mx-auto mb-2">
+                        <div className="text-xs font-medium bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mx-auto mb-2">
                           {step.number}
                         </div>
                         <h4 className="font-semibold text-sm mb-1">{step.title}</h4>
@@ -277,10 +264,10 @@ export default function NykaaCalculatorPage() {
                     <h3 className="text-lg font-semibold mb-4">Step 2: Select Platform</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div 
-                        className={`border-2 rounded-md p-4 text-center cursor-pointer transition-all ${
+                        className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all ${
                           platform === "nykaa_main" 
-                            ? "border-purple-500" 
-                            : "border-gray-200 hover:border-purple-300"
+                            ? "border-primary bg-primary/5" 
+                            : "border-border hover:border-primary/50"
                         }`}
                         onClick={() => setPlatform("nykaa_main")}
                       >
@@ -290,10 +277,10 @@ export default function NykaaCalculatorPage() {
                         </div>
                       </div>
                       <div 
-                        className={`border-2 rounded-md p-4 text-center cursor-pointer transition-all ${
+                        className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all ${
                           platform === "nykaa_fashion" 
-                            ? "border-purple-500" 
-                            : "border-gray-200 hover:border-purple-300"
+                            ? "border-primary bg-primary/5" 
+                            : "border-border hover:border-primary/50"
                         }`}
                         onClick={() => setPlatform("nykaa_fashion")}
                       >
@@ -310,10 +297,10 @@ export default function NykaaCalculatorPage() {
                     <h3 className="text-lg font-semibold mb-4">Step 3: Select Seller Type</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div 
-                        className={`border-2 rounded-md p-4 text-center cursor-pointer transition-all ${
+                        className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all ${
                           sellerType === "new_seller" 
-                            ? "border-pink-500" 
-                            : "border-gray-200 hover:border-pink-300"
+                            ? "border-primary bg-primary/5" 
+                            : "border-border hover:border-primary/50"
                         }`}
                         onClick={() => setSellerType("new_seller")}
                       >
@@ -323,10 +310,10 @@ export default function NykaaCalculatorPage() {
                         </div>
                       </div>
                       <div 
-                        className={`border-2 rounded-md p-4 text-center cursor-pointer transition-all ${
+                        className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all ${
                           sellerType === "existing_brand" 
-                            ? "border-pink-500" 
-                            : "border-gray-200 hover:border-pink-300"
+                            ? "border-primary bg-primary/5" 
+                            : "border-border hover:border-primary/50"
                         }`}
                         onClick={() => setSellerType("existing_brand")}
                       >
@@ -363,7 +350,7 @@ export default function NykaaCalculatorPage() {
                             variant={commissionRate === rate ? "default" : "outline"}
                             size="sm"
                             onClick={() => setCommissionRate(rate)}
-                            className={commissionRate === rate ? "bg-purple-600 hover:bg-purple-700" : ""}
+                            className={commissionRate === rate ? "bg-primary hover:bg-primary/90" : ""}
                           >
                             {rate}%
                           </Button>
@@ -378,8 +365,8 @@ export default function NykaaCalculatorPage() {
                   {/* Step 5: Calculate Button */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">Step 5: Calculate & Analyze</h3>
-                    <div className="flex gap-4">
-                      <Button onClick={calculateFees} size="lg" className="flex-1 bg-purple-600 hover:bg-purple-700">
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button onClick={calculateFees} size="lg" className="sm:flex-1 bg-primary hover:bg-primary/90">
                         Calculate Earnings
                       </Button>
                       <Button onClick={resetForm} variant="outline" size="lg">
@@ -406,15 +393,15 @@ export default function NykaaCalculatorPage() {
                 <CardContent>
                   {/* Summary Cards */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <div className=" p-4 rounded-lg border border-purple-100">
+                    <div className=" p-4 rounded-lg border border-primary/20">
                       <p className="text-sm text-muted-foreground">Net Earnings</p>
                       <p className="text-3xl font-bold text-foreground">
                         ₹{results.netEarnings.toFixed(2)}
                       </p>
                     </div>
-                    <div className="bg-green-50 p-4 rounded-lg border border-green-100">
+                    <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/25">
                       <p className="text-sm text-muted-foreground">Profit Margin</p>
-                      <p className="text-3xl font-bold text-green-600">
+                      <p className="text-3xl font-bold text-green-600 dark:text-green-400">
                         {results.profitMargin.toFixed(1)}%
                       </p>
                     </div>
@@ -431,12 +418,12 @@ export default function NykaaCalculatorPage() {
                       
                       <div className="flex justify-between">
                         <span>Commission ({commissionRate}%):</span>
-                        <span className="text-red-600">- ₹{results.commissionAmount.toFixed(2)}</span>
+                        <span className="text-red-600 dark:text-red-400">- ₹{results.commissionAmount.toFixed(2)}</span>
                       </div>
                       
                       <div className="flex justify-between">
                         <span>Shipping Charge:</span>
-                        <span className={results.isShippingFree ? "text-green-600" : "text-red-600"}>
+                        <span className={results.isShippingFree ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
                           {results.isShippingFree ? "Free" : `- ₹${results.shippingCharge.toFixed(2)}`}
                         </span>
                       </div>
@@ -445,17 +432,17 @@ export default function NykaaCalculatorPage() {
                       
                       <div className="flex justify-between text-lg font-bold">
                         <span>Your Net Earnings:</span>
-                        <span className="text-green-600">₹{results.netEarnings.toFixed(2)}</span>
+                        <span className="text-green-600 dark:text-green-400">₹{results.netEarnings.toFixed(2)}</span>
                       </div>
                     </div>
                     
                     {/* Shipping Information */}
-                    <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
+                    <div className="mt-4 p-3 bg-blue-500/10 rounded-lg border border-blue-500/25">
                       <div className="flex items-start gap-2">
-                        <Info className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <Info className="h-4 w-4 text-blue-700 dark:text-blue-300 mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="text-sm font-medium text-blue-800">Shipping Information:</p>
-                          <p className="text-xs text-blue-600">
+                          <p className="text-sm font-medium text-blue-700 dark:text-blue-300">Shipping Information:</p>
+                          <p className="text-xs text-blue-700 dark:text-blue-300">
                             {sellerType === "new_seller" 
                               ? "New Sellers: Free shipping above ₹299, charges apply below"
                               : "Existing Brands: Free shipping above ₹149, charges apply below"}
@@ -474,8 +461,8 @@ export default function NykaaCalculatorPage() {
                 <Card key={index}>
                   <CardContent className="pt-6">
                     <div className="flex flex-col items-center text-center space-y-3">
-                      <div className="p-3 bg-purple-100 rounded-full">
-                        <div className="text-purple-600">
+                      <div className="p-3 bg-primary/15 rounded-full">
+                        <div className="text-primary">
                           {feature.icon}
                         </div>
                       </div>
@@ -518,7 +505,7 @@ export default function NykaaCalculatorPage() {
                     <TableRow>
                       <TableCell>New Sellers</TableCell>
                       <TableCell>Above ₹299</TableCell>
-                      <TableCell className="text-green-600">Free</TableCell>
+                      <TableCell className="text-green-600 dark:text-green-400">Free</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell rowSpan={2} className="font-medium">Nykaa (Main)</TableCell>
@@ -529,7 +516,7 @@ export default function NykaaCalculatorPage() {
                     <TableRow>
                       <TableCell>Existing Brands</TableCell>
                       <TableCell>Above ₹149</TableCell>
-                      <TableCell className="text-green-600">Free</TableCell>
+                      <TableCell className="text-green-600 dark:text-green-400">Free</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell rowSpan={2} className="font-medium">Nykaa Fashion</TableCell>
@@ -540,14 +527,14 @@ export default function NykaaCalculatorPage() {
                     <TableRow>
                       <TableCell>All Sellers</TableCell>
                       <TableCell>Above ₹800</TableCell>
-                      <TableCell className="text-green-600">Free</TableCell>
+                      <TableCell className="text-green-600 dark:text-green-400">Free</TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
                 
-                <div className="mt-4 p-3 bg-yellow-50 rounded-lg border border-yellow-100">
-                  <h4 className="text-sm font-medium text-yellow-800 mb-2">Important Notes:</h4>
-                  <ul className="text-xs text-yellow-700 space-y-1">
+                <div className="mt-4 p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/30">
+                  <h4 className="text-sm font-medium text-yellow-700 dark:text-yellow-300 mb-2">Important Notes:</h4>
+                  <ul className="text-xs text-yellow-700 dark:text-yellow-300 space-y-1">
                     <li>• Commission rates may vary during special promotional periods</li>
                     <li>• Shipping charges are subject to change based on Nykaa's current policies</li>
                     <li>• Additional charges may apply for returns, cancellations, and customer service</li>
@@ -603,9 +590,9 @@ export default function NykaaCalculatorPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="bg-purple-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-purple-800 mb-2">Nykaa Seller Commission Range</h4>
-                    <p className="text-sm text-purple-700">
+                  <div className="bg-primary/10 p-4 rounded-lg">
+                    <h4 className="font-semibold text-primary mb-2">Nykaa Seller Commission Range</h4>
+                    <p className="text-sm text-primary">
                       Nykaa seller commissions range from 15% to 30% on product sales, varying by category and brand partnership level.
                     </p>
                   </div>
@@ -614,19 +601,19 @@ export default function NykaaCalculatorPage() {
                     <h4 className="font-semibold">Factors Affecting Commissions:</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
-                        <div className="bg-purple-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                        <div className="bg-primary/15 text-primary rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">
                           1
                         </div>
                         <span>Product category (beauty, skincare, fashion)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <div className="bg-purple-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                        <div className="bg-primary/15 text-primary rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">
                           2
                         </div>
                         <span>Brand exclusivity and partnership level</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <div className="bg-purple-100 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                        <div className="bg-primary/15 text-primary rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0">
                           3
                         </div>
                         <span>Sales volume and performance metrics</span>
@@ -645,7 +632,7 @@ export default function NykaaCalculatorPage() {
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
-                    <div className="bg-pink-100 text-pink-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <div className="bg-primary/15 text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       💡
                     </div>
                     <div>
@@ -654,7 +641,7 @@ export default function NykaaCalculatorPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <div className="bg-pink-100 text-pink-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <div className="bg-primary/15 text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       🚚
                     </div>
                     <div>
@@ -663,7 +650,7 @@ export default function NykaaCalculatorPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <div className="bg-pink-100 text-pink-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <div className="bg-primary/15 text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       📊
                     </div>
                     <div>
@@ -744,22 +731,22 @@ export default function NykaaCalculatorPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="text-center p-4 border rounded-lg">
-                    <div className="text-2xl font-bold text-purple-600">15-30%</div>
+                    <div className="text-2xl font-bold text-primary">15-30%</div>
                     <div className="text-sm text-muted-foreground">Commission Rate Range</div>
                   </div>
                   <div className="text-center p-4 border rounded-lg">
-                    <div className="text-2xl font-bold text-purple-600">₹149-₹299</div>
+                    <div className="text-2xl font-bold text-primary">₹149-₹299</div>
                     <div className="text-sm text-muted-foreground">Free Shipping Threshold</div>
                   </div>
                   <div className="text-center p-4 border rounded-lg">
-                    <div className="text-2xl font-bold text-purple-600">5 Steps</div>
+                    <div className="text-2xl font-bold text-primary">5 Steps</div>
                     <div className="text-sm text-muted-foreground">Simple Calculation Process</div>
                   </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-100">
-                  <h4 className="font-semibold mb-3 text-purple-800">Start Calculating Your Nykaa Seller Profit Today</h4>
-                  <p className="text-sm text-purple-700">
+                <div className="bg-primary/10 p-6 rounded-lg border border-primary/20">
+                  <h4 className="font-semibold mb-3 text-primary">Start Calculating Your Nykaa Seller Profit Today</h4>
+                  <p className="text-sm text-primary">
                     Enter your product price above to instantly calculate Nykaa seller commissions, shipping charges, and net profit. Our calculator supports all Nykaa commission rates from 15% to 30%, helping you make informed decisions about your product pricing strategy.
                   </p>
                 </div>
@@ -768,6 +755,10 @@ export default function NykaaCalculatorPage() {
           </Card>
         </div>
       </div>
+      <CtaBand
+        title="Want an expert to manage your seller account?"
+        description="Our team handles listings, ads and account health so your margins keep improving. Book a free consultation."
+      />
     </div>
   )
 }

@@ -1,50 +1,44 @@
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import Image from "next/image"
+import type { LucideIcon } from "lucide-react"
 
-interface Project {
+export interface Project {
   id: number
   title: string
   description: string
-  image: string
+  icon: LucideIcon
   tags: string[]
-  link: string
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const Icon = project.icon
+
   return (
-    <div className="group bg-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition">
-      <div className="relative h-48 overflow-hidden bg-muted">
-        <Image
-          src={project.image || "/placeholder.svg"}
-          alt={project.title}
-          fill
-          className="object-cover group-hover:scale-105 transition duration-300"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          loading="lazy"
+    <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+      {/* Visual header */}
+      <div className="relative h-32 overflow-hidden border-b border-border bg-gradient-to-br from-primary/20 via-primary/5 to-transparent">
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-50 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:28px_28px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
         />
+        <span className="absolute left-6 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30 transition group-hover:scale-105">
+          <Icon size={26} />
+        </span>
+        <span aria-hidden className="absolute right-6 top-1/2 -translate-y-1/2 text-5xl font-bold tracking-tight text-primary/15">
+          {String(project.id).padStart(2, "0")}
+        </span>
       </div>
 
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
-        <p className="text-muted-foreground mb-4">{project.description}</p>
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="text-xl font-semibold text-foreground transition group-hover:text-primary">{project.title}</h3>
+        <p className="mt-2 text-muted-foreground leading-relaxed">{project.description}</p>
 
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag, index) => (
-            <span key={index} className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+        <ul className="mt-auto flex flex-wrap gap-2 pt-5">
+          {project.tags.map((tag) => (
+            <li key={tag} className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
               {tag}
-            </span>
+            </li>
           ))}
-        </div>
-
-        {/* <Link
-          href={project.link}
-          className="inline-flex items-center gap-2 text-primary hover:gap-3 transition font-semibold"
-        >
-          View Project
-          <ArrowRight size={18} />
-        </Link> */}
+        </ul>
       </div>
-    </div>
+    </article>
   )
 }

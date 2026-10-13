@@ -11,13 +11,13 @@ export default function FloatingContact() {
 
   return (
     <>
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-2.5 sm:gap-3">
         {/* WhatsApp Button */}
         <a
   href={`https://wa.me/${whatsappNumber}?text=Hello%20Wings2Sky!`}
   target="_blank"
   rel="noopener noreferrer"
-  className="flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-lg transition-all hover:scale-110"
+  className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-lg transition-all hover:scale-110"
   title="Chat on WhatsApp"
 >
   <WhatsAppIcon />
@@ -30,7 +30,7 @@ export default function FloatingContact() {
             setIsChatOpen(true)
             setIsMinimized(false)
           }}
-          className="cursor-pointer flex items-center justify-center w-14 h-14 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg transition-all hover:scale-110"
+          className="cursor-pointer flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg transition-all hover:scale-110"
           title="Chat with us"
         >
           <svg 
@@ -53,7 +53,7 @@ export default function FloatingContact() {
         {/* Phone Button */}
         <a
           href={`tel:${phoneNumber}`}
-          className="flex items-center justify-center w-14 h-14 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg transition-all hover:scale-110"
+          className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg transition-all hover:scale-110"
           title="Call us"
         >
           <Phone size={24} />
@@ -384,7 +384,7 @@ function ChatWidget({ isMinimized, onMinimize, onClose }: ChatWidgetProps) {
 
   if (isMinimized) {
     return (
-      <div className="fixed bottom-24 right-6 z-50 w-80 bg-white rounded-lg shadow-2xl border border-border">
+      <div className="fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] max-w-80 bg-card rounded-lg shadow-2xl border border-border">
         <div className="flex items-center justify-between p-4 bg-primary text-primary-foreground rounded-t-lg">
           <h3 className="font-semibold">Wings2Sky Chat</h3>
           <div className="flex gap-2">
@@ -401,7 +401,7 @@ function ChatWidget({ isMinimized, onMinimize, onClose }: ChatWidgetProps) {
   }
 
   return (
-    <div className="fixed bottom-24 right-6 z-50 w-80 h-96 bg-card rounded-lg shadow-2xl border border-border flex flex-col">
+    <div className="fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] max-w-80 h-96 bg-card rounded-lg shadow-2xl border border-border flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-between p-4 bg-primary text-primary-foreground rounded-t-lg">
         <h3 className="font-semibold">Wings2Sky Chat</h3>

@@ -3,6 +3,8 @@
 
 import { useState, useEffect } from "react"
 import { Calculator, TrendingUp, PieChart, Smartphone, Zap, Shield, BarChart3, CheckCircle, AlertCircle, Package, Truck, Clock, DollarSign, Percent, Box, Warehouse } from "lucide-react"
+import CalculatorHero from "@/components/calculator-hero"
+import { CtaBand } from "@/components/page-sections"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -283,37 +285,22 @@ export default function BlinkitCalculatorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="calculator-page min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-green-600 to-green-700 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Blinkit Seller Commission Calculator 2025
-            </h1>
-            <p className="text-xl mb-8 opacity-90">
-              Calculate your quick commerce profits, fees, and commissions instantly
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <CheckCircle className="h-4 w-4 mr-2" />
-                10-Minute Delivery Model
-              </Badge>
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <TrendingUp className="h-4 w-4 mr-2" />
-                Commission Calculator
-              </Badge>
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <Clock className="h-4 w-4 mr-2" />
-                Quick Commerce
-              </Badge>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CalculatorHero
+        href="/blinkit-calculator"
+        title="Blinkit Seller"
+        highlight="Commission Calculator 2025"
+        description="Calculate your quick commerce profits, fees, and commissions instantly"
+        features={[
+          { icon: CheckCircle, label: "10-Minute Delivery Model" },
+          { icon: TrendingUp, label: "Commission Calculator" },
+          { icon: Clock, label: "Quick Commerce" },
+        ]}
+      />
 
       {/* Main Calculator Section */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 md:pt-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Calculator */}
           <div className="lg:col-span-2">
@@ -429,8 +416,8 @@ export default function BlinkitCalculatorPage() {
                             (inventoryDays[0] <= 30 && index === 0) ||
                             (inventoryDays[0] > 30 && inventoryDays[0] <= 60 && index === 1) ||
                             (inventoryDays[0] > 60 && index === 2)
-                              ? "border-green-500"
-                              : "border-gray-200"
+                              ? "border-primary bg-primary/5"
+                              : "border-border"
                           }`}>
                             <div className="font-semibold">{tier.days}</div>
                             <div className="text-sm text-muted-foreground">
@@ -480,8 +467,8 @@ export default function BlinkitCalculatorPage() {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-4 pt-4">
-                    <Button onClick={calculateFees} size="lg" className="flex-1 bg-green-600 hover:bg-green-700">
+                  <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                    <Button onClick={calculateFees} size="lg" className="sm:flex-1 bg-primary hover:bg-primary/90">
                       Calculate Commission & Profit
                     </Button>
                     <Button onClick={resetForm} variant="outline" size="lg">
@@ -504,27 +491,27 @@ export default function BlinkitCalculatorPage() {
                 <CardContent>
                   {/* Summary Cards */}
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                    <div className=" p-4 rounded-lg border border-green-100">
+                    <div className=" p-4 rounded-lg border border-green-500/25">
                       <p className="text-sm text-muted-foreground">Revenue</p>
                       <p className="text-2xl font-bold text-foreground">
                         ₹{results.revenue.toFixed(2)}
                       </p>
                     </div>
-                    <div className="bg-green-50 p-4 rounded-lg border border-green-100">
+                    <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/25">
                       <p className="text-sm text-muted-foreground">Net Profit</p>
-                      <p className={`text-2xl font-bold ${results.netProfit >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      <p className={`text-2xl font-bold ${results.netProfit >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                         ₹{results.netProfit.toFixed(2)}
                       </p>
                     </div>
-                    <div className="bg-green-50 p-4 rounded-lg border border-green-100">
+                    <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/25">
                       <p className="text-sm text-muted-foreground">Net Margin</p>
-                      <p className={`text-2xl font-bold ${results.netMarginPercent >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      <p className={`text-2xl font-bold ${results.netMarginPercent >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                         {results.netMarginPercent.toFixed(2)}%
                       </p>
                     </div>
-                    <div className="bg-green-50 p-4 rounded-lg border border-green-100">
+                    <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/25">
                       <p className="text-sm text-muted-foreground">Settlement Amount</p>
-                      <p className={`text-2xl font-bold ${results.settlementAmount >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      <p className={`text-2xl font-bold ${results.settlementAmount >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                         ₹{results.settlementAmount.toFixed(2)}
                       </p>
                     </div>
@@ -541,12 +528,12 @@ export default function BlinkitCalculatorPage() {
                         </div>
                         <div className="flex justify-between">
                           <span>Cost of Goods:</span>
-                          <span className="text-red-600">-₹{results.costOfGoods.toFixed(2)}</span>
+                          <span className="text-red-600 dark:text-red-400">-₹{results.costOfGoods.toFixed(2)}</span>
                         </div>
                         <Separator />
                         <div className="flex justify-between">
                           <span>Gross Profit:</span>
-                          <span className={`font-semibold ${results.grossProfit >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                          <span className={`font-semibold ${results.grossProfit >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                             ₹{results.grossProfit.toFixed(2)}
                           </span>
                         </div>
@@ -589,13 +576,13 @@ export default function BlinkitCalculatorPage() {
                         <Separator />
                         <div className="flex justify-between font-bold text-lg">
                           <span>Net Profit:</span>
-                          <span className={results.netProfit >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          <span className={results.netProfit >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}>
                             ₹{results.netProfit.toFixed(2)}
                           </span>
                         </div>
                         <div className="flex justify-between font-bold text-lg">
                           <span>Settlement Amount (Revenue - Transaction Fees):</span>
-                          <span className={results.settlementAmount >= 0 ? 'text-green-600' : 'text-red-600'}>
+                          <span className={results.settlementAmount >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}>
                             ₹{results.settlementAmount.toFixed(2)}
                           </span>
                         </div>
@@ -630,18 +617,18 @@ export default function BlinkitCalculatorPage() {
                       const commissionPerUnit = currentPrice * (tier.commissionRate / 100)
                       
                       return (
-                        <TableRow key={index} className={isCurrentTier ? "bg-green-50" : ""}>
+                        <TableRow key={index} className={isCurrentTier ? "bg-green-500/10" : ""}>
                           <TableCell>
                             {tier.minPrice === 0 ? "Up to " : "₹" + tier.minPrice + " – "}
                             {tier.maxPrice === Infinity ? "Above ₹1200" : "₹" + tier.maxPrice}
                           </TableCell>
                           <TableCell>
-                            <span className={`font-semibold ${isCurrentTier ? "text-green-600" : ""}`}>
+                            <span className={`font-semibold ${isCurrentTier ? "text-green-600 dark:text-green-400" : ""}`}>
                               {tier.commissionRate}%
                             </span>
                           </TableCell>
                           <TableCell>
-                            <span className={isCurrentTier ? "font-semibold text-green-600" : "text-muted-foreground"}>
+                            <span className={isCurrentTier ? "font-semibold text-green-600 dark:text-green-400" : "text-muted-foreground"}>
                               {isCurrentTier ? `₹${commissionPerUnit.toFixed(2)}` : "-"}
                             </span>
                           </TableCell>
@@ -659,8 +646,8 @@ export default function BlinkitCalculatorPage() {
                 <Card key={index}>
                   <CardContent className="pt-6">
                     <div className="flex flex-col items-center text-center space-y-3">
-                      <div className="p-3 bg-green-100 rounded-full">
-                        <div className="text-green-600">
+                      <div className="p-3 bg-primary/15 rounded-full">
+                        <div className="text-green-600 dark:text-green-400">
                           {feature.icon}
                         </div>
                       </div>
@@ -825,12 +812,12 @@ export default function BlinkitCalculatorPage() {
         </div>
 
         {/* Warning Note */}
-        <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+        <div className="mt-8 bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-6">
           <div className="flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
+            <AlertCircle className="h-5 w-5 text-yellow-700 dark:text-yellow-300 mt-0.5 flex-shrink-0" />
             <div>
-              <h4 className="font-semibold text-yellow-800 mb-2">Important Notice</h4>
-              <p className="text-sm text-yellow-700">
+              <h4 className="font-semibold text-yellow-700 dark:text-yellow-300 mb-2">Important Notice</h4>
+              <p className="text-sm text-yellow-700 dark:text-yellow-300">
                 This calculator provides estimates for planning purposes only. Commission rates and fees 
                 may vary based on product category, seller tier, and Blinkit's current policies. For the 
                 most accurate and up-to-date commission calculations, always verify with official Blinkit 
@@ -840,6 +827,10 @@ export default function BlinkitCalculatorPage() {
           </div>
         </div>
       </div>
+      <CtaBand
+        title="Want an expert to manage your seller account?"
+        description="Our team handles listings, ads and account health so your margins keep improving. Book a free consultation."
+      />
     </div>
   )
 }

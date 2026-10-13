@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
+import ServiceDetail from '@/components/service-detail'
+import { catalogServiceSlugs, getCatalogService } from '@/lib/services-catalog'
 
 // Service data - match with the IDs from ServicesSection
 const serviceData: Record<string, any> = {
@@ -479,7 +481,7 @@ const serviceData: Record<string, any> = {
 
 // Generate static params for better performance
 export async function generateStaticParams() {
-  return Object.keys(serviceData).map((id) => ({
+  return [...Object.keys(serviceData), ...catalogServiceSlugs].map((id) => ({
     serviceId: id,
   }))
 }
@@ -487,6 +489,15 @@ export async function generateStaticParams() {
 // Add metadata for better SEO - FIXED: params is now a Promise
 export async function generateMetadata({ params }: { params: Promise<{ serviceId: string }> }) {
   const { serviceId } = await params
+  const catalogService = getCatalogService(serviceId)
+
+  if (catalogService) {
+    return {
+      title: `${catalogService.name} Services | Wings2Sky`,
+      description: catalogService.summary,
+    }
+  }
+
   const service = serviceData[serviceId]
   
   if (!service) {
@@ -504,6 +515,13 @@ export async function generateMetadata({ params }: { params: Promise<{ serviceId
 
 export default async function ServicePage({ params }: { params: Promise<{ serviceId: string }> }) {
   const { serviceId } = await params
+  const catalogService = getCatalogService(serviceId)
+
+  // Services from the catalogue use the newer detail template
+  if (catalogService) {
+    return <ServiceDetail service={catalogService} />
+  }
+
   const service = serviceData[serviceId]
 
   if (!service) {

@@ -3,6 +3,8 @@
 
 import { useState, useEffect } from "react"
 import { Calculator, TrendingUp, PieChart, Smartphone, Zap, Shield, BarChart3, CheckCircle, AlertCircle, ShoppingBag, Tag, Percent, Truck, Package, CreditCard } from "lucide-react"
+import CalculatorHero from "@/components/calculator-hero"
+import { CtaBand } from "@/components/page-sections"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
@@ -228,37 +230,22 @@ export default function MyntraCalculatorPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="calculator-page min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Myntra Seller Calculator
-            </h1>
-            <p className="text-xl mb-8 opacity-90">
-              Calculate marketplace fees, profit, ROI, revenue, and GST for Myntra sellers
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <CheckCircle className="h-4 w-4 mr-2" />
-                Marketplace Fee Calculator
-              </Badge>
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <TrendingUp className="h-4 w-4 mr-2" />
-                Profit Calculator
-              </Badge>
-              <Badge variant="secondary" className="text-sm py-2 px-4">
-                <Percent className="h-4 w-4 mr-2" />
-                ROI Calculator
-              </Badge>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CalculatorHero
+        href="/myntra-calculator"
+        title="Myntra Seller"
+        highlight="Calculator"
+        description="Calculate marketplace fees, profit, ROI, revenue, and GST for Myntra sellers"
+        features={[
+          { icon: CheckCircle, label: "Marketplace Fee Calculator" },
+          { icon: TrendingUp, label: "Profit Calculator" },
+          { icon: Percent, label: "ROI Calculator" },
+        ]}
+      />
 
       {/* Main Calculator Section */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 md:pt-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Calculator */}
           <div className="lg:col-span-2">
@@ -279,12 +266,12 @@ export default function MyntraCalculatorPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {steps.map((step) => (
                       <div key={step.number} className="text-center">
-                        <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                          <div className="text-pink-600">
+                        <div className="w-12 h-12 bg-primary/15 rounded-full flex items-center justify-center mx-auto mb-2">
+                          <div className="text-primary">
                             {step.icon}
                           </div>
                         </div>
-                        <div className="text-xs font-medium bg-pink-600 text-white rounded-full w-6 h-6 flex items-center justify-center mx-auto mb-2">
+                        <div className="text-xs font-medium bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mx-auto mb-2">
                           {step.number}
                         </div>
                         <h4 className="font-semibold text-sm mb-1">{step.title}</h4>
@@ -355,10 +342,10 @@ export default function MyntraCalculatorPage() {
                     <h3 className="text-lg font-semibold mb-4">Step 3: Select Shipping Zone</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div 
-                        className={`border-2 rounded-md p-4 text-center cursor-pointer transition-all ${
+                        className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all ${
                           shippingZone === "local" 
-                            ? "border-pink-500" 
-                            : "border-gray-200 hover:border-pink-300"
+                            ? "border-primary bg-primary/5" 
+                            : "border-border hover:border-primary/50"
                         }`}
                         onClick={() => setShippingZone("local")}
                       >
@@ -368,10 +355,10 @@ export default function MyntraCalculatorPage() {
                         </div>
                       </div>
                       <div 
-                        className={`border-2 rounded-md p-4 text-center cursor-pointer transition-all ${
+                        className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all ${
                           shippingZone === "regional" 
-                            ? "border-pink-500" 
-                            : "border-gray-200 hover:border-pink-300"
+                            ? "border-primary bg-primary/5" 
+                            : "border-border hover:border-primary/50"
                         }`}
                         onClick={() => setShippingZone("regional")}
                       >
@@ -381,10 +368,10 @@ export default function MyntraCalculatorPage() {
                         </div>
                       </div>
                       <div 
-                        className={`border-2 rounded-md p-4 text-center cursor-pointer transition-all ${
+                        className={`border-2 rounded-2xl p-4 text-center cursor-pointer transition-all ${
                           shippingZone === "national" 
-                            ? "border-pink-500" 
-                            : "border-gray-200 hover:border-pink-300"
+                            ? "border-primary bg-primary/5" 
+                            : "border-border hover:border-primary/50"
                         }`}
                         onClick={() => setShippingZone("national")}
                       >
@@ -399,8 +386,8 @@ export default function MyntraCalculatorPage() {
                   {/* Step 4: Calculate Button */}
                   <div>
                     <h3 className="text-lg font-semibold mb-4">Step 4: Calculate & Analyze</h3>
-                    <div className="flex gap-4">
-                      <Button onClick={calculateFees} size="lg" className="flex-1 bg-pink-600 hover:bg-pink-700">
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button onClick={calculateFees} size="lg" className="sm:flex-1 bg-primary hover:bg-primary/90">
                         Calculate Profit
                       </Button>
                       <Button onClick={resetForm} variant="outline" size="lg">
@@ -427,21 +414,21 @@ export default function MyntraCalculatorPage() {
                 <CardContent>
                   {/* Summary Cards */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    <div className="bg-pink-50 p-4 rounded-lg border border-pink-100">
+                    <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
                       <p className="text-sm text-muted-foreground">Selling Price</p>
                       <p className="text-2xl font-bold text-foreground">
                         ₹{results.sellingPrice.toFixed(2)}
                       </p>
                     </div>
-                    <div className="bg-pink-50 p-4 rounded-lg border border-pink-100">
+                    <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
                       <p className="text-sm text-muted-foreground">Settlement Amount</p>
-                      <p className="text-2xl font-bold text-green-600">
+                      <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                         ₹{results.settlementAmount.toFixed(2)}
                       </p>
                     </div>
-                    <div className="bg-pink-50 p-4 rounded-lg border border-pink-100">
+                    <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
                       <p className="text-sm text-muted-foreground">Net Margin %</p>
-                      <p className="text-2xl font-bold text-green-600">
+                      <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                         {results.netMarginPercent.toFixed(2)}%
                       </p>
                     </div>
@@ -457,7 +444,7 @@ export default function MyntraCalculatorPage() {
                       </div>
                       <div className="flex justify-between">
                         <span>Discount ({discountPercent}%):</span>
-                        <span className="text-green-600">-₹{results.discountAmount.toFixed(2)}</span>
+                        <span className="text-green-600 dark:text-green-400">-₹{results.discountAmount.toFixed(2)}</span>
                       </div>
                       <Separator />
                       <div className="flex justify-between font-semibold">
@@ -493,7 +480,7 @@ export default function MyntraCalculatorPage() {
                       <Separator />
                       <div className="flex justify-between font-bold text-lg">
                         <span>Settlement Amount:</span>
-                        <span className="text-green-600">₹{results.settlementAmount.toFixed(2)}</span>
+                        <span className="text-green-600 dark:text-green-400">₹{results.settlementAmount.toFixed(2)}</span>
                       </div>
                     </div>
                   </div>
@@ -507,8 +494,8 @@ export default function MyntraCalculatorPage() {
                 <Card key={index}>
                   <CardContent className="pt-6">
                     <div className="flex flex-col items-center text-center space-y-3">
-                      <div className="p-3 bg-pink-100 rounded-full">
-                        <div className="text-pink-600">
+                      <div className="p-3 bg-primary/15 rounded-full">
+                        <div className="text-primary">
                           {feature.icon}
                         </div>
                       </div>
@@ -640,31 +627,31 @@ export default function MyntraCalculatorPage() {
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
-                    <div className="bg-pink-100 text-pink-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <div className="bg-primary/15 text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       1
                     </div>
                     <span className="text-sm">Calculate Marketplace Fees based on category</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <div className="bg-pink-100 text-pink-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <div className="bg-primary/15 text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       2
                     </div>
                     <span className="text-sm">Calculate Overall GST based on product category</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <div className="bg-pink-100 text-pink-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <div className="bg-primary/15 text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       3
                     </div>
                     <span className="text-sm">Calculate Shipping Fees based on zone</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <div className="bg-pink-100 text-pink-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <div className="bg-primary/15 text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       4
                     </div>
                     <span className="text-sm">Sum all fees to get total expenses</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <div className="bg-pink-100 text-pink-800 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                    <div className="bg-primary/15 text-primary rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       5
                     </div>
                     <span className="text-sm">Calculate profit after all deductions</span>
@@ -712,7 +699,7 @@ export default function MyntraCalculatorPage() {
                   Gross merchandise volume (GMV), shipping costs, and more.
                 </p>
                 
-                <div className="border border-pink rounded-lg p-6">
+                <div className="border border-border rounded-lg p-6">
                   <h4 className="font-semibold mb-3">Seller Success Story:</h4>
                   <p className="text-sm">
                     Meet Mukesh Sharma, an experienced Myntra seller who used our Myntra Net Revenue Calculator 
@@ -724,15 +711,15 @@ export default function MyntraCalculatorPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="text-center p-4 border rounded-lg">
-                    <div className="text-2xl font-bold text-pink-600">10-25%</div>
+                    <div className="text-2xl font-bold text-primary">10-25%</div>
                     <div className="text-sm text-muted-foreground">Marketplace Fee Range</div>
                   </div>
                   <div className="text-center p-4 border rounded-lg">
-                    <div className="text-2xl font-bold text-pink-600">5-18%</div>
+                    <div className="text-2xl font-bold text-primary">5-18%</div>
                     <div className="text-sm text-muted-foreground">GST Rate Range</div>
                   </div>
                   <div className="text-center p-4 border rounded-lg">
-                    <div className="text-2xl font-bold text-pink-600">3 Steps</div>
+                    <div className="text-2xl font-bold text-primary">3 Steps</div>
                     <div className="text-sm text-muted-foreground">Simple Calculation Process</div>
                   </div>
                 </div>
@@ -741,6 +728,10 @@ export default function MyntraCalculatorPage() {
           </Card>
         </div>
       </div>
+      <CtaBand
+        title="Want an expert to manage your seller account?"
+        description="Our team handles listings, ads and account health so your margins keep improving. Book a free consultation."
+      />
     </div>
   )
 }
