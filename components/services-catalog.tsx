@@ -23,34 +23,41 @@ export function ServiceCategoriesOverview() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-3">
           {serviceCategories.map((category) => {
             const Icon = category.icon
 
             return (
               <article
                 key={category.slug}
-                className="rounded-2xl border border-border bg-background p-4 transition hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+                className="relative rounded-2xl border border-border bg-background p-4 transition hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
               >
-                <div className="flex items-center gap-3">
+                {/* On phones the whole tile links through; the service chips only show from `sm` up */}
+                <Link
+                  href={`/services#${category.slug}`}
+                  aria-label={`Explore ${category.name}`}
+                  className="absolute inset-0 rounded-2xl sm:hidden"
+                />
+                <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
                     <Icon size={18} />
                   </span>
                   <div className="min-w-0 flex-1">
                     <h3 className="font-semibold leading-tight text-foreground">{category.name}</h3>
-                    <p className="text-xs text-muted-foreground">{category.tagline}</p>
+                    <p className="mt-0.5 text-xs leading-snug text-muted-foreground">{category.tagline}</p>
+                    <p className="mt-2 text-[11px] font-medium text-primary sm:hidden">{category.services.length} services</p>
                   </div>
                   <Link
                     href={`/services#${category.slug}`}
                     aria-label={`Explore ${category.name}`}
-                    className="group inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-primary"
+                    className="group hidden shrink-0 items-center gap-1 text-xs font-semibold text-primary sm:inline-flex"
                   >
                     Explore
                     <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
 
-                <ul className="mt-3 flex flex-wrap gap-1.5">
+                <ul className="mt-3 hidden flex-wrap gap-1.5 sm:flex">
                   {category.services.map((service) => (
                     <li key={service.slug}>
                       <Link

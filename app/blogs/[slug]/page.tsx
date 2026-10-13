@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, ChevronRight, Clock, List } from "lucide-react"
+import { ArrowLeft, ArrowRight, ChevronRight, Clock, List, Sparkles } from "lucide-react"
 import { blogPosts } from "@/lib/blog-data"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
@@ -17,6 +17,65 @@ interface BlogDetailPageProps {
 interface Heading {
   id: string
   text: string
+}
+
+interface FaqItem {
+  question: string
+  answer: string
+}
+
+const SITE_URL = "https://wings2sky.com"
+
+const absoluteUrl = (path: string) => (path.startsWith("/") ? `${SITE_URL}${path}` : path)
+
+// Article, breadcrumb and FAQ structured data, read by Google rich results and AI answer engines
+function buildJsonLd(post: (typeof blogPosts)[number]) {
+  const url = `${SITE_URL}/blogs/${post.slug}`
+  const faqs: FaqItem[] = post.faqs ?? []
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.meta_description || post.excerpt,
+      image: absoluteUrl(post.image1 || post.image),
+      datePublished: post.date,
+      dateModified: post.updated || post.date,
+      author: { "@type": "Organization", name: post.author, url: SITE_URL },
+      publisher: {
+        "@type": "Organization",
+        name: "Wings2Sky",
+        url: SITE_URL,
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/logo-mark.png` },
+      },
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      keywords: post.keywords?.join(", "),
+      articleSection: post.category,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Blogs", item: `${SITE_URL}/blogs` },
+        { "@type": "ListItem", position: 3, name: post.title, item: url },
+      ],
+    },
+    ...(faqs.length > 0
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: { "@type": "Answer", text: faq.answer },
+            })),
+          },
+        ]
+      : []),
+  ]
 }
 
 // Adds anchor ids to the article's h2 headings and returns them for the table of contents
@@ -77,9 +136,16 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   const relatedPosts = getRelatedPosts(post)
   const { content, headings } = prepareContent(post.content)
+  const faqs: FaqItem[] = post.faqs ?? []
+  const keyTakeaways: string[] = post.keyTakeaways ?? []
+  if (faqs.length > 0) headings.push({ id: "faqs", text: "Frequently Asked Questions" })
 
   return (
     <main className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(post)).replace(/</g, "\\u003c") }}
+      />
       <Navigation />
 
       {/* Article header */}
@@ -153,7 +219,47 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               </details>
             )}
 
+            {/* Answer-first summary, the part search snippets and AI assistants quote */}
+            {keyTakeaways.length > 0 && (
+              <section
+                aria-label="Key takeaways"
+                className="mb-10 rounded-2xl border border-primary/30 bg-primary/5 p-5 sm:p-6"
+              >
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                  <Sparkles size={14} />
+                  Key takeaways
+                </p>
+                <ul className="mt-3 space-y-2 text-[0.95rem] leading-relaxed text-foreground/90">
+                  {keyTakeaways.map((point) => (
+                    <li key={point} className="flex gap-2.5">
+                      <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             <div className="article-content" dangerouslySetInnerHTML={{ __html: content }} />
+
+            {faqs.length > 0 && (
+              <section aria-labelledby="faqs" className="mt-12">
+                <h2 id="faqs" className="text-2xl font-bold tracking-tight text-foreground">
+                  Frequently Asked Questions
+                </h2>
+                <div className="mt-5 space-y-3">
+                  {faqs.map((faq) => (
+                    <details key={faq.question} className="group rounded-2xl border border-border bg-card px-5 py-4">
+                      <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold text-foreground [&::-webkit-details-marker]:hidden">
+                        <h3 className="text-base leading-snug">{faq.question}</h3>
+                        <ChevronRight size={18} className="mt-0.5 shrink-0 text-primary transition-transform group-open:rotate-90" />
+                      </summary>
+                      <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground">{faq.answer}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Tags */}
             <div className="mt-12 flex flex-wrap items-center gap-2 border-t border-border pt-8">
@@ -272,8 +378,8 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
   }
 
   // Use custom keywords if available, otherwise generate dynamic ones
-  const dynamicKeywords = post.keywords?.length > 0 
-    ? post.keywords 
+  const dynamicKeywords = post.keywords && post.keywords.length > 0
+    ? post.keywords
     : [
         ...post.tags,
         post.category,
@@ -290,24 +396,27 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
   const coverImage = post.image1 || post.image
   const socialImage = coverImage.startsWith('/') ? `https://wings2sky.com${coverImage}` : coverImage
 
+  const description = post.meta_description || post.excerpt
+
   return {
-    title: `${post.title} | Wings2Sky Blogs`,
-    description: post.excerpt,
+    title: post.meta_title || `${post.title} | Wings2Sky Blogs`,
+    description,
     keywords: dynamicKeywords.join(', '),
     authors: [{ name: post.author }],
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description,
       images: [socialImage],
       type: 'article',
       publishedTime: post.date,
+      modifiedTime: post.updated || post.date,
       authors: [post.author],
       tags: post.tags,
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.excerpt,
+      description,
       images: [socialImage],
     },
     alternates: {

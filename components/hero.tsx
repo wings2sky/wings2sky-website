@@ -40,7 +40,7 @@ export default function Hero() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
       />
-    <section className="relative overflow-hidden bg-background px-4 sm:px-6 lg:px-8 pt-10 pb-20 md:pt-16 md:pb-28">
+    <section className="relative overflow-hidden bg-background px-4 sm:px-6 lg:px-8 pt-8 pb-14 sm:pt-10 sm:pb-20 md:pt-16 md:pb-28">
       {/* Background: soft brand glow + faint grid */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 right-[-10%] h-[34rem] w-[34rem] rounded-full bg-primary/20 blur-3xl" />
@@ -49,7 +49,7 @@ export default function Hero() {
       </div>
 
       <div className="relative max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 sm:gap-14 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="z-10 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-700">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-medium text-primary">
@@ -60,14 +60,14 @@ export default function Hero() {
               Digital Marketing Agency in Dwarka, Delhi
             </span>
 
-            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08]">
+            <h1 className="mt-5 sm:mt-6 text-[2.15rem] sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.08]">
               E-Commerce Services in Delhi, Built to{" "}
               <span className="bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent">
                 Scale Your Sales
               </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-4 sm:mt-6 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
               One expert team for your entire online business. We handle{" "}
               <strong className="font-semibold text-foreground">marketplace management</strong>,{" "}
               <strong className="font-semibold text-foreground">digital marketing</strong>,{" "}
@@ -76,7 +76,7 @@ export default function Hero() {
               your product while we grow your orders on Amazon, Flipkart, Myntra and Meesho.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-4">
+            <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
               <Link
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold whitespace-nowrap text-primary-foreground shadow-lg shadow-primary/30 transition hover:bg-primary/90"
@@ -93,7 +93,7 @@ export default function Hero() {
             </div>
 
             {/* Proof points */}
-            <dl className="mt-10 grid max-w-lg grid-cols-3 divide-x divide-border">
+            <dl className="mt-8 sm:mt-10 grid max-w-lg grid-cols-3 divide-x divide-border">
               {stats.map((stat) => (
                 <div key={stat.label} className="px-4 first:pl-0">
                   <dt className="sr-only">{stat.label}</dt>
@@ -120,7 +120,7 @@ export default function Hero() {
 
           {/* Right Side - Client results card */}
           <div className="relative mx-auto w-full max-w-md sm:mb-24 lg:mb-0 lg:max-w-none motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-8 motion-safe:duration-1000">
-            <div className="relative rounded-3xl border border-border bg-card/80 p-6 sm:p-8 shadow-2xl shadow-primary/10 backdrop-blur">
+            <div className="relative rounded-3xl border border-border bg-card/80 p-5 sm:p-8 shadow-2xl shadow-primary/10 backdrop-blur">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
@@ -137,7 +137,7 @@ export default function Hero() {
                 </span>
               </div>
 
-              <p className="mt-6 text-4xl sm:text-5xl font-bold tracking-tight text-foreground">₹40,83,302</p>
+              <p className="mt-5 sm:mt-6 text-[2rem] sm:text-5xl font-bold tracking-tight text-foreground">₹40,83,302</p>
               <p className="mt-1 text-sm text-muted-foreground">up from ₹19,93,287 before working with us</p>
 
               <div className="mt-6 space-y-4">

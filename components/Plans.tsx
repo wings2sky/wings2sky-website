@@ -72,14 +72,14 @@ export default function Plans() {
         </div>
 
         {/* Plans Grid */}
-        <div className="mt-10 grid gap-4 md:grid-cols-3 items-stretch">
+        <div className="scroll-row mt-6 pt-4 md:mx-0 md:mt-10 md:grid md:grid-cols-3 md:items-stretch md:gap-4 md:overflow-visible md:px-0 md:pb-0">
           {plans.map((plan) => {
             const [amount, period] = plan.price.split("/")
 
             return (
               <article
                 key={plan.name}
-                className={`relative flex flex-col rounded-2xl border bg-card p-5 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 ${
+                className={`relative flex w-[85%] flex-col rounded-2xl border bg-card p-5 transition md:w-auto hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 ${
                   plan.highlight ? "border-primary shadow-lg shadow-primary/15" : "border-border"
                 }`}
               >

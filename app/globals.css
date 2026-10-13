@@ -117,6 +117,27 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Horizontal swipe row on phones; callers switch to a grid at a larger breakpoint */
+@utility scroll-row {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1rem;
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & > * {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -8,20 +8,14 @@ const SalesComparisonSwiper = dynamic(() => import("@/components/sales-compariso
   loading: () => <div className="py-20 px-4 sm:px-6 lg:px-8 bg-card" />,
 })
 const ServicesInteractive = dynamic(() => import("@/components/services-interactive"))
-const WhatWeDo = dynamic(() => import("@/components/what-we-do"))
-const WhyChooseUs = dynamic(() => import("@/components/why-choose-us"))
-const BusinessBoost = dynamic(() => import("@/components/business-boost"))
 const FAQ = dynamic(() => import("@/components/faq"))
-const ServicesSection = dynamic(() => import("@/components/services-section"))
 const Footer = dynamic(() => import("@/components/footer"))
 const Testimonials = dynamic(() => import("@/components/testimonials"))
 const PartnershipsWithLogos = dynamic(() => import("@/components/partners"))
 const Plans = dynamic(() => import("@/components/Plans"))
-const SEOContent = dynamic(() => import("@/components/seo-content"))
 const ServiceCategoriesOverview = dynamic(() =>
   import("@/components/services-catalog").then((mod) => mod.ServiceCategoriesOverview),
 )
-const IndustriesSection = dynamic(() => import("@/components/services-catalog").then((mod) => mod.IndustriesSection))
 
 
 export const metadata: Metadata = {
@@ -36,17 +30,11 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <SalesComparisonSwiper />
-      <ServicesInteractive />
-      <WhatWeDo />
-      <WhyChooseUs />
-      <BusinessBoost />
-      <ServiceCategoriesOverview />
-      <IndustriesSection />
-      <ServicesSection />
-      <Plans />
       <PartnershipsWithLogos />
-      <SEOContent />
+      <ServicesInteractive />
+      <ServiceCategoriesOverview />
+      <SalesComparisonSwiper />
+      <Plans />
       <Testimonials />
       <FAQ />
       <Footer />

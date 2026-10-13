@@ -8,6 +8,8 @@ interface Marketplace {
   description: string
   /** Logo file in /public; platforms without one show a brand-coloured initial */
   logo?: string
+  /** Full-bleed square app icon in /public, shown edge to edge in the tile */
+  appIcon?: string
   tile?: { background: string; color: string }
   calculatorHref?: string
 }
@@ -50,27 +52,28 @@ const marketplaces: Marketplace[] = [
     name: "Nykaa",
     category: "Beauty",
     description: "Brand onboarding, listings and content for beauty, personal care and fashion sellers.",
-    tile: { background: "#FC2779", color: "#FFFFFF" },
+    appIcon: "/nykaa-icon.png",
     calculatorHref: "/nykaa-calculator",
   },
   {
     name: "Blinkit",
     category: "Quick Commerce",
     description: "Seller onboarding, catalogue setup, stock availability and in-app ads for quick-commerce orders.",
-    tile: { background: "#F8CB46", color: "#000000" },
+    appIcon: "/blinkit.svg",
     calculatorHref: "/blinkit-calculator",
   },
   {
     name: "Zepto",
     category: "Quick Commerce",
     description: "Brand listing, catalogue setup, pricing and visibility for fast-delivery shoppers.",
-    tile: { background: "#5E248F", color: "#FFFFFF" },
+    appIcon: "/zepto-icon.png",
   },
   {
     name: "Swiggy Instamart",
     category: "Quick Commerce",
     description: "Onboarding, catalogue and in-app visibility for brands selling through Instamart.",
-    tile: { background: "#FC8019", color: "#FFFFFF" },
+    // Instamart has no standalone mark we can source, so it uses the parent Swiggy icon
+    appIcon: "/swiggy-icon.png",
   },
 ]
 
@@ -97,13 +100,21 @@ export default function ServicesInteractive() {
         </div>
 
         {/* Platforms */}
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="scroll-row mt-8 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
           {marketplaces.map((marketplace) => (
             <article
               key={marketplace.name}
-              className="group flex items-start gap-3.5 rounded-2xl border border-border bg-card p-4 transition hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+              className="group flex w-[84%] items-start gap-3.5 rounded-2xl border border-border bg-card p-4 transition sm:w-auto hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
             >
-              {marketplace.logo ? (
+              {marketplace.appIcon ? (
+                <Image
+                  src={marketplace.appIcon}
+                  alt={`${marketplace.name} logo`}
+                  width={44}
+                  height={44}
+                  className="h-11 w-11 shrink-0 rounded-xl border border-border object-cover"
+                />
+              ) : marketplace.logo ? (
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-white">
                   <Image
                     src={marketplace.logo}

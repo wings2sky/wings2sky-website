@@ -79,7 +79,7 @@ const growthPercent = (current: number, previous: number) => {
 }
 
 const GrowthBadge = ({ current, previous }: { current: number; previous: number }) => (
-  <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-green-500/15 px-2.5 py-1 text-xs font-bold text-green-600 dark:text-green-400">
+  <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-green-500/15 px-2 sm:px-2.5 py-1 text-xs font-bold text-green-600 dark:text-green-400">
     <TrendingUp size={13} />
     {growthPercent(current, previous)}
   </span>
@@ -87,7 +87,7 @@ const GrowthBadge = ({ current, previous }: { current: number; previous: number 
 
 export default function SalesAnalyticsSwiper() {
   return (
-    <section className="relative overflow-hidden border-y border-border bg-card px-4 sm:px-6 lg:px-8 py-20 md:py-24">
+    <section className="relative overflow-hidden border-y border-border bg-card px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-24">
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-72 w-[48rem] max-w-full -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto">
@@ -97,11 +97,11 @@ export default function SalesAnalyticsSwiper() {
             <TrendingUp size={14} />
             Sales Performance Analytics
           </span>
-          <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+          <h2 className="mt-4 sm:mt-5 text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
             How We Doubled a Flipkart Seller&apos;s{" "}
             <span className="bg-gradient-to-r from-primary to-orange-400 bg-clip-text text-transparent">Monthly Sales</span>
           </h2>
-          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
             Real numbers from the Flipkart Seller Hub of a client account we manage. Monthly gross sales grew from{" "}
             <strong className="font-semibold text-foreground">₹19.93L</strong> to{" "}
             <strong className="font-semibold text-foreground">₹40.83L</strong>.
@@ -109,14 +109,14 @@ export default function SalesAnalyticsSwiper() {
         </div>
 
         {/* Before / After dashboards */}
-        <div className="relative mt-14 grid gap-6 lg:grid-cols-2 lg:gap-8">
+        <div className="scroll-row relative mt-8 sm:mx-0 sm:mt-14 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-2 lg:gap-8">
           {SNAPSHOTS.map((snapshot) => {
             const isAfter = snapshot.stage === "After"
 
             return (
               <article
                 key={snapshot.stage}
-                className={`flex flex-col rounded-3xl border bg-background p-4 sm:p-5 ${
+                className={`flex w-[88%] flex-col rounded-3xl border bg-background p-4 sm:w-auto sm:p-5 ${
                   isAfter ? "border-primary/50 shadow-2xl shadow-primary/15" : "border-border shadow-sm"
                 }`}
               >
@@ -129,9 +129,9 @@ export default function SalesAnalyticsSwiper() {
                     >
                       {snapshot.stage}
                     </span>
-                    <span className="text-sm font-medium text-foreground">{snapshot.period}</span>
+                    <span className="text-sm font-medium whitespace-nowrap text-foreground">{snapshot.period}</span>
                   </div>
-                  <span className="text-xs text-muted-foreground">Flipkart Seller Hub</span>
+                  <span className="hidden text-xs text-muted-foreground sm:inline">Flipkart Seller Hub</span>
                 </div>
 
                 {/* Full dashboard screenshot - opens full size in a new tab */}
@@ -153,7 +153,7 @@ export default function SalesAnalyticsSwiper() {
                 <div className="mt-auto flex items-end justify-between gap-4 px-1 pt-5">
                   <div>
                     <p className="text-xs uppercase tracking-wider text-muted-foreground">Gross sales</p>
-                    <p className={`mt-1 text-3xl sm:text-4xl font-bold tracking-tight ${isAfter ? "text-primary" : "text-foreground"}`}>
+                    <p className={`mt-1 text-2xl sm:text-4xl font-bold tracking-tight ${isAfter ? "text-primary" : "text-foreground"}`}>
                       {snapshot.grossSales}
                     </p>
                   </div>
@@ -176,29 +176,29 @@ export default function SalesAnalyticsSwiper() {
         </div>
 
         {/* More results */}
-        <div className="mt-16">
+        <div className="mt-12 sm:mt-16">
           <h3 className="text-center text-xl sm:text-2xl font-bold text-foreground">More Results Across Our Client Work</h3>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
             {RESULT_METRICS.map((metric) => {
               const Icon = metric.icon
 
               return (
                 <article
                   key={metric.title}
-                  className="flex flex-col rounded-2xl border border-border bg-background p-5 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
+                  className="flex flex-col rounded-2xl border border-border bg-background p-4 sm:p-5 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                      <Icon size={20} />
+                    <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                      <Icon size={18} />
                     </span>
                     <GrowthBadge current={metric.current} previous={metric.previous} />
                   </div>
 
-                  <p className="mt-5 text-3xl font-bold tracking-tight text-foreground">{metric.format(metric.current)}</p>
-                  <h4 className="mt-1 text-sm font-semibold text-foreground">{metric.title}</h4>
-                  <p className="mt-1 text-sm text-muted-foreground">{metric.description}</p>
+                  <p className="mt-4 sm:mt-5 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">{metric.format(metric.current)}</p>
+                  <h4 className="mt-1 text-xs sm:text-sm font-semibold leading-snug text-foreground">{metric.title}</h4>
+                  <p className="mt-1 hidden text-sm text-muted-foreground sm:block">{metric.description}</p>
 
-                  <div className="mt-auto pt-5 space-y-2.5">
+                  <div className="mt-auto hidden pt-5 space-y-2.5 sm:block">
                     <div>
                       <div className="mb-1 flex justify-between text-xs text-muted-foreground">
                         <span>{metric.timeframe.previous}</span>
@@ -228,7 +228,7 @@ export default function SalesAnalyticsSwiper() {
         </div>
 
         {/* CTA */}
-        <div className="mt-14 flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:gap-6">
+        <div className="mt-10 sm:mt-14 flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:gap-6">
           <p className="text-lg font-medium text-foreground">Want results like these for your store?</p>
           <Link
             href="/contact"
